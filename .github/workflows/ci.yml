@@ -30,7 +30,7 @@ jobs:
           tar -cJf dist.tar.xz dist/
 
       - name: Get Tag Name
-        run: echo "TAG_NAME=$(date +'%H:%M:%S-%Y/%m/%d')" >> $GITHUB_ENV
+        run: echo "TAG_NAME=$(date +'%H.%M.%S..%Y.%m.%d')" >> $GITHUB_ENV
 
       - name: Set Tag
         run: |
