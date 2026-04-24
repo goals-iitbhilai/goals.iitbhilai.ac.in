@@ -29,16 +29,13 @@ jobs:
         run: |
           tar -cJf dist.tar.xz dist/
 
-      - name: Get Tag Name
-        run: echo "TAG_NAME=$(date +'v%H%M%S%Y%m%d')" >> $GITHUB_ENV
-
       - name: Set Tag
         run: |
-          git tag $TAG_NAME
-          git push $TAG_NAME
+          git tag $(git rev-parse --short HEAD)
+          git push $(git rev-parse --short HEAD)
 
       - name: Release
         run: |
-          gh release create $TAG_NAME dist.tar.xz
+          gh release create $(git rev-parse --short HEAD) dist.tar.xz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
