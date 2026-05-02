@@ -3,47 +3,47 @@
 /* Fonts */
 
 @theme inline {
-    --font-sans: var(--font-inter);
-    --font-serif: var(--font-crimson);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-crimson);
 }
 
 @layer base {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: var(--font-crimson);
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-crimson);
+  }
 }
 
 /* Colors */
 
 @theme {
-    /* Tailwind's yellow */
-    --color-primary-50: oklch(98.7% 0.026 102.212);
-    --color-primary-100: oklch(97.3% 0.071 103.193);
-    --color-primary-200: oklch(94.5% 0.129 101.54);
-    --color-primary-300: oklch(90.5% 0.182 98.111);
-    --color-primary-400: oklch(85.2% 0.199 91.936);
-    --color-primary-500: oklch(79.5% 0.184 86.047);
-    --color-primary-600: oklch(68.1% 0.162 75.834);
-    --color-primary-700: oklch(55.4% 0.135 66.442);
-    --color-primary-800: oklch(47.6% 0.114 61.907);
-    --color-primary-900: oklch(42.1% 0.095 57.708);
-    --color-primary-950: oklch(28.6% 0.066 53.813);
+  /* Tailwind's yellow */
+  --color-primary-50: oklch(98.7% 0.026 102.212);
+  --color-primary-100: oklch(97.3% 0.071 103.193);
+  --color-primary-200: oklch(94.5% 0.129 101.54);
+  --color-primary-300: oklch(90.5% 0.182 98.111);
+  --color-primary-400: oklch(85.2% 0.199 91.936);
+  --color-primary-500: oklch(79.5% 0.184 86.047);
+  --color-primary-600: oklch(68.1% 0.162 75.834);
+  --color-primary-700: oklch(55.4% 0.135 66.442);
+  --color-primary-800: oklch(47.6% 0.114 61.907);
+  --color-primary-900: oklch(42.1% 0.095 57.708);
+  --color-primary-950: oklch(28.6% 0.066 53.813);
 
-    /* Custom neutral extracted from old website */
-    --color-neutral-50: hsl(215 25% 98%);
-    --color-neutral-100: hsl(215 20% 94%);
-    --color-neutral-200: hsl(215 20% 88%);
-    --color-neutral-300: hsl(215 15% 80%);
-    --color-neutral-400: hsl(215 15% 65%);
-    --color-neutral-500: hsl(215 15% 45%);
-    --color-neutral-600: hsl(215 20% 32%);
-    --color-neutral-700: hsl(215 25% 22%);
-    --color-neutral-800: hsl(215 25% 15%);
-    --color-neutral-900: hsl(215 30% 12%);
-    --color-neutral-950: hsl(215 30% 8%);
+  /* Custom neutral extracted from old website */
+  --color-neutral-50: hsl(215 25% 98%);
+  --color-neutral-100: hsl(215 20% 94%);
+  --color-neutral-200: hsl(215 20% 88%);
+  --color-neutral-300: hsl(215 15% 80%);
+  --color-neutral-400: hsl(215 15% 65%);
+  --color-neutral-500: hsl(215 15% 45%);
+  --color-neutral-600: hsl(215 20% 32%);
+  --color-neutral-700: hsl(215 25% 22%);
+  --color-neutral-800: hsl(215 25% 15%);
+  --color-neutral-900: hsl(215 30% 12%);
+  --color-neutral-950: hsl(215 30% 8%);
 }
