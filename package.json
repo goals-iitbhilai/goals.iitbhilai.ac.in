@@ -12,6 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource-variable/crimson-pro": "^5.2.8",
+    "@fontsource-variable/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.1.9",
     "tailwindcss": "^4.2.4"
