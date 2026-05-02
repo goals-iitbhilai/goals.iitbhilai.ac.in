@@ -12,12 +12,14 @@ export default defineConfig({
       name: "Inter",
       cssVariable: "--font-inter",
       fallbacks: ["sans-serif"],
+      weights: ["100 900"],
     },
     {
       provider: fontProviders.fontsource(),
       name: "Crimson Pro",
       cssVariable: "--font-crimson",
       fallbacks: ["serif"],
+      weights: ["200 900"],
     },
   ],
 });

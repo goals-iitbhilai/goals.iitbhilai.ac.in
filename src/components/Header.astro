@@ -1,0 +1,53 @@
+---
+import ThemeSwitch from "@components/ThemeSwitch.astro";
+
+const links = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Community", href: "/members" },
+  { name: "Editorials", href: "/editorials" },
+  { name: "Constitution", href: "/constitution" },
+  { name: "Contact", href: "/contact" },
+];
+
+function isActive(href: string) {
+  return href === Astro.url.pathname;
+}
+---
+
+<header
+  class="flex items-center justify-between border-b border-b-neutral-100 px-6 py-3 font-light dark:border-b-neutral-800"
+>
+  <div class="flex items-center gap-4">
+    <img src="/favicon.svg" alt="Logo" class="size-9" />
+    <a href="/" class="-mt-1">
+      <h5 class="text-secondary-800 dark:text-primary-500 text-2xl font-medium">
+        GOALS
+      </h5>
+      <p class="dark:text-secondary-300 -mt-1 text-xs">
+        General Oratory And Literary Society
+      </p>
+    </a>
+  </div>
+  <nav class="flex items-center gap-4">
+    <ul class="flex gap-4 text-[0.9rem]">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="hover:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-400 rounded-sm px-3 py-2"
+              class:list={{
+                "bg-secondary-800 text-secondary-50 dark:text-primary-950 dark:bg-primary-400":
+                  isActive(link.href),
+              }}
+            >
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <ThemeSwitch />
+  </nav>
+</header>

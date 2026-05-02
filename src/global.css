@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Fonts */
 
 @theme inline {
@@ -21,7 +24,6 @@
 /* Colors */
 
 @theme {
-  /* Tailwind's yellow */
   --color-primary-50: oklch(98.7% 0.026 102.212);
   --color-primary-100: oklch(97.3% 0.071 103.193);
   --color-primary-200: oklch(94.5% 0.129 101.54);
@@ -34,13 +36,24 @@
   --color-primary-900: oklch(42.1% 0.095 57.708);
   --color-primary-950: oklch(28.6% 0.066 53.813);
 
-  /* Custom neutral extracted from old website */
-  --color-neutral-50: hsl(215 25% 98%);
-  --color-neutral-100: hsl(215 20% 94%);
-  --color-neutral-200: hsl(215 20% 88%);
-  --color-neutral-300: hsl(215 15% 80%);
-  --color-neutral-400: hsl(215 15% 65%);
-  --color-neutral-500: hsl(215 15% 45%);
+  --color-secondary-50: oklch(97% 0.012 258);
+  --color-secondary-100: oklch(93.2% 0.025 260);
+  --color-secondary-200: oklch(88.2% 0.045 262);
+  --color-secondary-300: oklch(80.9% 0.075 262);
+  --color-secondary-400: oklch(70.7% 0.105 262);
+  --color-secondary-500: oklch(62.3% 0.135 262);
+  --color-secondary-600: oklch(54.6% 0.145 263);
+  --color-secondary-700: oklch(48.8% 0.14 264);
+  --color-secondary-800: oklch(42.4% 0.115 265);
+  --color-secondary-900: oklch(37.9% 0.085 266);
+  --color-secondary-950: oklch(28.2% 0.065 268);
+
+  --color-neutral-50: hsl(250 100% 99%);
+  --color-neutral-100: hsl(240 20% 94%);
+  --color-neutral-200: hsl(235 20% 88%);
+  --color-neutral-300: hsl(230 15% 80%);
+  --color-neutral-400: hsl(225 15% 65%);
+  --color-neutral-500: hsl(220 15% 45%);
   --color-neutral-600: hsl(215 20% 32%);
   --color-neutral-700: hsl(215 25% 22%);
   --color-neutral-800: hsl(215 25% 15%);
