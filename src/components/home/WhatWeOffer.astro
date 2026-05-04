@@ -2,7 +2,7 @@
 import SmallCard from "@components/SmallCard.astro";
 import { Mic, LibraryBig, Users, Award } from "@lucide/astro";
 
-const aboutContent = [
+const content = [
   {
     icon: Mic,
     iconStyles:
@@ -52,7 +52,7 @@ const aboutContent = [
     class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4"
   >
     {
-      aboutContent.map(({ icon, iconStyles, heading, description }) => (
+      content.map(({ icon, iconStyles, heading, description }) => (
         <SmallCard {icon} {iconStyles}>
           <Fragment slot="title">{heading}</Fragment>
           {description}

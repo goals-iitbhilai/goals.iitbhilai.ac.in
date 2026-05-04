@@ -19,6 +19,7 @@ export default defineConfig({
       name: "Crimson Pro",
       cssVariable: "--font-crimson",
       fallbacks: ["serif"],
+      styles: ["normal", "italic"],
       weights: ["200 900"],
     },
   ],
