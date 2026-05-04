@@ -1,0 +1,38 @@
+---
+import LinkButton from "@components/LinkButton.astro";
+import { ChevronRight } from "@lucide/astro";
+import backgroundImg from "@assets/background.jpg";
+import { getImage } from "astro:assets";
+
+const backgroundSrc = await getImage({ src: backgroundImg });
+---
+
+<main class="relative flex h-[75vh] w-full items-center justify-center">
+  <div
+    class="absolute inset-0 -z-10 bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundSrc.src})` }}
+  >
+    <div
+      class="dark:bg-primary-400/80 bg-secondary-700/80 absolute inset-0 z-[-9]"
+    >
+    </div>
+  </div>
+  <div
+    class="flex flex-col items-center gap-4 text-center text-neutral-50 dark:text-neutral-950"
+  >
+    <img src="/favicon.svg" alt="Logo" class="size-20" />
+    <h1 class="text-7xl">General Oratory & <br />Literary Society</h1>
+    <h2 class="text-5xl font-light">IIT Bhilai</h2>
+    <p class="mt-6 max-w-prose text-2xl font-extralight">
+      Where eloquent voices meet literary minds. Join our community of speakers,
+      writers, and critical thinkers shaping tomorrow's discourse.
+    </p>
+    <div class="mt-6 flex gap-8">
+      <LinkButton href="/members">Meet our Team</LinkButton>
+      <LinkButton href="/about" class="flex items-center gap-2">
+        Learn More
+        <ChevronRight />
+      </LinkButton>
+    </div>
+  </div>
+</main>
