@@ -17,15 +17,21 @@ const content = [
 ];
 ---
 
-<section class="grid grid-cols-1 gap-8 bg-neutral-100/50 lg:grid-cols-2">
+<section
+  class="grid grid-cols-1 gap-8 bg-neutral-100/50 lg:grid-cols-2 dark:bg-neutral-800"
+>
   <section class="flex flex-col items-start gap-8 p-16">
-    <h2 class="text-3xl">Recent Activities</h2>
-    <ul class="list-disc pl-4">
+    <h2 class="text-3xl dark:text-neutral-50">Recent Activities</h2>
+    <ul
+      class="marker:text-secondary-800 dark:marker:text-primary-400 list-disc pl-4 font-light"
+    >
       {
         content.map((item) => (
           <li class="mb-4">
-            <h3 class="text-xl font-light text-neutral-800">{item.title}</h3>
-            <p class="max-w-prose text-sm font-light text-neutral-600">
+            <h3 class="text-xl text-neutral-800 dark:text-neutral-200">
+              {item.title}
+            </h3>
+            <p class="max-w-prose text-sm text-neutral-600 dark:text-neutral-400">
               {item.description}
             </p>
           </li>
@@ -36,11 +42,13 @@ const content = [
   <section class="flex items-center justify-center p-16">
     <div class="relative h-fit w-fit">
       <div
-        class="bg-secondary-700 absolute inset-0 -z-10 rotate-4 transform rounded-2xl"
+        class="bg-secondary-700 dark:bg-primary-300 absolute inset-0 z-0 rotate-4 transform rounded-2xl"
       >
       </div>
-      <blockquote class="rounded-2xl bg-white p-8 shadow-sm">
-        <p class="max-w-prose font-serif text-xl font-light italic">
+      <blockquote
+        class="relative z-20 rounded-2xl bg-white p-8 font-light shadow-sm dark:bg-neutral-700"
+      >
+        <p class="max-w-prose font-serif text-xl italic dark:text-neutral-200">
           &ldquo; GOALS has transformed our understanding of literature and
           given us the confidence to express our ideas with clarity and
           conviction. The supportive community here encourages intellectual
@@ -50,7 +58,7 @@ const content = [
           <br />
           <span>Utkarsh and Kanishka</span>
           <br />
-          <span class="text-sm font-light text-neutral-600">
+          <span class="text-sm text-neutral-600 dark:text-neutral-400">
             Secretaries, GOALS
           </span>
         </cite>
