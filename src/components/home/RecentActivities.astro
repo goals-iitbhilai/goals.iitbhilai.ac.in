@@ -1,4 +1,6 @@
 ---
+import { ChevronRight } from "@lucide/astro";
+
 const content = [
   {
     title: "Annual Poetry Symposium",
@@ -38,6 +40,13 @@ const content = [
         ))
       }
     </ul>
+    <a
+      href="/editorials"
+      class="relative flex w-fit items-center gap-1 after:absolute after:bottom-0 after:block after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-black after:transition after:duration-300 after:content-[''] hover:after:scale-x-83"
+    >
+      Read our Editorials
+      <ChevronRight />
+    </a>
   </section>
   <section class="flex items-center justify-center p-16">
     <div class="relative h-fit w-fit">
