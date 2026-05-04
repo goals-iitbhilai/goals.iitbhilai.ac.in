@@ -1,7 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import LinkButton from "@components/LinkButton.astro";
 import backgroundImg from "@assets/background.jpg";
 import { getImage } from "astro:assets";
+import { ChevronRight } from "@lucide/astro";
 
 const backgroundSrc = await getImage({ src: backgroundImg });
 ---
@@ -27,6 +29,13 @@ const backgroundSrc = await getImage({ src: backgroundImg });
         Where eloquent voices meet literary minds. Join our community of
         speakers, writers, and critical thinkers shaping tomorrow's discourse.
       </p>
+      <div class="mt-6 flex gap-8">
+        <LinkButton href="/members">Meet our Team</LinkButton>
+        <LinkButton href="/about" class="flex items-center gap-2">
+          Learn More
+          <ChevronRight />
+        </LinkButton>
+      </div>
     </div>
   </div>
 </Layout>
