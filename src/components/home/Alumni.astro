@@ -1,0 +1,55 @@
+---
+import { Picture } from "astro:assets";
+import { getCollection } from "astro:content";
+
+interface Props {
+  backgroundSrc: string;
+}
+
+const { backgroundSrc } = Astro.props;
+const content = await getCollection("alumni");
+---
+
+<section class="relative flex flex-col items-center gap-8 p-16">
+  <div
+    class="absolute inset-0 -z-10 bg-cover bg-center"
+    style={{ backgroundImage: `url(${backgroundSrc})` }}
+  >
+    <div
+      class="absolute inset-0 z-[-9] bg-neutral-100/80 dark:bg-neutral-800/80"
+    >
+    </div>
+  </div>
+  <h2 class="text-5xl font-medium dark:text-neutral-50">
+    Voices from our Alumni
+  </h2>
+  <p class="mb-12 max-w-prose text-lg text-neutral-600 dark:text-neutral-300">
+    Hear from our seniors who have found their voice through GOALS.
+  </p>
+  <ul
+    class="flex w-full snap-x snap-mandatory items-stretch gap-8 overflow-x-auto scroll-smooth"
+  >
+    {
+      content.map(({ data: { name, message, batch, image } }) => (
+        <li class="flex w-[calc(33%-1.33rem)] flex-none snap-start flex-col items-center gap-8">
+          <Picture
+            src={image}
+            class="box-content size-42 rounded-full border-4 border-neutral-200 object-cover dark:border-neutral-400"
+            alt={name}
+          />
+          <div class="flex flex-1 flex-col items-center justify-between gap-4 rounded-xl bg-neutral-50 p-8 dark:bg-neutral-700">
+            <p class="w-11/12 font-serif text-xl font-light italic">
+              &ldquo;{message}&rdquo;
+            </p>
+            <div class="w-11/12 border-t border-t-neutral-400 pt-4 text-center dark:border-t-neutral-500">
+              <p class="my-1">{name}</p>
+              <p class="text-secondary-600 dark:text-secondary-400 text-sm">
+                {batch}
+              </p>
+            </div>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
