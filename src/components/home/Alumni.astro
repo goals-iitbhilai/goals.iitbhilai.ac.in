@@ -1,6 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
+import { ChevronLeft, ChevronRight } from "@lucide/astro";
 
 interface Props {
   backgroundSrc: string;
@@ -26,30 +27,59 @@ const content = await getCollection("alumni");
   <p class="mb-12 max-w-prose text-lg text-neutral-600 dark:text-neutral-300">
     Hear from our seniors who have found their voice through GOALS.
   </p>
-  <ul
-    class="flex w-full snap-x snap-mandatory items-stretch gap-8 overflow-x-auto scroll-smooth"
-  >
-    {
-      content.map(({ data: { name, message, batch, image } }) => (
-        <li class="flex w-[calc(33%-1.33rem)] flex-none snap-start flex-col items-center gap-8">
-          <Picture
-            src={image}
-            class="box-content size-42 rounded-full border-4 border-neutral-200 object-cover dark:border-neutral-400"
-            alt={name}
-          />
-          <div class="flex flex-1 flex-col items-center justify-between gap-4 rounded-xl bg-neutral-50 p-8 dark:bg-neutral-700">
-            <p class="w-11/12 font-serif text-xl font-light italic">
-              &ldquo;{message}&rdquo;
-            </p>
-            <div class="w-11/12 border-t border-t-neutral-400 pt-4 text-center dark:border-t-neutral-500">
-              <p class="my-1">{name}</p>
-              <p class="text-secondary-600 dark:text-secondary-400 text-sm">
-                {batch}
+  <div class="relative w-full">
+    <button
+      id="carousel-left"
+      class="absolute top-[calc(40%-3rem)] left-0 flex h-24 w-8 cursor-pointer items-center justify-center rounded-md bg-neutral-500 shadow-xl transition-colors hover:bg-neutral-600 active:bg-neutral-800"
+    >
+      <ChevronLeft class="size-6 stroke-neutral-50" />
+    </button>
+    <button
+      id="carousel-right"
+      class="absolute top-[calc(40%-3rem)] right-0 flex h-24 w-8 cursor-pointer items-center justify-center rounded-md bg-neutral-500 shadow-xl transition-colors hover:bg-neutral-600 active:bg-neutral-800"
+    >
+      <ChevronRight class="size-6 stroke-neutral-50" />
+    </button>
+    <ul
+      id="carousel"
+      class="flex w-full snap-x snap-mandatory items-stretch gap-8 overflow-x-auto scroll-smooth"
+    >
+      {
+        content.map(({ data: { name, message, batch, image } }) => (
+          <li class="flex w-[calc(33%-1.1rem)] flex-none snap-start flex-col items-center gap-8">
+            <Picture
+              src={image}
+              class="box-content size-42 rounded-full border-4 border-neutral-200 object-cover dark:border-neutral-400"
+              alt={name}
+            />
+            <div class="flex flex-1 flex-col items-center justify-between gap-4 rounded-xl bg-neutral-50 p-8 dark:bg-neutral-700">
+              <p class="w-11/12 font-serif text-xl font-light italic">
+                &ldquo;{message}&rdquo;
               </p>
+              <div class="w-11/12 border-t border-t-neutral-400 pt-4 text-center dark:border-t-neutral-500">
+                <p class="my-1">{name}</p>
+                <p class="text-secondary-600 dark:text-secondary-400 text-sm">
+                  {batch}
+                </p>
+              </div>
             </div>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </section>
+
+<script lang="ts">
+  const ul = document.getElementById("carousel");
+  const leftButton = document.getElementById("carousel-left");
+  const rightButton = document.getElementById("carousel-right");
+
+  leftButton.addEventListener("click", () => {
+    ul.scrollBy({ left: -ul.clientWidth, behavior: "smooth" });
+  });
+
+  rightButton.addEventListener("click", () => {
+    ul.scrollBy({ left: ul.clientWidth, behavior: "smooth" });
+  });
+</script>
