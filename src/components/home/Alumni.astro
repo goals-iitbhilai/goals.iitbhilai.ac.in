@@ -42,7 +42,7 @@ const content = await getCollection("alumni");
     </button>
     <ul
       id="carousel"
-      class="flex w-full snap-x snap-mandatory items-stretch gap-8 overflow-x-auto scroll-smooth"
+      class="flex w-full cursor-grab snap-x snap-mandatory items-stretch gap-8 overflow-x-auto scroll-smooth active:cursor-grabbing"
     >
       {
         content.map(({ data: { name, message, batch, image } }) => (
@@ -74,6 +74,27 @@ const content = await getCollection("alumni");
   const ul = document.getElementById("carousel");
   const leftButton = document.getElementById("carousel-left");
   const rightButton = document.getElementById("carousel-right");
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  ul.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - ul.offsetLeft;
+    scrollLeft = ul.scrollLeft;
+  });
+
+  ul.addEventListener("mouseleave", () => (isDown = false));
+  ul.addEventListener("mouseup", () => (isDown = false));
+
+  ul.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - ul.offsetLeft;
+    const walk = (x - startX) * 2;
+    ul.scrollLeft = scrollLeft - walk;
+  });
 
   leftButton.addEventListener("click", () => {
     ul.scrollBy({ left: -ul.clientWidth, behavior: "smooth" });
