@@ -1,14 +1,8 @@
 ---
-import ThemeSwitch from "./ThemeSwitch.astro";
+import ThemeSwitch from "@components/ThemeSwitch.astro";
+import { getCollection } from "astro:content";
 
-const links = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Community", href: "/members" },
-  { name: "Editorials", href: "/editorials" },
-  { name: "Constitution", href: "/constitution" },
-  { name: "Contact", href: "/contact" },
-];
+const links = await getCollection("links");
 
 function isActive(href: string) {
   return href === Astro.url.pathname;
@@ -32,17 +26,17 @@ function isActive(href: string) {
   <nav class="flex items-center gap-4">
     <ul class="flex gap-4 text-[0.9rem]">
       {
-        links.map((link) => (
+        links.map(({ data: { name, href } }) => (
           <li>
             <a
-              href={link.href}
+              {href}
               class="hover:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-400 rounded-sm px-3 py-2"
               class:list={{
                 "bg-secondary-800 text-secondary-50 dark:text-primary-950 dark:bg-primary-400":
-                  isActive(link.href),
+                  isActive(href),
               }}
             >
-              {link.name}
+              {name}
             </a>
           </li>
         ))

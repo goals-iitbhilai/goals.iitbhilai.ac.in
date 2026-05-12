@@ -1,16 +1,10 @@
 ---
 import { Mail } from "@lucide/astro";
-import socials from "@utils/socials";
 import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
 
-const links = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Community", href: "/members" },
-  { name: "Editorials", href: "/editorials" },
-  { name: "Constitution", href: "/constitution" },
-  { name: "Contact", href: "/contact" },
-];
+const links = await getCollection("links");
+const socials = await getCollection("socials");
 ---
 
 <footer class="bg-secondary-700 px-6 py-8 text-[0.95rem] text-neutral-100">
@@ -36,9 +30,9 @@ const links = [
       <h5 class="mb-2 text-2xl">Society</h5>
       <ul class="text-secondary-200 flex flex-col gap-1 transition-colors">
         {
-          links.map((link) => (
+          links.map(({ data: { name, href } }) => (
             <li class="hover:text-secondary-50">
-              <a href={link.href}>{link.name}</a>
+              <a {href}>{name}</a>
             </li>
           ))
         }
@@ -55,7 +49,7 @@ const links = [
       </a>
       <div class="mt-3 -ml-1 flex gap-4">
         {
-          socials.map(({ name, icon, href }) => (
+          socials.map(({ data: { name, icon, href } }) => (
             <a
               {href}
               class="text-secondary-200 hover:text-secondary-50 transition-colors"
