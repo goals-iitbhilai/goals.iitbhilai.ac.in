@@ -70,14 +70,14 @@ const content = await getCollection("alumni");
   </div>
 </section>
 
-<script lang="ts">
-  const ul = document.getElementById("carousel");
-  const leftButton = document.getElementById("carousel-left");
-  const rightButton = document.getElementById("carousel-right");
+<script>
+  const ul = document.getElementById("carousel")!;
+  const leftButton = document.getElementById("carousel-left")!;
+  const rightButton = document.getElementById("carousel-right")!;
 
   let isDown = false;
-  let startX;
-  let scrollLeft;
+  let startX: number;
+  let scrollLeft: number;
 
   ul.addEventListener("mousedown", (e) => {
     isDown = true;

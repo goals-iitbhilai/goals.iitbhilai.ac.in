@@ -1,0 +1,76 @@
+---
+import { Mail } from "@lucide/astro";
+import socials from "@utils/socials";
+import { Icon } from "astro-icon/components";
+
+const links = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Community", href: "/members" },
+  { name: "Editorials", href: "/editorials" },
+  { name: "Constitution", href: "/constitution" },
+  { name: "Contact", href: "/contact" },
+];
+---
+
+<footer class="bg-secondary-700 px-6 py-8 text-[0.95rem] text-neutral-100">
+  <div class="grid grid-cols-3 gap-4">
+    <section class="p-4">
+      <div class="flex items-center gap-4">
+        <img src="/favicon.svg" alt="Logo" class="size-15" />
+        <a href="/" class="group">
+          <h5 class="text-2xl font-medium">GOALS</h5>
+          <p
+            class="text-secondary-200 group-hover:text-secondary-50 transition-colors"
+          >
+            General Oratory & Literary Society, IIT Bhilai
+          </p>
+        </a>
+      </div>
+      <p class="mt-4">
+        Fostering eloquence, literary excellence, and intellectual discourse in
+        our academic community since our establishment.
+      </p>
+    </section>
+    <section class="p-4">
+      <h5 class="mb-2 text-2xl">Society</h5>
+      <ul class="text-secondary-200 flex flex-col gap-1 transition-colors">
+        {
+          links.map((link) => (
+            <li class="hover:text-secondary-50">
+              <a href={link.href}>{link.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section class="p-4">
+      <h5 class="mb-2 text-2xl">Connect with Us</h5>
+      <a
+        href="mailto:goals@iitbhilai.ac.in"
+        class="text-secondary-200 hover:text-secondary-50 flex items-center gap-2 transition-colors"
+      >
+        <Mail class="size-5" />
+        <p>goals@iitbhilai.ac.in</p>
+      </a>
+      <div class="mt-3 -ml-1 flex gap-4">
+        {
+          socials.map(({ name, icon, href }) => (
+            <a
+              {href}
+              class="text-secondary-200 hover:text-secondary-50 transition-colors"
+            >
+              <Icon name={icon} class="size-8" />
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+  <div
+    class="border-secondary-400 mt-6 flex items-center justify-between border-t px-4 pt-5"
+  >
+    <p>&copy; 2025 General Oratory & Literary Society. All rights reserved.</p>
+    <p>Inspiring minds through words and wisdom.</p>
+  </div>
+</footer>
