@@ -1,13 +1,13 @@
 ---
-import { Sun, Moon } from "@lucide/astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <button
   id="switch"
   class="cursor-pointer rounded-sm p-1.5 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
 >
-  <Sun class="dark:hidden" />
-  <Moon class="hidden dark:block" />
+  <Icon name="lucide:sun" class="size-5 dark:hidden" />
+  <Icon name="lucide:moon" class="hidden size-5 dark:block" />
 </button>
 
 <script>

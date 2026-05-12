@@ -1,5 +1,4 @@
 ---
-import { Mail } from "@lucide/astro";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
@@ -44,7 +43,7 @@ const socials = await getCollection("socials");
         href="mailto:goals@iitbhilai.ac.in"
         class="text-secondary-200 hover:text-secondary-50 flex items-center gap-2 transition-colors"
       >
-        <Mail class="size-5" />
+        <Icon name="lucide:mail" class="size-5" />
         <p>goals@iitbhilai.ac.in</p>
       </a>
       <div class="mt-3 -ml-1 flex gap-4">

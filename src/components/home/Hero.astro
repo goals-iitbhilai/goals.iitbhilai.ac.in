@@ -1,6 +1,6 @@
 ---
 import LinkButton from "@components/LinkButton.astro";
-import { ChevronRight } from "@lucide/astro";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   backgroundSrc: string;
@@ -33,7 +33,7 @@ const { backgroundSrc } = Astro.props;
       <LinkButton href="/members">Meet our Team</LinkButton>
       <LinkButton href="/about" class="flex items-center gap-2">
         Learn More
-        <ChevronRight />
+        <Icon name="lucide:chevron-right" />
       </LinkButton>
     </div>
   </div>

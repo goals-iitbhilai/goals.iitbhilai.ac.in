@@ -1,10 +1,10 @@
 ---
 import SmallCard from "@components/SmallCard.astro";
-import { Mic, LibraryBig, Users, Award } from "@lucide/astro";
+import { Icon } from "astro-icon/components";
 
 const content = [
   {
-    icon: Mic,
+    icon: "lucide:mic",
     iconStyles:
       "bg-blue-100 stroke-blue-500 dark:bg-blue-700 dark:stroke-blue-100",
     heading: "Public Speaking",
@@ -13,7 +13,7 @@ const content = [
       "events or performing stand-up in events like Kavita, Meraz, Ciao, and Cultscape.",
   },
   {
-    icon: LibraryBig,
+    icon: "lucide:library",
     iconStyles:
       "bg-yellow-100 stroke-yellow-500 dark:bg-yellow-600 dark:stroke-yellow-100",
     heading: "Literary Analysis",
@@ -22,7 +22,7 @@ const content = [
       "access to GOALS' exclusive library with a curated collection.",
   },
   {
-    icon: Users,
+    icon: "lucide:users",
     iconStyles:
       "bg-green-100 stroke-green-500 dark:bg-green-600 dark:stroke-green-100",
     heading: "Community",
@@ -30,7 +30,7 @@ const content = [
       "Connect with like-minded individuals who share your passion for words and ideas.",
   },
   {
-    icon: Award,
+    icon: "lucide:award",
     iconStyles: "bg-red-100 stroke-red-500 dark:bg-red-800 dark:stroke-red-100",
     heading: "Competitions",
     description:
