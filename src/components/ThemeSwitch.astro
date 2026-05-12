@@ -4,8 +4,12 @@ import { Icon } from "astro-icon/components";
 
 <button
   id="switch"
-  class="cursor-pointer rounded-sm p-1.5 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
+  class="flex cursor-pointer items-center gap-4 rounded-sm p-1.5 px-3 transition-colors hover:bg-neutral-100 md:px-1.5 dark:hover:bg-neutral-800"
 >
+  <div class="md:hidden">
+    <p class="hidden dark:block">Dark Theme</p>
+    <p class="dark:hidden">Light Theme</p>
+  </div>
   <Icon name="lucide:sun" class="size-5 dark:hidden" />
   <Icon name="lucide:moon" class="hidden size-5 dark:block" />
 </button>

@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Overrides */
+@theme {
+  --breakpoint-md: 900px;
+}
+
 /* Dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
 

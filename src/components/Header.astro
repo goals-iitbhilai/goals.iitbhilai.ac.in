@@ -1,5 +1,6 @@
 ---
 import ThemeSwitch from "@components/ThemeSwitch.astro";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
 const links = await getCollection("links");
@@ -10,29 +11,44 @@ function isActive(href: string) {
 ---
 
 <header
-  class="sticky top-0 z-50 flex items-center justify-between border-b border-b-neutral-300 bg-neutral-50/50 px-6 py-3 font-light backdrop-blur-md dark:border-b-neutral-700 dark:bg-neutral-950/75"
+  id="header"
+  class="group sticky top-0 z-50 flex w-full flex-col items-center border-b border-b-neutral-300 bg-neutral-50/50 px-6 py-3 font-light backdrop-blur-md data-open:fixed data-open:h-full data-open:border-none md:flex-row md:justify-between dark:border-b-neutral-700 dark:bg-neutral-950/75"
 >
-  <div class="flex items-center gap-4">
-    <img src="/favicon.svg" alt="Logo" class="size-9" />
-    <a href="/" class="-mt-1">
-      <h5 class="text-secondary-800 dark:text-primary-500 text-2xl font-medium">
-        GOALS
-      </h5>
-      <p class="dark:text-secondary-300 -mt-1 text-xs">
-        General Oratory And Literary Society
-      </p>
-    </a>
+  <div class="flex w-full items-center justify-between md:w-fit">
+    <div class="flex items-center gap-4">
+      <img src="/favicon.svg" alt="Logo" class="size-9" />
+      <a href="/" class="-mt-1">
+        <h5
+          class="text-secondary-800 dark:text-primary-500 text-2xl font-medium"
+        >
+          GOALS
+        </h5>
+        <p class="dark:text-secondary-300 -mt-1 text-xs">
+          General Oratory And Literary Society
+        </p>
+      </a>
+    </div>
+    <button
+      id="header-btn"
+      class="flex size-7 cursor-pointer items-center justify-center rounded-md transition-all hover:bg-white/20 md:hidden"
+    >
+      <Icon name="lucide:menu" />
+    </button>
   </div>
-  <nav class="flex items-center gap-4">
-    <ul class="flex gap-4 text-[0.9rem]">
+  <nav
+    class="flex h-0 flex-col items-center justify-between gap-2 overflow-hidden group-data-open:h-full group-data-open:flex-1 group-data-open:pb-8 md:h-fit md:flex-none md:flex-row md:justify-normal lg:gap-4"
+  >
+    <ul
+      class="flex flex-col justify-center gap-4 text-2xl group-data-open:flex-1 md:flex-row md:gap-2 md:pt-0 md:text-[0.9rem] lg:gap-4"
+    >
       {
         links.map(({ data: { name, href } }) => (
           <li>
             <a
               {href}
-              class="hover:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-400 rounded-sm px-3 py-2"
+              class="hover:bg-secondary-700 active:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-500 dark:active:bg-primary-400 rounded-sm px-3 py-2"
               class:list={{
-                "bg-secondary-800 text-secondary-50 dark:text-primary-950 dark:bg-primary-400":
+                "md:bg-secondary-700 text-secondary-700 md:text-secondary-50 dark:text-primary-950 dark:bg-primary-500 font-semibold md:font-light":
                   isActive(href),
               }}
             >
@@ -45,3 +61,18 @@ function isActive(href: string) {
     <ThemeSwitch />
   </nav>
 </header>
+
+<script>
+  const header = document.getElementById("header")!;
+  const headerBtn = document.getElementById("header-btn")!;
+
+  let scrollY: string;
+
+  headerBtn.addEventListener("click", () => {
+    if (header.hasAttribute("data-open")) {
+      header.removeAttribute("data-open");
+    } else {
+      header.setAttribute("data-open", "");
+    }
+  });
+</script>
