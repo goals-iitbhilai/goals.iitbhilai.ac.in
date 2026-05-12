@@ -11,7 +11,7 @@ const { backgroundSrc } = Astro.props;
 const content = await getCollection("alumni");
 ---
 
-<section class="relative flex flex-col items-center gap-8 p-16">
+<section class="relative flex flex-col items-center gap-8 p-8 md:p-16">
   <div
     class="absolute inset-0 -z-10 bg-cover bg-center"
     style={{ backgroundImage: `url(${backgroundSrc})` }}
@@ -46,7 +46,7 @@ const content = await getCollection("alumni");
     >
       {
         content.map(({ data: { name, message, batch, image } }) => (
-          <li class="flex w-[calc(33%-1.1rem)] flex-none snap-start flex-col items-center gap-8">
+          <li class="flex w-[20rem] flex-none snap-start flex-col items-center gap-8">
             <Picture
               src={image}
               class="box-content size-42 rounded-full border-4 border-neutral-200 object-cover dark:border-neutral-400"
