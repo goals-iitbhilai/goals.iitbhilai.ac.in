@@ -66,8 +66,6 @@ function isActive(href: string) {
   const header = document.getElementById("header")!;
   const headerBtn = document.getElementById("header-btn")!;
 
-  let scrollY: string;
-
   headerBtn.addEventListener("click", () => {
     if (header.hasAttribute("data-open")) {
       header.removeAttribute("data-open");

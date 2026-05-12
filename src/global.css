@@ -3,6 +3,7 @@
 /* Overrides */
 @theme {
   --breakpoint-md: 900px;
+  --breakpoint-xs: 450px;
 }
 
 /* Dark mode */

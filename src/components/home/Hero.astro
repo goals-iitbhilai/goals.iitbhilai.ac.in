@@ -9,7 +9,7 @@ interface Props {
 const { backgroundSrc } = Astro.props;
 ---
 
-<main class="relative flex h-[75vh] w-full items-center justify-center">
+<main class="relative flex h-full w-full items-center justify-center py-16">
   <div
     class="absolute inset-0 -z-10 bg-cover bg-center"
     style={{ backgroundImage: `url(${backgroundSrc})` }}
@@ -20,16 +20,16 @@ const { backgroundSrc } = Astro.props;
     </div>
   </div>
   <div
-    class="flex flex-col items-center gap-4 text-center text-neutral-50 dark:text-neutral-950"
+    class="flex flex-col items-center gap-4 text-center text-neutral-50 md:static md:pt-0 dark:text-neutral-950"
   >
     <img src="/favicon.svg" alt="Logo" class="size-20" />
     <h1 class="text-7xl">General Oratory & <br />Literary Society</h1>
     <h2 class="text-5xl font-light">IIT Bhilai</h2>
-    <p class="mt-6 max-w-prose text-2xl font-extralight">
+    <p class="mt-6 max-w-prose px-2 text-2xl font-extralight">
       Where eloquent voices meet literary minds. Join our community of speakers,
       writers, and critical thinkers shaping tomorrow's discourse.
     </p>
-    <div class="mt-6 flex gap-8">
+    <div class="xs:flex-row mt-6 flex flex-col gap-8">
       <LinkButton href="/members">Meet our Team</LinkButton>
       <LinkButton href="/about" class="flex items-center gap-2">
         Learn More

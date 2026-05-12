@@ -7,8 +7,8 @@ const socials = await getCollection("socials");
 ---
 
 <footer class="bg-secondary-700 px-6 py-8 text-[0.95rem] text-neutral-100">
-  <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
-    <section class="col-span-2 p-4">
+  <div class="grid grid-cols-5 gap-4 md:grid-cols-4">
+    <section class="col-span-5 p-4 md:col-span-2">
       <div class="flex items-center gap-4">
         <img src="/favicon.svg" alt="Logo" class="size-15" />
         <a href="/" class="group">
@@ -25,7 +25,7 @@ const socials = await getCollection("socials");
         our academic community since our establishment.
       </p>
     </section>
-    <section class="col-span-1 p-4">
+    <section class="col-span-2 p-4 md:col-span-1">
       <h5 class="mb-2 text-2xl">Society</h5>
       <ul class="text-secondary-200 flex flex-col gap-1 transition-colors">
         {
@@ -37,7 +37,7 @@ const socials = await getCollection("socials");
         }
       </ul>
     </section>
-    <section class="col-span-1 p-4">
+    <section class="col-span-3 p-4 md:col-span-1">
       <h5 class="mb-2 text-2xl">Connect with Us</h5>
       <a
         href="mailto:goals@iitbhilai.ac.in"
