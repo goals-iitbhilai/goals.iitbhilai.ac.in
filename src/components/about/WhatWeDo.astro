@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+
+const contents = [
+  {
+    title: "Weekly Meetings",
+    icon: "lucide:users",
+    description:
+      "Regular gatherings featuring literary discussions, fun games, guest speakers and presentations.",
+  },
+  {
+    title: "Competitions",
+    icon: "lucide:medal",
+    description:
+      "Annual poetry contests, debate tournaments, and writing competitions open to all students.",
+  },
+  {
+    title: "Events",
+    icon: "lucide:calendar",
+    description:
+      "MUN debate competitions in MERAZ, MOC of annual college events, Anubhuti - Poetry fest, .",
+  },
+];
+---
+
+<section class="flex flex-col items-center gap-12 px-8 py-8">
+  <h2
+    class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
+  >
+    What We Do
+  </h2>
+  <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+    {
+      contents.map(({ title, icon, description }) => (
+        <div class="rounded-lg border border-neutral-300 p-8 shadow-sm/4 lg:w-72 dark:border-neutral-600 dark:bg-neutral-800">
+          <div class="mb-4 flex items-center gap-4">
+            <Icon
+              name={icon}
+              class="text-secondary-700 dark:text-primary-500 size-6"
+            />
+            <h3 class="text-2xl text-black dark:text-white">{title}</h3>
+          </div>
+          <p class="max-w-prose">{description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

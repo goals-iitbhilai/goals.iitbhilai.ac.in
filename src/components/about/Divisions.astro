@@ -1,0 +1,54 @@
+---
+const contents = [
+  {
+    title: "DebSoc",
+    emoji: "🎤",
+    description:
+      "Where ideas collide and transform. Every debate is less about winning and" +
+      " more about shaping thought, sharpening voice, and discovering new ways to" +
+      " see the world.",
+  },
+  {
+    title: "LitSoc",
+    emoji: "✒️",
+    description:
+      "A haven for dreamers, poets, storytellers. Here, every line you write- whether" +
+      " whispered or thunderous- finds a home, an echo, a listener.",
+  },
+  {
+    title: "WordSoc",
+    emoji: "🧩",
+    description:
+      "The playground of language. Crosswords, riddles, scrabble - where wit meets fun," +
+      " and where words sometimes surprise you more than people do.",
+  },
+  {
+    title: "QuipSoc",
+    emoji: "😏",
+    description:
+      "The art of thinking on your feet. Anchors, stand-up comics, emcees—this is where " +
+      "wit sharpens, timing lands, and the stage becomes yours.",
+  },
+];
+---
+
+<section class="flex flex-col items-center gap-12 px-8 py-8">
+  <h2
+    class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
+  >
+    Divisions of GOALS
+  </h2>
+  <ul class="grid grid-cols-1 gap-8 md:grid-cols-2">
+    {
+      contents.map(({ title, emoji, description }) => (
+        <li class="p-6 md:w-96">
+          <h3 class="mb-3 flex items-center gap-2 text-2xl text-black dark:text-white">
+            <span>{emoji}</span>
+            <span>{title}</span>
+          </h3>
+          <p class="max-w-prose">{description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>

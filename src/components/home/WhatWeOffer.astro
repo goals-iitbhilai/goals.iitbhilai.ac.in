@@ -1,5 +1,5 @@
 ---
-import SmallCard from "@components/ui/SmallCard.astro";
+import { Icon } from "astro-icon/components";
 
 const content = [
   {
@@ -51,10 +51,18 @@ const content = [
   <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
     {
       content.map(({ icon, iconStyles, heading, description }) => (
-        <SmallCard {icon} {iconStyles}>
-          <Fragment slot="title">{heading}</Fragment>
-          {description}
-        </SmallCard>
+        <div class="flex flex-col items-center gap-6 rounded-lg bg-neutral-50 p-8 shadow-sm/10 dark:bg-neutral-800">
+          <span>
+            <Icon
+              class={`size-10 rounded-full p-2 ${iconStyles}`}
+              name={icon}
+            />
+          </span>
+          <h3 class="text-2xl font-light dark:text-neutral-100">{heading}</h3>
+          <p class="font-light text-neutral-600 dark:text-neutral-400">
+            {description}
+          </p>
+        </div>
       ))
     }
   </div>

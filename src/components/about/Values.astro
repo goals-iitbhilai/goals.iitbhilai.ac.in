@@ -1,0 +1,50 @@
+---
+import { Icon } from "astro-icon/components";
+
+const contents = [
+  {
+    title: "Intellectual Curiosity",
+    description:
+      "We encourage questioning, exploration, and the pursuit of knowledge across all literary forms and traditions.",
+  },
+  {
+    title: "Inclusive Excellence",
+    description:
+      "We celebrate diverse perspectives and create space for all voices to be heard and valued.",
+  },
+  {
+    title: "Collaborative Growth",
+    description:
+      "Through peer feedback and mentorship, we support each member's development as writers and speakers.",
+  },
+  {
+    title: "Ethical Discourse",
+    description:
+      "We maintain high standards of respectful dialogue and critical thinking in all our activities.",
+  },
+];
+---
+
+<section class="flex flex-col items-center gap-12 px-8 py-8 pb-24">
+  <h2
+    class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
+  >
+    Our Values
+  </h2>
+  <ul class="grid grid-cols-1 gap-8 px-4">
+    {
+      contents.map(({ title, description }) => (
+        <li>
+          <h3 class="mb-2 flex items-center gap-3 text-2xl text-black dark:text-white">
+            <Icon
+              name="mdi:star"
+              class="text-secondary-700 dark:text-primary-500 size-4"
+            />{" "}
+            {title}
+          </h3>
+          <p class="max-w-prose">{description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>

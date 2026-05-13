@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+
+const contents = [
+  {
+    title: "Our Mission",
+    icon: "lucide:target",
+    description:
+      "To cultivate eloquence, critical thinking, and literary appreciation among students" +
+      " through engaging discussions, workshops, and public speaking opportunities. We strive" +
+      " to create an environment of avid writers.",
+  },
+  {
+    title: "Our History",
+    icon: "lucide:history",
+    description:
+      "Founded on March 28, 2019, GOALS has been a cornerstone of intellectual life on campus." +
+      " Our society has nurtured countless writers, speakers, and thought leaders. Cultivated a" +
+      " vibrant campus atmosphere be it cultural events, MERAZ (Annual Techno-Cultural fest" +
+      " of IIT Bhilai) or Guest lectures.",
+  },
+];
+---
+
+<section class="px-8 py-16">
+  <div class="mx-auto flex flex-col items-center gap-8 md:w-216">
+    <h1
+      class="text-center text-5xl font-bold text-neutral-800 dark:text-neutral-200"
+    >
+      About GOALS
+    </h1>
+    <p
+      class="mb-4 max-w-prose text-center text-neutral-600 dark:text-neutral-400"
+    >
+      The General Oratory & Literary Society has been fostering intellectual
+      discourse, literary appreciation, and eloquent expression in our academic
+      community.
+    </p>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      {
+        contents.map(({ title, icon, description }) => (
+          <div class="dark:border-primary-500 border-secondary-500 rounded-lg border-2 bg-neutral-50 p-8 shadow-sm dark:border dark:bg-neutral-800">
+            <div class="mb-4 flex items-center gap-4">
+              <Icon
+                name={icon}
+                class="text-secondary-700 dark:text-primary-500 size-6"
+              />
+              <h3 class="text-2xl text-black dark:text-white">{title}</h3>
+            </div>
+            <p class="max-w-prose">{description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
