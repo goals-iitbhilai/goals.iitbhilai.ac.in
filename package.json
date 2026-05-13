@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint \"src/**/*.{js,ts,astro}\""
   },
   "dependencies": {
     "@fontsource-variable/crimson-pro": "^5.2.8",
@@ -22,7 +23,10 @@
   },
   "devDependencies": {
     "@types/node": "^25.6.2",
+    "@typescript-eslint/parser": "^8.59.3",
     "astro-icon": "^1.1.5",
+    "eslint": "^10.3.0",
+    "eslint-plugin-astro": "^1.7.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0"
