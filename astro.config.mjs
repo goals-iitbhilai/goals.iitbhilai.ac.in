@@ -2,6 +2,7 @@
 import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
+import remarkSuperSub from "remark-supersub";
 
 export default defineConfig({
   integrations: [icon()],
@@ -25,4 +26,10 @@ export default defineConfig({
       weights: ["200 900"],
     },
   ],
+  markdown: {
+    remarkPlugins: [
+      /* @ts-ignore */
+      [remarkSuperSub],
+    ],
+  },
 });

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@plugin "@tailwindcss/typography";
+
 /* Overrides */
 @theme {
   --breakpoint-md: 900px;
