@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+---
+
+<section
+  class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-6 rounded-xl border border-neutral-200 bg-white p-8 shadow-sm/2 lg:row-span-3 dark:border-neutral-700 dark:bg-neutral-900"
+>
+  <Image height="64" width="64" src="/favicon.svg" alt="GOALS" />
+  <div>
+    <h2 class="text-2xl text-black dark:text-white">
+      General Oratory & Literary Society
+    </h2>
+    <p>Building bridges through words</p>
+  </div>
+  <Icon
+    name="lucide:mail"
+    class="bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 size-10 place-self-center rounded-full p-2.5 dark:text-black"
+  />
+  <div class="self-center">
+    <h3 class="text-xl text-black dark:text-white">Email</h3>
+    <div class="font-light">
+      <a href="mailto:goals@iitbhilai.ac.in">goals@iitbhilai.ac.in</a>
+      <p>For general inquiries and membership questions</p>
+    </div>
+  </div>
+  <Icon
+    name="lucide:map-pin"
+    class="bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 size-10 place-self-center rounded-full p-2.5 dark:text-black"
+  />
+  <div class="self-center">
+    <h3 class="text-xl text-black dark:text-white">Location</h3>
+    <div class="font-light">
+      <p>Academic Area</p>
+      <p>IIT Bhilai, Kutelabhata, College Campus</p>
+    </div>
+  </div>
+  <Icon
+    name="lucide:clock"
+    class="bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 size-10 place-self-center rounded-full p-2.5 dark:text-black"
+  />
+  <div class="self-center">
+    <h3 class="text-xl text-black dark:text-white">Email</h3>
+    <p class="font-light">5:30 PM</p>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+<form
+  class="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-8 shadow-sm/2 lg:row-span-5 dark:border-neutral-700 dark:bg-neutral-900"
+>
+  <h2 class="text-2xl text-black dark:text-white">Send us a Message</h2>
+  <label>
+    Name
+    <input
+      placeholder="Your Name"
+      type="text"
+      required
+      class="mt-2 w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
+    />
+  </label>
+  <label>
+    Email
+    <input
+      placeholder="your.email@example.com"
+      type="email"
+      required
+      class="mt-2 w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
+    />
+  </label>
+  <label class="flex flex-col gap-2">
+    Subject
+    <select
+      required
+      class="w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
+    >
+      <option value="">Select a subject</option>
+      <option value="membership">Membership Inquiry</option>
+      <option value="event">Event Information</option>
+      <option value="collaboration">Collaboration Proposal</option>
+      <option value="feedback">Feedback</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <label class="flex-1 py-2 pb-10">
+    Message
+    <textarea
+      required
+      placeholder="Tell us about your interest in GOALS or ask any questions you might have..."
+      class="mt-2 h-full w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
+    ></textarea>
+  </label>
+  <button
+    type="submit"
+    class="bg-secondary-700 dark:bg-primary-400 dark:hover:bg-primary-300 dark:active:bg-primary-500 hover:bg-secondary-600 active:bg-secondary-500 w-full rounded-md px-4 py-3 text-white shadow-sm transition-colors dark:text-black"
+  >
+    Send
+  </button>
+</form>

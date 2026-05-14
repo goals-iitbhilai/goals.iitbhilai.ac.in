@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const socials = await getCollection("socials");
+---
+
+<section
+  class="flex flex-col gap-6 rounded-xl border border-neutral-200 bg-white p-8 shadow-sm/2 lg:row-span-2 dark:border-neutral-700 dark:bg-neutral-900"
+>
+  <h2 class="text-2xl text-black dark:text-white">Follow Us</h2>
+  <div class="flex gap-6">
+    {
+      socials.map(({ data: { href, icon, theme } }) => (
+        <a {href}>
+          <Icon
+            name={icon}
+            style={`--theme-color: ${theme};`}
+            class="social-icon bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 mx-auto my-auto size-10 rounded-full p-2.5 transition-colors dark:text-black"
+          />
+        </a>
+      ))
+    }
+  </div>
+  <p class="font-light">
+    Stay updated with our latest events, announcements, and literary
+    discussions.
+  </p>
+</section>
+
+<style>
+  .social-icon:hover {
+    background-color: var(--theme-color);
+    color: white;
+  }
+</style>

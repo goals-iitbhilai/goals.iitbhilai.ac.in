@@ -23,7 +23,12 @@ const links = defineCollection({
 
 const socials = defineCollection({
   loader: file("./content/socials.json", { parser }),
-  schema: z.object({ name: z.string(), icon: z.string(), href: z.string() }),
+  schema: z.object({
+    name: z.string(),
+    icon: z.string(),
+    theme: z.string(),
+    href: z.string(),
+  }),
 });
 
 export const collections = { alumni, links, socials };
