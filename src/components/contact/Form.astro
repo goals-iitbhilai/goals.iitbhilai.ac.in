@@ -1,4 +1,5 @@
 <form
+  id="contact-form"
   class="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-8 shadow-sm/2 lg:row-span-5 dark:border-neutral-700 dark:bg-neutral-900"
 >
   <h2 class="text-2xl text-black dark:text-white">Send us a Message</h2>
@@ -8,6 +9,7 @@
       placeholder="Your Name"
       type="text"
       required
+      name="name"
       class="mt-2 w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
     />
   </label>
@@ -16,6 +18,7 @@
     <input
       placeholder="your.email@example.com"
       type="email"
+      name="email"
       required
       class="mt-2 w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
     />
@@ -24,6 +27,7 @@
     Subject
     <select
       required
+      name="subject"
       class="w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
     >
       <option value="">Select a subject</option>
@@ -38,6 +42,7 @@
     Message
     <textarea
       required
+      name="message"
       placeholder="Tell us about your interest in GOALS or ask any questions you might have..."
       class="mt-2 h-full w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
     ></textarea>
@@ -49,3 +54,28 @@
     Send
   </button>
 </form>
+
+<script>
+  const endpointURL = "https://backend-five-delta-42.vercel.app/api/contact";
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch(endpointURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      alert("Message sent successfully!");
+      form.reset();
+    } else {
+      alert("Failed to send message. Please try again later.");
+    }
+  });
+</script>
