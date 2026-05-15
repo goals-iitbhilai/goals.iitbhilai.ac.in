@@ -11,6 +11,14 @@ const backgroundSrc = (await getImage({ src: backgroundImg })).src;
 ---
 
 <Layout>
+  <Fragment name="head">
+    <title>GOALS Home</title>
+    <meta
+      name="description"
+      content="General Oratory and Literary Society, IIT Bhilai"
+    />
+  </Fragment>
+
   <Hero {backgroundSrc} />
   <WhatWeOffer />
   <RecentActivities />
