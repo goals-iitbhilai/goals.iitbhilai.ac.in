@@ -3,6 +3,17 @@ import Header from "@components/sections/Header.astro";
 import Footer from "@components/sections/Footer.astro";
 import { Font } from "astro:assets";
 import "../global.css";
+import { getAbsoluteURL } from "@utils/url";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "GOALS",
+  description = "General Oratory and Literacy Society, IIT Bhilai",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -17,8 +28,20 @@ import "../global.css";
     <Font cssVariable="--font-inter" />
     <Font cssVariable="--font-crimson" />
     <!-- Metadata -->
+
     <meta name="darkreader-lock" />
-    <slot name="head" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={getAbsoluteURL("/favicon.svg")} />
+    <meta property="og:url" content={getAbsoluteURL(Astro.url.pathname)} />
+
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={getAbsoluteURL("/favicon.svg")} />
   </head>
   <body
     class="bg-neutral-50 text-neutral-700 dark:bg-neutral-950 dark:text-neutral-300"
