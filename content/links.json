@@ -2,7 +2,6 @@
   { "name": "Home", "href": "/" },
   { "name": "About", "href": "/about" },
   { "name": "Community", "href": "/members" },
-  { "name": "Editorials", "href": "/editorials" },
   { "name": "Constitution", "href": "/constitution" },
   { "name": "Contact", "href": "/contact" }
 ]
