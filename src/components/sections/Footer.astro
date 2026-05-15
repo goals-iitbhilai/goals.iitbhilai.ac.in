@@ -11,7 +11,7 @@ const socials = await getCollection("socials");
   <div class="grid grid-cols-5 gap-4 md:grid-cols-4">
     <section class="col-span-5 p-4 md:col-span-2">
       <div class="flex items-center gap-4">
-        <img src="/favicon.svg" alt="Logo" class="size-15" />
+        <img src={getURL("/favicon.svg")} alt="Logo" class="size-15" />
         <a href="/" class="group">
           <h5 class="text-2xl font-medium">GOALS</h5>
           <p
