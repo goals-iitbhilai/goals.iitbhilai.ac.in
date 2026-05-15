@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import remarkSuperSub from "remark-supersub";
 
 const isPages = process.env.GITHUB_ACTIONS === "true";
+const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
   site: isPages
@@ -15,6 +16,9 @@ export default defineConfig({
   integrations: [icon()],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      allowedHosts: isDev ? true : undefined,
+    },
   },
   fonts: [
     {
