@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import remarkSuperSub from "remark-supersub";
 
 export default defineConfig({
+  site: "https://goals.iitbhilai.ac.in",
   integrations: [icon()],
   vite: {
     plugins: [tailwindcss()],
