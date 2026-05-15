@@ -4,8 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import remarkSuperSub from "remark-supersub";
 
+const isPages = process.env.GITHUB_ACTIONS === "true";
+
 export default defineConfig({
-  site: "https://goals.iitbhilai.ac.in",
+  site: isPages
+    ? "https://goals-iitbhilai.github.io"
+    : "https://goals.iitbhilai.ac.in",
+  base: isPages ? "/goals.iitbhilai.ac.in/" : "/",
+
   integrations: [icon()],
   vite: {
     plugins: [tailwindcss()],

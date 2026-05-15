@@ -1,5 +1,6 @@
 ---
 import ThemeSwitch from "@components/ui/ThemeSwitch.astro";
+import { getURL, homeURL } from "@utils/url";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
@@ -17,7 +18,7 @@ function isActive(href: string) {
   <div class="flex w-full items-center justify-between md:w-fit">
     <div class="flex items-center gap-4">
       <img src="/favicon.svg" alt="Logo" class="size-9" />
-      <a href="/" class="-mt-1">
+      <a href={homeURL} class="-mt-1">
         <h5
           class="text-secondary-800 dark:text-primary-500 text-2xl font-medium"
         >
@@ -45,7 +46,7 @@ function isActive(href: string) {
         links.map(({ data: { name, href } }) => (
           <li>
             <a
-              {href}
+              href={getURL(href)}
               class="hover:bg-secondary-700 active:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-500 dark:active:bg-primary-400 rounded-sm px-3 py-2"
               class:list={{
                 "md:bg-secondary-700 text-secondary-700 md:text-secondary-50 dark:text-primary-950 dark:bg-primary-500 font-semibold md:font-light":

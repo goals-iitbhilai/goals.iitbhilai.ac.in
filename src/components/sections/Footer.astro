@@ -1,4 +1,5 @@
 ---
+import { getURL } from "@utils/url";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
@@ -31,7 +32,7 @@ const socials = await getCollection("socials");
         {
           links.map(({ data: { name, href } }) => (
             <li class="hover:text-secondary-50">
-              <a {href}>{name}</a>
+              <a href={getURL(href)}>{name}</a>
             </li>
           ))
         }
@@ -48,7 +49,7 @@ const socials = await getCollection("socials");
       </a>
       <div class="mt-3 -ml-1 flex gap-4">
         {
-          socials.map(({ data: { name, icon, href } }) => (
+          socials.map(({ data: { icon, href } }) => (
             <a
               {href}
               class="text-secondary-200 hover:text-secondary-50 transition-colors"

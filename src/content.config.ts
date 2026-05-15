@@ -2,8 +2,12 @@ import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
 import { z } from "zod";
 
-const parser = (json: string) =>
-  JSON.parse(json).map((item: any, index: number) => ({ ...item, id: index }));
+function parser<T>(json: string) {
+  return JSON.parse(json).map((item: T, index: number) => ({
+    ...item,
+    id: index,
+  }));
+}
 
 const alumni = defineCollection({
   loader: glob({ pattern: "./*/data.json", base: "./content/alumni" }),
