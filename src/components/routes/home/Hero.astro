@@ -1,5 +1,5 @@
 ---
-import LinkButton from "@components/ui/LinkButton.astro";
+import Button from "./Button.astro";
 import { getURL } from "@utils/url";
 import { Icon } from "astro-icon/components";
 
@@ -31,11 +31,11 @@ const { backgroundSrc } = Astro.props;
       writers, and critical thinkers shaping tomorrow's discourse.
     </p>
     <div class="xs:flex-row mt-6 flex flex-col gap-8">
-      <LinkButton href={getURL("/members")}>Meet our Team</LinkButton>
-      <LinkButton href={getURL("/about")} class="flex items-center gap-2">
+      <Button href={getURL("/members")}>Meet our Team</Button>
+      <Button href={getURL("/about")} class="flex items-center gap-2">
         Learn More
         <Icon name="lucide:chevron-right" />
-      </LinkButton>
+      </Button>
     </div>
   </div>
 </main>
