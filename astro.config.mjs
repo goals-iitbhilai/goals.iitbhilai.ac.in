@@ -2,7 +2,7 @@
 import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
-import remarkSuperSub from "remark-supersub";
+import { satteri } from "@astrojs/markdown-satteri";
 
 const isPages = process.env.GITHUB_ACTIONS === "true";
 const isDev = process.env.NODE_ENV === "development";
@@ -38,9 +38,11 @@ export default defineConfig({
     },
   ],
   markdown: {
-    remarkPlugins: [
-      /* @ts-ignore */
-      [remarkSuperSub],
-    ],
+    processor: satteri({
+      features: {
+        subscript: true,
+        superscript: true,
+      },
+    }),
   },
 });
