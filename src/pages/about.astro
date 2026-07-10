@@ -1,7 +1,8 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/about/Header.astro";
+import Cards from "@components/about/Cards.astro";
 import WhatWeDo from "@components/about/WhatWeDo.astro";
+import PageHero from "@components/PageHero.astro";
 import Divisions from "@components/about/Divisions.astro";
 import Values from "@components/about/Values.astro";
 ---
@@ -10,7 +11,12 @@ import Values from "@components/about/Values.astro";
   title="GOALS About"
   description="Learn about the General Oratory and Literary Society, IIT Bhilai"
 >
-  <Header />
+  <PageHero heading="About GOALS">
+    The General Oratory & Literary Society has been fostering intellectual
+    discourse, literary appreciation, and eloquent expression in our academic
+    community.
+  </PageHero>
+  <Cards />
   <WhatWeDo />
   <Divisions />
   <Values />

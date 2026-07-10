@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/constitution/Header.astro";
+import FileCard from "@components/constitution/FileCard.astro";
+import PageHero from "@components/PageHero.astro";
 import Constitution from "@components/constitution/Constitution.astro";
 import ContactCard from "@components/constitution/ContactCard.astro";
 ---
@@ -9,7 +10,11 @@ import ContactCard from "@components/constitution/ContactCard.astro";
   title="GOALS Constitution"
   description="View the constitution of General Oratory and Literary Society, IIT Bhilai"
 >
-  <Header />
+  <PageHero heading="GOALS Constitution">
+    The foundational document that governs our society, outlining our mission,
+    structure, and principles that guide our literary and oratory endeavors.
+  </PageHero>
+  <FileCard />
   <Constitution />
   <ContactCard />
 </Layout>

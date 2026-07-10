@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Header from "@components/members/Header.astro";
+import PageHero from "@components/PageHero.astro";
 import Members from "@components/members/Members.astro";
 ---
 
@@ -8,6 +8,10 @@ import Members from "@components/members/Members.astro";
   title="GOALS About"
   description="Learn about the General Oratory and Literary Society, IIT Bhilai"
 >
-  <Header />
+  <PageHero heading="Members">
+    Meet the passionate individuals who drive our literary community forward.
+    From seasoned orators to emerging writers, each member brings unique
+    perspectives and talents to our society.
+  </PageHero>
   <Members />
 </Layout>
