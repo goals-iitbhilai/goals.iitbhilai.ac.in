@@ -20,6 +20,17 @@ const alumni = defineCollection({
     }),
 });
 
+const team = defineCollection({
+  loader: glob({ pattern: "./*/data.json", base: "./content/team" }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      post: z.string(),
+      quote: z.string(),
+      image: image(),
+    }),
+});
+
 const links = defineCollection({
   loader: file("./content/links.json", { parser }),
   schema: z.object({ name: z.string(), href: z.string() }),
@@ -35,4 +46,4 @@ const socials = defineCollection({
   }),
 });
 
-export const collections = { alumni, links, socials };
+export const collections = { alumni, links, socials, team };
