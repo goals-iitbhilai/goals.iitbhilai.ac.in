@@ -1,7 +1,7 @@
 [
   { "name": "Home", "href": "/" },
   { "name": "About", "href": "/about" },
-  { "name": "Community", "href": "/members" },
+  { "name": "Members", "href": "/members" },
   { "name": "Constitution", "href": "/constitution" },
   { "name": "Contact", "href": "/contact" }
 ]
