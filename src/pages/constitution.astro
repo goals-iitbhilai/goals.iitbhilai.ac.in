@@ -2,8 +2,9 @@
 import Layout from "@layouts/Layout.astro";
 import FileCard from "@components/routes/constitution/FileCard.astro";
 import PageHero from "@components/PageHero.astro";
-import Constitution from "@components/routes/constitution/Constitution.astro";
 import ContactCard from "@components/routes/constitution/ContactCard.astro";
+
+import { Content } from "../../content/constitution.md";
 ---
 
 <Layout
@@ -14,7 +15,24 @@ import ContactCard from "@components/routes/constitution/ContactCard.astro";
     The foundational document that governs our society, outlining our mission,
     structure, and principles that guide our literary and oratory endeavors.
   </PageHero>
+
   <FileCard />
-  <Constitution />
+
+  <section>
+    <div class="prose dark:prose-invert mx-auto px-3">
+      <Content />
+    </div>
+  </section>
+
   <ContactCard />
 </Layout>
+
+<style is:global>
+  ol {
+    list-style-type: upper-roman;
+  }
+
+  h3 {
+    text-align: center;
+  }
+</style>

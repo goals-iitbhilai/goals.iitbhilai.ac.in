@@ -1,6 +1,9 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Grid from "@components/routes/contact/Grid.astro";
+import InfoCard from "@components/routes/contact/InfoCard.astro";
+import Form from "@components/routes/contact/Form.astro";
+import Socials from "@components/routes/contact/Socials.astro";
+import Faq from "@components/routes/contact/FAQ.astro";
 import PageHero from "@components/PageHero.astro";
 ---
 
@@ -12,5 +15,15 @@ import PageHero from "@components/PageHero.astro";
     Ready to join our literary community or have questions about GOALS? We'd
     love to hear from you. Reach out through any of the channels below.
   </PageHero>
-  <Grid />
+
+  <section class="px-8 py-16">
+    <div
+      class="mx-auto grid grid-cols-1 gap-8 lg:grid-cols-2 lg:grid-rows-7 xl:w-4/5"
+    >
+      <InfoCard />
+      <Form />
+      <Faq />
+      <Socials />
+    </div>
+  </section>
 </Layout>
