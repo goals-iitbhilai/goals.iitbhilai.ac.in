@@ -1,7 +1,8 @@
-<form
-  id="contact-form"
-  class="flex flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-8 shadow-sm/2 lg:row-span-5 dark:border-neutral-700 dark:bg-neutral-900"
->
+---
+import Card from "@components/Card.astro";
+---
+
+<Card as="form" id="contact-form" class="flex flex-col gap-4 p-8 lg:row-span-5">
   <h2 class="text-2xl text-black dark:text-white">Send us a Message</h2>
   <label>
     Name
@@ -53,7 +54,7 @@
   >
     Send
   </button>
-</form>
+</Card>
 
 <script>
   const endpointURL = "https://backend-five-delta-42.vercel.app/api/contact";

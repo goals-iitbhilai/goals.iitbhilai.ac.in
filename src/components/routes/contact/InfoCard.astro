@@ -2,10 +2,12 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getURL } from "@utils/url";
+import Card from "@components/Card.astro";
 ---
 
-<section
-  class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-6 rounded-xl border border-neutral-200 bg-white p-8 shadow-sm/2 lg:row-span-3 dark:border-neutral-700 dark:bg-neutral-900"
+<Card
+  as="section"
+  class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-6 p-8 lg:row-span-3"
 >
   <Image height="64" width="64" src={getURL("/favicon.svg")} alt="GOALS" />
   <div>
@@ -44,4 +46,4 @@ import { getURL } from "@utils/url";
     <h3 class="text-xl text-black dark:text-white">Email</h3>
     <p class="font-light">5:30 PM</p>
   </div>
-</section>
+</Card>

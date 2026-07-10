@@ -1,0 +1,29 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+
+type Props<Tag extends HTMLTag = "div"> = {
+  outlined?: boolean;
+} & Polymorphic<{ as: Tag }>;
+
+const {
+  as: Tag = "div",
+  outlined = false,
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<Tag
+  class:list={[
+    "rounded-xl bg-white p-8 shadow-sm/2 dark:bg-neutral-900",
+    {
+      "border border-neutral-200 dark:border-neutral-700": !outlined,
+      "dark:border-primary-500 border-secondary-500 border-2 dark:border":
+        outlined,
+    },
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</Tag>

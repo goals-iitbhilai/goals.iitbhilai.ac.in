@@ -1,4 +1,5 @@
 ---
+import Card from "@components/Card.astro";
 import { Icon } from "astro-icon/components";
 
 const contents = [
@@ -27,7 +28,7 @@ const contents = [
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
       {
         contents.map(({ title, icon, description }) => (
-          <div class="dark:border-primary-500 border-secondary-500 rounded-lg border-2 bg-neutral-50 p-8 shadow-sm dark:border dark:bg-neutral-800">
+          <Card outlined={true} class="p-8">
             <div class="mb-4 flex items-center gap-4">
               <Icon
                 name={icon}
@@ -36,7 +37,7 @@ const contents = [
               <h3 class="text-2xl text-black dark:text-white">{title}</h3>
             </div>
             <p class="max-w-prose">{description}</p>
-          </div>
+          </Card>
         ))
       }
     </div>

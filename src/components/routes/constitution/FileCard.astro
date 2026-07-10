@@ -1,36 +1,36 @@
 ---
+import Card from "@components/Card.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<section class="flex flex-col items-center gap-8 px-2 pb-16">
-  <div
-    class="flex flex-col items-center justify-between gap-12 rounded-xl bg-white p-8 shadow-sm md:w-180 md:flex-row md:gap-0 xl:w-3/5 dark:border dark:border-neutral-600 dark:bg-neutral-800"
-  >
-    <div class="xs:flex-row flex flex-col items-center gap-8">
-      <Icon
-        name="lucide:scroll-text"
-        class="bg-secondary-200 dark:bg-primary-200 dark:text-primary-800 text-secondary-800 size-15 rounded-full p-4"
-      />
-      <div>
-        <h2 class="mb-1 text-center text-3xl">Official Constitution</h2>
-        <div class="text-sm font-light text-neutral-500 dark:text-neutral-400">
-          <span class="flex items-center gap-1">
-            <Icon name="lucide:calendar" />
-            <p>Last Updated: February 2023</p>
-          </span>
-          <span class="flex items-center gap-1">
-            <Icon name="lucide:file-text" />
-            <p>Version 3.2</p>
-          </span>
-        </div>
+<Card
+  as="section"
+  class="mx-auto mb-16 flex flex-col items-center justify-between gap-12 p-8 md:w-180 md:flex-row md:gap-0 xl:w-3/5"
+>
+  <div class="xs:flex-row flex flex-col items-center gap-8">
+    <Icon
+      name="lucide:scroll-text"
+      class="bg-secondary-200 dark:bg-primary-200 dark:text-primary-800 text-secondary-800 size-15 rounded-full p-4"
+    />
+    <div>
+      <h2 class="mb-1 text-center text-3xl">Official Constitution</h2>
+      <div class="text-sm font-light text-neutral-500 dark:text-neutral-400">
+        <span class="flex items-center gap-1">
+          <Icon name="lucide:calendar" />
+          <p>Last Updated: February 2023</p>
+        </span>
+        <span class="flex items-center gap-1">
+          <Icon name="lucide:file-text" />
+          <p>Version 3.2</p>
+        </span>
       </div>
     </div>
-    <a
-      href="https://docs.google.com/document/d/1j4SqzgNCl2IK8xXdd5LH9dmaiBPQvEr2dSCRY_dQ_Cc/edit?tab=t.0"
-      class="bg-secondary-700 dark:bg-primary-400 dark:hover:bg-primary-300 dark:active:bg-primary-500 hover:bg-secondary-600 active:bg-secondary-500 flex items-center gap-3 rounded-md px-4 py-3 text-white shadow-sm transition-colors dark:text-black"
-    >
-      <Icon name="lucide:link" />
-      <p>View Document</p>
-    </a>
   </div>
-</section>
+  <a
+    href="https://docs.google.com/document/d/1j4SqzgNCl2IK8xXdd5LH9dmaiBPQvEr2dSCRY_dQ_Cc/edit?tab=t.0"
+    class="bg-secondary-700 dark:bg-primary-400 dark:hover:bg-primary-300 dark:active:bg-primary-500 hover:bg-secondary-600 active:bg-secondary-500 flex items-center gap-3 rounded-md px-4 py-3 text-white shadow-sm transition-colors dark:text-black"
+  >
+    <Icon name="lucide:link" />
+    <p>View Document</p>
+  </a>
+</Card>
