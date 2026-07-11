@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 const links = await getCollection("links");
 ---
 
-<header id="header" class="group sticky top-0 z-50 font-light">
+<header id="header" class="group sticky top-0 z-50 touch-none font-light">
   <div
     class:list={[
       "absolute w-full md:flex",
@@ -86,11 +86,29 @@ const links = await getCollection("links");
   const header = document.getElementById("header")!;
   const headerBtn = document.getElementById("header-btn")!;
 
+  function handleOutsideClick(ev: MouseEvent) {
+    if (!header.contains(ev.target as Node)) {
+      header.removeAttribute("data-open");
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("click", handleOutsideClick);
+    }
+  }
+
+  function handleScroll() {
+    header.removeAttribute("data-open");
+    window.removeEventListener("scroll", handleScroll);
+    window.removeEventListener("click", handleOutsideClick);
+  }
+
   headerBtn.addEventListener("click", () => {
     if (header.hasAttribute("data-open")) {
       header.removeAttribute("data-open");
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("scroll", handleScroll);
     } else {
       header.setAttribute("data-open", "");
+      window.addEventListener("click", handleOutsideClick);
+      window.addEventListener("scroll", handleScroll);
     }
   });
 </script>
