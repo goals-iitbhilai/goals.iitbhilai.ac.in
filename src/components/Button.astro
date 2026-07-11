@@ -3,18 +3,23 @@ import type { HTMLTag, Polymorphic } from "astro/types";
 
 type Props<Tag extends HTMLTag = "button"> = {
   href?: string;
+  kind?: "primary" | "translucent";
 } & Polymorphic<{ as: Tag }>;
 
-const { as, class: className, ...rest } = Astro.props;
+const { as, kind = "primary", class: className, ...rest } = Astro.props;
 const Tag: HTMLTag = as || rest.href ? "a" : "button";
 ---
 
 <Tag
   class:list={[
-    "bg-secondary-700 dark:bg-primary-400 dark:hover:bg-primary-300 dark:active:bg-primary-500 hover:bg-secondary-600 active:bg-secondary-500 flex items-center justify-center gap-3 rounded-md px-4 py-3 text-white shadow-sm dark:text-black",
+    "flex items-center justify-center gap-3 rounded-md px-5 py-3",
+    { "cursor-pointer": Tag != "a" },
     {
-      "cursor-pointer": Tag != "a",
-    },
+      primary:
+        "bg-secondary-700 dark:bg-primary-400 dark:hover:bg-primary-300 dark:active:bg-primary-500 hover:bg-secondary-600 active:bg-secondary-500 text-white shadow-sm dark:text-black",
+      translucent:
+        "border border-white/50 bg-white/25 backdrop-blur-2xl hover:border-white/75 hover:bg-white/35",
+    }[kind],
     className,
   ]}
   {...rest}
