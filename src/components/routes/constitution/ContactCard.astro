@@ -1,5 +1,6 @@
 ---
 import Card from "@components/Card.astro";
+import Button from "@components/Button.astro";
 import { getURL } from "@utils/url";
 ---
 
@@ -14,10 +15,5 @@ import { getURL } from "@utils/url";
     propose an amendment, please reach out to our officers or attend our next
     meeting.
   </p>
-  <a
-    href={getURL("/contact")}
-    class="bg-secondary-700 dark:bg-primary-400 dark:hover:bg-primary-300 dark:active:bg-primary-500 hover:bg-secondary-600 active:bg-secondary-500 rounded-md px-4 py-3 text-white shadow-sm dark:text-black"
-  >
-    <p>Contact Us</p>
-  </a>
+  <Button href={getURL("/contact")}>Contact Us</Button>
 </Card>
