@@ -10,10 +10,12 @@ const members = content.filter((entry) => entry.data.post != "Secretary");
 
 <div class="flex flex-col gap-16">
   <h2 class="text-center text-5xl font-bold dark:text-white">Secretaries</h2>
-  <div class="mx-auto flex flex-wrap items-stretch justify-center md:w-3/4">
+  <div
+    class="mx-auto grid grid-cols-1 justify-center gap-6 sm:grid-cols-2 md:w-3/4"
+  >
     {
       secretaries.map(({ data: { image, name, quote } }) => (
-        <div class="flex w-full flex-none snap-start flex-col items-center justify-between px-4 sm:w-1/2">
+        <div class="flex w-full flex-none snap-start flex-col items-center justify-between px-4">
           <Picture
             src={image}
             class="box-content size-56 rounded-full border-4 border-neutral-200 object-cover dark:border-neutral-400"
@@ -24,7 +26,7 @@ const members = content.filter((entry) => entry.data.post != "Secretary");
               &ldquo;{quote}&rdquo;
             </p>
             <div class="border-t border-t-neutral-400 pt-4 text-center dark:border-t-neutral-500">
-              <p class="my-1">{name}</p>
+              <p class="my-1 font-medium">{name}</p>
             </div>
           </div>
         </div>
@@ -51,7 +53,7 @@ const members = content.filter((entry) => entry.data.post != "Secretary");
               &ldquo;{quote}&rdquo;
             </p>
             <div class="border-t border-t-neutral-400 pt-4 text-center dark:border-t-neutral-500">
-              <p class="my-1">{name}</p>
+              <p class="my-1 font-medium">{name}</p>
               <p class="text-secondary-600 dark:text-secondary-400 text-sm">
                 {post}
               </p>
