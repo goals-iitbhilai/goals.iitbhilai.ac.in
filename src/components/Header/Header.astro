@@ -5,62 +5,58 @@ import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
 const links = await getCollection("links");
-
-function isActive(href: string) {
-  return href === Astro.url.pathname;
-}
 ---
 
-<header
-  id="header"
-  class="group sticky top-0 z-50 flex w-full flex-col items-center border-b border-b-neutral-300 bg-neutral-50/50 px-6 py-3 font-light backdrop-blur-md data-open:fixed data-open:h-full data-open:border-none md:flex-row md:justify-between dark:border-b-neutral-700 dark:bg-neutral-950/75"
->
-  <div class="flex w-full items-center justify-between md:w-fit">
-    <div class="flex items-center gap-4">
-      <img src={getURL("/favicon.svg")} alt="Logo" class="size-9" />
-      <a href={homeURL} class="-mt-1">
-        <h5
-          class="text-secondary-800 dark:text-primary-500 text-2xl font-medium"
-        >
-          GOALS
-        </h5>
-        <p class="dark:text-secondary-300 -mt-1 text-xs">
-          General Oratory And Literary Society
-        </p>
-      </a>
-    </div>
-    <button
-      id="header-btn"
-      class="flex size-7 cursor-pointer items-center justify-center rounded-md hover:bg-white/20 md:hidden"
-    >
-      <Icon name="lucide:menu" />
-    </button>
-  </div>
-  <nav
-    class="flex h-0 flex-col items-center justify-between gap-2 overflow-hidden group-data-open:h-full group-data-open:flex-1 group-data-open:pb-8 md:h-fit md:flex-none md:flex-row md:justify-normal lg:gap-4"
+<header id="header" class="group sticky top-0 z-50 font-light">
+  <div
+    class:list={[
+      "absolute w-full md:flex",
+      "border-b border-b-neutral-300 bg-neutral-50/50 backdrop-blur-md data-open:border-b-0 dark:border-b-neutral-700 dark:bg-neutral-950/75",
+    ]}
   >
-    <ul
-      class="flex flex-col justify-center gap-4 text-2xl group-data-open:flex-1 md:flex-row md:gap-2 md:pt-0 md:text-[0.9rem] lg:gap-4"
+    <div class="flex flex-1 items-center justify-between px-6 py-3">
+      <div class="flex items-center gap-4">
+        <img src={getURL("/favicon.svg")} alt="Logo" class="size-9" />
+        <a href={homeURL} class="-mt-1">
+          <h5
+            class="text-secondary-800 dark:text-primary-500 text-2xl font-medium"
+          >
+            GOALS
+          </h5>
+          <p class="dark:text-secondary-300 -mt-1 text-xs">
+            General Oratory And Literary Society
+          </p>
+        </a>
+      </div>
+      <button
+        id="header-btn"
+        class="grid size-7 cursor-pointer place-items-center rounded-md hover:bg-white/20 md:hidden"
+      >
+        <Icon name="lucide:menu" />
+      </button>
+    </div>
+    <div
+      class="grid grid-rows-[0fr] group-data-open:grid-rows-[1fr] md:flex md:items-center md:pr-6"
     >
-      {
-        links.map(({ data: { name, href } }) => (
-          <li>
-            <a
-              href={getURL(href)}
-              class="hover:bg-secondary-700 active:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-500 dark:active:bg-primary-400 rounded-sm px-3 py-2"
-              class:list={{
-                "md:bg-secondary-700 text-secondary-700 md:text-secondary-50 dark:text-primary-950 dark:bg-primary-500 font-semibold md:font-light":
-                  isActive(href),
-              }}
-            >
-              {name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-    <ThemeSwitch />
-  </nav>
+      <div
+        class="flex min-h-0 flex-col items-center gap-12 overflow-hidden md:flex-row md:gap-4"
+      >
+        <nav class="mt-16 flex flex-col gap-2 md:mt-0 md:flex-row">
+          {
+            links.map(({ data: { name, href } }) => (
+              <a
+                href={getURL(href)}
+                class="hover:bg-secondary-700 active:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-500 dark:active:bg-primary-400 rounded-sm px-3 py-2 md:py-1"
+              >
+                {name}
+              </a>
+            ))
+          }
+        </nav>
+        <ThemeSwitch />
+      </div>
+    </div>
+  </div>
 </header>
 
 <script>
