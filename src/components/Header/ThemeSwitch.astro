@@ -4,7 +4,11 @@ import { Icon } from "astro-icon/components";
 
 <button
   id="switch"
-  class="mb-6 flex cursor-pointer items-center gap-4 rounded-sm p-1.5 px-3 hover:bg-neutral-100 md:mb-0 md:px-1.5 dark:hover:bg-neutral-800"
+  class:list={[
+    "mb-6 flex cursor-pointer items-center gap-4 rounded-sm px-4 py-3 md:mb-0 md:p-2",
+    "hover:bg-neutral-800 hover:text-neutral-100 dark:hover:bg-neutral-100 dark:hover:text-neutral-800",
+    "md:hover:bg-neutral-200/80 md:hover:text-neutral-700 md:dark:hover:bg-neutral-800 md:dark:hover:text-neutral-300",
+  ]}
 >
   <div class="md:hidden">
     <p class="hidden dark:block">Dark Theme</p>
