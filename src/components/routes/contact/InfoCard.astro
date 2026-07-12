@@ -1,52 +1,58 @@
 ---
-import { Image } from "astro:assets";
 import { getURL } from "@utils/url";
 import Card from "@components/Card.astro";
 import PrimaryIcon from "@components/PrimaryIcon.astro";
+
+const contents = [
+  {
+    icon: "lucide:mail",
+    heading: "Email",
+    text: [
+      "goals@iitbhilai.ac.in",
+      "For general inquiries and membership questions",
+    ],
+  },
+  {
+    icon: "lucide:map-pin",
+    heading: "Location",
+    text: ["Academic Area", "IIT Bhilai, Kutelabhata, College Campus"],
+  },
+  {
+    icon: "lucide:clock",
+    heading: "Timings",
+    text: ["5:30 PM onwards"],
+  },
+];
 ---
 
 <Card
   as="section"
   class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-6 p-8 lg:row-span-3"
 >
-  <Image height="64" width="64" src={getURL("/favicon.svg")} alt="GOALS" />
+  <img class="size-16" src={getURL("/favicon.svg")} alt="GOALS" />
   <div>
     <h2 class="text-2xl text-black dark:text-white">
       General Oratory & Literary Society
     </h2>
     <p>Building bridges through words</p>
   </div>
-  <PrimaryIcon
-    name="lucide:mail"
-    kind="subtle"
-    class="size-10 place-self-center"
-  />
-  <div class="self-center">
-    <h3 class="text-xl text-black dark:text-white">Email</h3>
-    <div class="font-light">
-      <a href="mailto:goals@iitbhilai.ac.in">goals@iitbhilai.ac.in</a>
-      <p>For general inquiries and membership questions</p>
-    </div>
-  </div>
-  <PrimaryIcon
-    name="lucide:map-pin"
-    kind="subtle"
-    class="size-10 place-self-center"
-  />
-  <div class="self-center">
-    <h3 class="text-xl text-black dark:text-white">Location</h3>
-    <div class="font-light">
-      <p>Academic Area</p>
-      <p>IIT Bhilai, Kutelabhata, College Campus</p>
-    </div>
-  </div>
-  <PrimaryIcon
-    name="lucide:clock"
-    kind="subtle"
-    class="size-10 place-self-center"
-  />
-  <div class="self-center">
-    <h3 class="text-xl text-black dark:text-white">Email</h3>
-    <p class="font-light">5:30 PM</p>
-  </div>
+  {
+    contents.map(({ icon, heading, text }) => (
+      <>
+        <PrimaryIcon
+          name={icon}
+          kind="subtle"
+          class="size-10 place-self-center"
+        />
+        <div>
+          <h3 class="text-xl text-black dark:text-white">{heading}</h3>
+          <div class="font-light">
+            {text.map((text) => (
+              <p>{text}</p>
+            ))}
+          </div>
+        </div>
+      </>
+    ))
+  }
 </Card>
