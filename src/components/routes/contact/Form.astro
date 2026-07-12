@@ -1,56 +1,55 @@
 ---
 import Card from "@components/Card.astro";
 import Button from "@components/Button.astro";
+
+const subjects = {
+  membership: "Membership Inquiry",
+  event: "Event Information",
+  collaboration: "Collaboration Proposal",
+  feedback: "Feedback",
+  other: "Other",
+};
 ---
 
 <Card as="form" id="contact-form" class="flex flex-col gap-4 p-8 lg:row-span-5">
   <h2 class="text-2xl text-black dark:text-white">Send us a Message</h2>
   <label>
     Name
-    <input
-      placeholder="Your Name"
-      type="text"
-      required
-      name="name"
-      class="mt-2 w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
-    />
+    <input placeholder="Your Name" type="text" required name="name" />
   </label>
   <label>
     Email
-    <input
-      placeholder="your.email@example.com"
-      type="email"
-      name="email"
-      required
-      class="mt-2 w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
-    />
+    <input placeholder="you@example.com" type="email" name="email" required />
   </label>
-  <label class="flex flex-col gap-2">
+  <label>
     Subject
-    <select
-      required
-      name="subject"
-      class="w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
-    >
+    <select required name="subject" class="cursor-pointer">
       <option value="">Select a subject</option>
-      <option value="membership">Membership Inquiry</option>
-      <option value="event">Event Information</option>
-      <option value="collaboration">Collaboration Proposal</option>
-      <option value="feedback">Feedback</option>
-      <option value="other">Other</option>
+      {
+        Object.entries(subjects).map(([value, text]) => (
+          <option {value}>{text}</option>
+        ))
+      }
     </select>
   </label>
-  <label class="flex-1 py-2 pb-10">
+  <label class="flex-1 pb-8">
     Message
-    <textarea
-      required
-      name="message"
-      placeholder="Tell us about your interest in GOALS or ask any questions you might have..."
-      class="mt-2 h-full w-full rounded-lg border border-neutral-400 bg-zinc-50/25 p-3 dark:border-neutral-600 dark:bg-neutral-900"
+    <textarea required name="message" placeholder="Your message" class="h-full"
     ></textarea>
   </label>
   <Button type="submit">Send</Button>
 </Card>
+
+<style>
+  @reference "../../../global.css";
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    @apply mt-2 w-full rounded-lg border border-neutral-400 bg-neutral-50/25 p-3 hover:bg-neutral-100/25 dark:border-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-800;
+  }
+</style>
 
 <script>
   const endpointURL = "https://backend-five-delta-42.vercel.app/api/contact";
