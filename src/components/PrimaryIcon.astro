@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  name: string;
+  kind?: "outline" | "subtle";
+  size?: number;
+  class?: string;
+  style?: string;
+}
+
+const {
+  name,
+  kind = "outline",
+  size = 6,
+  class: className,
+  style,
+} = Astro.props;
+---
+
+<Icon
+  {name}
+  size={size * 4}
+  {style}
+  class:list={[
+    {
+      outline: "text-secondary-700 dark:text-primary-500",
+      subtle:
+        "bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 rounded-full p-2.5 dark:text-black",
+    }[kind],
+    className,
+  ]}
+/>

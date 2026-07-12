@@ -1,6 +1,6 @@
 ---
 import Card from "@components/Card.astro";
-import { Icon } from "astro-icon/components";
+import PrimaryIcon from "@components/PrimaryIcon.astro";
 
 const contents = [
   {
@@ -28,10 +28,7 @@ const contents = [
     contents.map(({ title, icon, description }) => (
       <Card outlined={true} class="p-8">
         <div class="mb-4 flex items-center gap-4">
-          <Icon
-            name={icon}
-            class="text-secondary-700 dark:text-primary-500 size-6"
-          />
+          <PrimaryIcon name={icon} />
           <h3 class="text-2xl text-black dark:text-white">{title}</h3>
         </div>
         <p class="max-w-prose">{description}</p>

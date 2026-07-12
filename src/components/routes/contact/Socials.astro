@@ -1,6 +1,6 @@
 ---
 import Card from "@components/Card.astro";
-import { Icon } from "astro-icon/components";
+import PrimaryIcon from "@components/PrimaryIcon.astro";
 import { getCollection } from "astro:content";
 
 const socials = await getCollection("socials");
@@ -12,10 +12,11 @@ const socials = await getCollection("socials");
     {
       socials.map(({ data: { href, icon, theme } }) => (
         <a {href}>
-          <Icon
+          <PrimaryIcon
             name={icon}
+            kind="subtle"
             style={`--theme-color: ${theme};`}
-            class="social-icon bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 mx-auto my-auto size-10 rounded-full p-2.5 dark:text-black"
+            class="size-10 hover:bg-(--theme-color) hover:text-white"
           />
         </a>
       ))
@@ -26,10 +27,3 @@ const socials = await getCollection("socials");
     discussions.
   </p>
 </Card>
-
-<style>
-  .social-icon:hover {
-    background-color: var(--theme-color);
-    color: white;
-  }
-</style>

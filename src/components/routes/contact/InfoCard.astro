@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 import { getURL } from "@utils/url";
 import Card from "@components/Card.astro";
+import PrimaryIcon from "@components/PrimaryIcon.astro";
 ---
 
 <Card
@@ -16,9 +16,10 @@ import Card from "@components/Card.astro";
     </h2>
     <p>Building bridges through words</p>
   </div>
-  <Icon
+  <PrimaryIcon
     name="lucide:mail"
-    class="bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 size-10 place-self-center rounded-full p-2.5 dark:text-black"
+    kind="subtle"
+    class="size-10 place-self-center"
   />
   <div class="self-center">
     <h3 class="text-xl text-black dark:text-white">Email</h3>
@@ -27,9 +28,10 @@ import Card from "@components/Card.astro";
       <p>For general inquiries and membership questions</p>
     </div>
   </div>
-  <Icon
+  <PrimaryIcon
     name="lucide:map-pin"
-    class="bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 size-10 place-self-center rounded-full p-2.5 dark:text-black"
+    kind="subtle"
+    class="size-10 place-self-center"
   />
   <div class="self-center">
     <h3 class="text-xl text-black dark:text-white">Location</h3>
@@ -38,9 +40,10 @@ import Card from "@components/Card.astro";
       <p>IIT Bhilai, Kutelabhata, College Campus</p>
     </div>
   </div>
-  <Icon
+  <PrimaryIcon
     name="lucide:clock"
-    class="bg-secondary-200 dark:bg-primary-100/75 text-secondary-800 size-10 place-self-center rounded-full p-2.5 dark:text-black"
+    kind="subtle"
+    class="size-10 place-self-center"
   />
   <div class="self-center">
     <h3 class="text-xl text-black dark:text-white">Email</h3>

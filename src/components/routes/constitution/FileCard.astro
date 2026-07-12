@@ -1,5 +1,6 @@
 ---
 import Card from "@components/Card.astro";
+import PrimaryIcon from "@components/PrimaryIcon.astro";
 import Button from "@components/Button.astro";
 import { Icon } from "astro-icon/components";
 ---
@@ -9,10 +10,7 @@ import { Icon } from "astro-icon/components";
   class="mx-auto flex flex-col items-center justify-between gap-12 p-8 md:w-180 md:flex-row md:gap-0 xl:w-3/5"
 >
   <div class="xs:flex-row flex flex-col items-center gap-8">
-    <Icon
-      name="lucide:scroll-text"
-      class="bg-secondary-200 dark:bg-primary-200 dark:text-primary-800 text-secondary-800 size-15 rounded-full p-4"
-    />
+    <PrimaryIcon name="lucide:scroll-text" kind="subtle" class="size-15 p-4" />
     <div>
       <h2 class="mb-1 text-center text-3xl">Official Constitution</h2>
       <div class="text-sm font-light text-neutral-500 dark:text-neutral-400">
