@@ -6,24 +6,26 @@ import { getCollection } from "astro:content";
 const socials = await getCollection("socials");
 ---
 
-<Card as="section" class="flex flex-col gap-6 p-8 lg:row-span-2">
-  <h2 class="text-2xl text-black dark:text-white">Follow Us</h2>
-  <div class="flex gap-6">
-    {
-      socials.map(({ data: { href, icon, theme } }) => (
-        <a {href}>
-          <PrimaryIcon
-            name={icon}
-            kind="subtle"
-            style={`--theme-color: ${theme};`}
-            class="size-10 hover:bg-(--theme-color) hover:text-white"
-          />
-        </a>
-      ))
-    }
-  </div>
-  <p class="font-light">
-    Stay updated with our latest events, announcements, and literary
-    discussions.
-  </p>
-</Card>
+<div class="lg:row-span-2">
+  <Card as="section" class="mb-auto flex flex-col gap-6 p-8">
+    <h2 class="text-2xl text-black dark:text-white">Follow Us</h2>
+    <div class="flex gap-6">
+      {
+        socials.map(({ data: { href, icon, theme } }) => (
+          <a {href}>
+            <PrimaryIcon
+              name={icon}
+              kind="subtle"
+              style={`--theme-color: ${theme};`}
+              class="size-10 hover:bg-(--theme-color) hover:text-white"
+            />
+          </a>
+        ))
+      }
+    </div>
+    <p class="font-light">
+      Stay updated with our latest events, announcements, and literary
+      discussions.
+    </p>
+  </Card>
+</div>
