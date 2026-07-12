@@ -32,7 +32,7 @@ const contents = [
 ];
 ---
 
-<section class="flex flex-col items-center gap-12 p-8">
+<section class="contents">
   <h2
     class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
   >
@@ -42,9 +42,8 @@ const contents = [
     {
       contents.map(({ title, emoji, description }) => (
         <li class="p-6 md:w-96">
-          <h3 class="mb-3 flex items-center gap-2 text-2xl text-black dark:text-white">
-            <span>{emoji}</span>
-            <span>{title}</span>
+          <h3 class="mb-3 text-2xl text-black dark:text-white">
+            {emoji} &nbsp;{title}
           </h3>
           <p class="max-w-prose">{description}</p>
         </li>

@@ -25,7 +25,7 @@ const contents = [
 ];
 ---
 
-<section class="flex flex-col items-center gap-12 px-8 py-8">
+<section class="contents">
   <h2
     class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
   >
@@ -35,11 +35,11 @@ const contents = [
     {
       contents.map(({ title, description }) => (
         <li>
-          <h3 class="mb-2 flex items-center gap-3 text-2xl text-black dark:text-white">
+          <h3 class="mb-2 flex items-baseline gap-3 text-2xl text-black dark:text-white">
             <Icon
               name="mdi:star"
               class="text-secondary-700 dark:text-primary-500 size-4"
-            />{" "}
+            />
             {title}
           </h3>
           <p class="max-w-prose">{description}</p>

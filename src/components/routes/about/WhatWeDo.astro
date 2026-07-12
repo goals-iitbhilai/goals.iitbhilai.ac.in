@@ -24,16 +24,16 @@ const contents = [
 ];
 ---
 
-<section class="flex flex-col items-center gap-12 px-8 py-8">
+<section class="contents">
   <h2
     class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
   >
     What We Do
   </h2>
-  <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+  <ul class="grid grid-cols-1 gap-8 lg:grid-cols-3">
     {
       contents.map(({ title, icon, description }) => (
-        <Card class="p-8 lg:w-72">
+        <Card as="li" class="p-8 lg:w-72">
           <div class="mb-4 flex items-center gap-4">
             <Icon
               name={icon}
@@ -45,5 +45,5 @@ const contents = [
         </Card>
       ))
     }
-  </div>
+  </ul>
 </section>
