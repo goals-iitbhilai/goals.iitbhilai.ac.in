@@ -9,8 +9,9 @@
 
 /* Breakpoints */
 @theme {
-  --breakpoint-md: 900px;
   --breakpoint-xs: 450px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 900px;
 }
 
 /* Fonts */
