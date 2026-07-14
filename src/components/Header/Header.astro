@@ -63,12 +63,12 @@ const links = await getCollection("links");
       >
         <nav class="mt-16 flex flex-col gap-2 md:mt-0 md:flex-row">
           {
-            links.map(({ id, data }) => (
+            links.map(({ data: { name, href } }) => (
               <a
-                href={data}
+                {href}
                 class="hover:bg-secondary-700 active:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-500 dark:active:bg-primary-400 rounded-sm px-3 py-2 md:py-1"
               >
-                {id}
+                {name}
               </a>
             ))
           }

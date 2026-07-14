@@ -26,7 +26,10 @@ const team = defineCollection({
 
 const links = defineCollection({
   loader: file("./content/links.json"),
-  schema: z.string(),
+  schema: z.object({
+    href: z.string(),
+    name: z.string(),
+  }),
 });
 
 const socials = defineCollection({
