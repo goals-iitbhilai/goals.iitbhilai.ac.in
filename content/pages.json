@@ -1,0 +1,22 @@
+{
+  "/": {
+    "title": "General Oratory and Literary Society, IIT Bhilai",
+    "description": "The General Oratory and Literary Society (aka GOALS) of Indian Institute of Technology, Bhilai."
+  },
+  "/about": {
+    "title": "About GOALS",
+    "description": "Learn about the General Oratory and Literary Society: our mission, history, values and divisions."
+  },
+  "/members": {
+    "title": "Members of GOALS",
+    "description": "Meet the current secretaries and core team of the General Oratory and Literary Society."
+  },
+  "/constitution": {
+    "title": "Constitution of GOALS",
+    "description": "View the constitution of General Oratory and Literary Society."
+  },
+  "/contact": {
+    "title": "Contact GOALS",
+    "description": "How to connect with us through various mediums to discuss your queries, concerns, or feedback."
+  }
+}

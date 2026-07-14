@@ -10,10 +10,7 @@ import { getImage } from "astro:assets";
 const backgroundSrc = (await getImage({ src: backgroundImg })).src;
 ---
 
-<Layout
-  title="GOALS Home"
-  description="General Oratory and Literary Society, IIT Bhilai"
->
+<Layout>
   <Hero {backgroundSrc} />
   <WhatWeOffer />
   <RecentActivities />

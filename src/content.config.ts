@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
-import { z } from "zod";
+import { describe, z } from "zod";
+import { title } from "node:process";
 
 function parser<T>(json: string) {
   return JSON.parse(json).map((item: T, index: number) => ({
@@ -46,4 +47,12 @@ const socials = defineCollection({
   }),
 });
 
-export const collections = { alumni, links, socials, team };
+const pages = defineCollection({
+  loader: file("./content/pages.json"),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
+export const collections = { alumni, links, socials, team, pages };
