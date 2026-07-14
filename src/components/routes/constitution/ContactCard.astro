@@ -1,7 +1,6 @@
 ---
 import Card from "@components/Card.astro";
 import Button from "@components/Button.astro";
-import { getURL } from "@utils/url";
 ---
 
 <Card class="flex w-full flex-col items-center gap-6 p-8 text-center">
@@ -13,5 +12,5 @@ import { getURL } from "@utils/url";
     propose an amendment, please reach out to our officers or attend our next
     meeting.
   </p>
-  <Button href={getURL("/contact")}>Contact Us</Button>
+  <Button href="/contact">Contact Us</Button>
 </Card>

@@ -1,6 +1,5 @@
 ---
 import Button from "@components/Button.astro";
-import { getURL } from "@utils/url";
 import { Icon } from "astro-icon/components";
 
 interface Props {
@@ -23,7 +22,7 @@ const { backgroundSrc } = Astro.props;
   <div
     class="flex flex-col items-center gap-4 px-4 text-center text-balance text-neutral-50 md:static md:pt-0 dark:text-neutral-950"
   >
-    <img src={getURL("/favicon.svg")} alt="Logo" class="size-20" />
+    <img src="/favicon.svg" alt="Logo" class="size-20" />
     <h1 class="text-7xl">General Oratory & <br />Literary Society</h1>
     <h2 class="text-5xl font-light">IIT Bhilai</h2>
     <p class="mt-6 max-w-prose px-2 text-2xl font-extralight">
@@ -31,10 +30,8 @@ const { backgroundSrc } = Astro.props;
       writers, and critical thinkers shaping tomorrow's discourse.
     </p>
     <div class="xs:flex-row mt-6 flex flex-col gap-8">
-      <Button kind="translucent" href={getURL("/members")}>
-        Meet our Team
-      </Button>
-      <Button kind="translucent" href={getURL("/about")}>
+      <Button kind="translucent" href="/members">Meet our Team</Button>
+      <Button kind="translucent" href="/about">
         Learn More
         <Icon name="lucide:chevron-right" />
       </Button>

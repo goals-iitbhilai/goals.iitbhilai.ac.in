@@ -1,5 +1,4 @@
 ---
-import { getURL } from "@utils/url";
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
@@ -13,7 +12,7 @@ const socials = await getCollection("socials");
   <div class="grid grid-cols-5 gap-4 md:grid-cols-4">
     <section class="col-span-5 p-4 md:col-span-2">
       <div class="flex items-center gap-4">
-        <img src={getURL("/favicon.svg")} alt="Logo" class="size-15" />
+        <img src="/favicon.svg" alt="Logo" class="size-15" />
         <a href="/" class="group">
           <h5 class="text-2xl font-medium">GOALS</h5>
           <p class="text-secondary-200 group-hover:text-secondary-50">
@@ -32,7 +31,7 @@ const socials = await getCollection("socials");
         {
           links.map(({ data: { name, href } }) => (
             <li class="hover:text-secondary-50">
-              <a href={getURL(href)}>{name}</a>
+              <a {href}>{name}</a>
             </li>
           ))
         }
