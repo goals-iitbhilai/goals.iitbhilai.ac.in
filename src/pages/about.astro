@@ -116,7 +116,7 @@ const values = [
           <Card outlined={true} class="p-8">
             <div class="mb-4 flex items-center gap-4">
               <PrimaryIcon name={icon} />
-              <h3 class="text-2xl text-black dark:text-white">{title}</h3>
+              <h3 class="">{title}</h3>
             </div>
             <p class="max-w-prose">{description}</p>
           </Card>
@@ -126,18 +126,14 @@ const values = [
 
     <!-- Activities -->
     <section class="contents">
-      <h2
-        class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
-      >
-        What We Do
-      </h2>
+      <h2>What We Do</h2>
       <ul class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {
           activities.map(({ title, icon, description }) => (
             <Card as="li" class="p-8 lg:w-72">
               <div class="mb-4 flex items-center gap-4">
                 <PrimaryIcon name={icon} />
-                <h3 class="text-2xl text-black dark:text-white">{title}</h3>
+                <h3 class="">{title}</h3>
               </div>
               <p class="max-w-prose">{description}</p>
             </Card>
@@ -148,16 +144,12 @@ const values = [
 
     <!-- Divisions -->
     <section class="contents">
-      <h2
-        class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
-      >
-        Divisions of GOALS
-      </h2>
-      <ul class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <h2>Divisions of GOALS</h2>
+      <ul class="grid grid-cols-1 gap-12 px-4 md:grid-cols-2">
         {
           divisions.map(({ title, emoji, description }) => (
-            <li class="p-6 md:w-96">
-              <h3 class="mb-3 text-2xl text-black dark:text-white">
+            <li class="md:w-96">
+              <h3 class="mb-3">
                 {emoji} &nbsp;{title}
               </h3>
               <p class="max-w-prose">{description}</p>
@@ -169,16 +161,12 @@ const values = [
 
     <!-- Values -->
     <section class="contents">
-      <h2
-        class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
-      >
-        Our Values
-      </h2>
+      <h2>Our Values</h2>
       <ul class="grid grid-cols-1 gap-8 px-4">
         {
           values.map(({ title, description }) => (
             <li>
-              <h3 class="mb-2 flex items-baseline gap-3 text-2xl text-black dark:text-white">
+              <h3 class="mb-2 flex items-baseline gap-3">
                 <PrimaryIcon name="mdi:star" size={4} />
                 {title}
               </h3>
@@ -190,3 +178,17 @@ const values = [
     </section>
   </div>
 </Layout>
+
+<style>
+  @reference "../global.css";
+
+  h2 {
+    /* Sub-headings */
+    @apply text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200;
+  }
+
+  h3 {
+    /* Card headings */
+    @apply text-2xl text-black dark:text-white;
+  }
+</style>
