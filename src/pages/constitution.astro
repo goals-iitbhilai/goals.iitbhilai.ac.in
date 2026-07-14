@@ -1,11 +1,17 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import FileCard from "@components/routes/constitution/FileCard.astro";
+import PrimaryIcon from "@components/PrimaryIcon.astro";
+import { Icon } from "astro-icon/components";
 import PageHero from "@components/PageHero.astro";
 import Card from "@components/Card.astro";
 import Button from "@components/Button.astro";
 
 import { Content } from "../../content/constitution.md";
+
+const fileInfo = [
+  { text: "Last Updated: February 2023", icon: "lucide:calendar" },
+  { text: "Version 3.2", icon: "lucide:file-text" },
+];
 ---
 
 <Layout>
@@ -15,12 +21,49 @@ import { Content } from "../../content/constitution.md";
   </PageHero>
 
   <div class="mx-auto flex max-w-[75ch] flex-col items-center gap-16 px-8">
-    <FileCard />
+    <!-- File link card -->
+    <Card
+      as="section"
+      class="flex w-full flex-col items-center justify-between gap-12 p-8 md:flex-row md:gap-0"
+    >
+      <div class="xs:flex-row flex flex-col items-center gap-8">
+        <PrimaryIcon
+          name="lucide:scroll-text"
+          kind="subtle"
+          class="size-15 p-4"
+        />
+        <div>
+          <h2 class="xs:mb-1 xs:text-left text-center text-3xl">
+            Official Constitution
+          </h2>
+          <div
+            class="text-sm font-light text-neutral-500 dark:text-neutral-400"
+          >
+            {
+              fileInfo.map(({ text, icon }) => (
+                <span class="flex items-center gap-1">
+                  <Icon name={icon} />
+                  <p>{text}</p>
+                </span>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+      <Button
+        href="https://docs.google.com/document/d/1j4SqzgNCl2IK8xXdd5LH9dmaiBPQvEr2dSCRY_dQ_Cc/edit?usp=sharing"
+      >
+        <Icon name="lucide:link" />
+        <p>View Document</p>
+      </Button>
+    </Card>
 
+    <!-- Constitution -->
     <section class="prose dark:prose-invert">
       <Content />
     </section>
 
+    <!-- Contact card -->
     <Card class="flex w-full flex-col items-center gap-6 p-8 text-center">
       <h3 class="text-2xl text-black dark:text-white">
         Questions About Our Constitution?
