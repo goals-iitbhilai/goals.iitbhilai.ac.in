@@ -1,5 +1,5 @@
 ---
-import ThemeSwitch from "./ThemeSwitch.astro";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
 const links = await getCollection("links");
@@ -73,7 +73,18 @@ const links = await getCollection("links");
             ))
           }
         </nav>
-        <ThemeSwitch />
+
+        <button
+          id="theme-switch"
+          class="mb-6 flex cursor-pointer items-center gap-4 rounded-sm px-4 py-3 hover:bg-neutral-200/80 hover:text-neutral-700 md:mb-0 md:p-2 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
+        >
+          <div class="md:hidden">
+            <p class="hidden dark:block">Dark Theme</p>
+            <p class="dark:hidden">Light Theme</p>
+          </div>
+          <Icon name="lucide:sun" class="size-5 dark:hidden" />
+          <Icon name="lucide:moon" class="hidden size-5 dark:block" />
+        </button>
       </div>
     </div>
   </div>
@@ -82,14 +93,23 @@ const links = await getCollection("links");
 <script>
   const header = document.getElementById("header")!;
   const headerBtn = document.getElementById("header-btn")!;
+  const html = document.documentElement;
+
+  document.getElementById("theme-switch")!.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    localStorage.setItem(
+      "theme",
+      html.classList.contains("dark") ? "dark" : "light",
+    );
+  });
 
   function closeHeader() {
     header.removeAttribute("data-open");
-    window.removeEventListener("click", handleOutsideClick);
+    window.removeEventListener("click", headerOnClick);
     window.removeEventListener("scroll", closeHeader);
   }
 
-  function handleOutsideClick(ev: MouseEvent) {
+  function headerOnClick(ev: MouseEvent) {
     if (!header.contains(ev.target as Node)) closeHeader();
   }
 
@@ -98,7 +118,7 @@ const links = await getCollection("links");
       closeHeader();
     } else {
       header.setAttribute("data-open", "");
-      window.addEventListener("click", handleOutsideClick);
+      window.addEventListener("click", headerOnClick);
       window.addEventListener("scroll", closeHeader);
     }
   });
