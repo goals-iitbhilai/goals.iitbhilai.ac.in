@@ -1,18 +1,19 @@
 @import "tailwindcss";
-
 @plugin "@tailwindcss/typography";
 
+/* Dark mode */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Overrides */
+
+/* Breakpoints */
 @theme {
   --breakpoint-md: 900px;
   --breakpoint-xs: 450px;
 }
 
-/* Dark mode */
-@custom-variant dark (&:where(.dark, .dark *));
-
 /* Fonts */
-
 @theme inline {
   --font-sans: var(--font-inter);
   --font-serif: var(--font-crimson);
@@ -30,7 +31,6 @@
 }
 
 /* Colors */
-
 @theme {
   --color-primary-50: oklch(98.7% 0.026 102.212);
   --color-primary-100: oklch(97.3% 0.071 103.193);

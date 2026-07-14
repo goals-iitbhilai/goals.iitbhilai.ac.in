@@ -16,18 +16,38 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scheme-light dark:scheme-dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+
+    <script is:inline>
+      const theme = (() => {
+        const savedPreference = localStorage?.getItem("theme") ?? "";
+        if (["dark", "light"].includes(savedPreference)) return savedPreference;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      })();
+
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+
+      window.localStorage.setItem("theme", theme);
+    </script>
+
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+
     <!-- Fonts -->
     <Font cssVariable="--font-inter" />
     <Font cssVariable="--font-crimson" />
-    <!-- Metadata -->
 
+    <!-- Metadata -->
     <meta name="darkreader-lock" />
 
     <title>{title}</title>
