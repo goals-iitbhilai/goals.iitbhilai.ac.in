@@ -7,7 +7,10 @@ const socials = await getCollection("socials");
 ---
 
 <div class="md:row-span-2">
-  <Card as="section" class="mb-auto flex flex-col gap-6 p-8">
+  <Card
+    as="section"
+    class="mb-auto flex flex-col items-center gap-6 p-8 md:items-start"
+  >
     <h2 class="text-2xl text-black dark:text-white">Follow Us</h2>
     <div class="flex gap-6">
       {
@@ -23,7 +26,7 @@ const socials = await getCollection("socials");
         ))
       }
     </div>
-    <p class="font-light">
+    <p class="text-center font-light md:text-left">
       Stay updated with our latest events, announcements, and literary
       discussions.
     </p>
