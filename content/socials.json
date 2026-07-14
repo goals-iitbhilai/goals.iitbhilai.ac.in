@@ -1,20 +1,17 @@
-[
-  {
-    "name": "LinkedIn",
+{
+  "LinkedIn": {
     "icon": "mdi:linkedin",
     "theme": "#3b82f6",
     "href": "https://www.linkedin.com/company/general-oratory-and-literary-society-goals/"
   },
-  {
-    "name": "Facebook",
+  "Facebook": {
     "icon": "mdi:facebook",
     "theme": "#2563eb",
     "href": "https://www.facebook.com/profile.php?id=61580617536916"
   },
-  {
-    "name": "Instagram",
+  "Instagram": {
     "icon": "mdi:instagram",
     "theme": "#db2777",
     "href": "https://www.instagram.com/goals_iitbhilai/"
   }
-]
+}

@@ -1,7 +1,7 @@
-[
-  { "name": "Home", "href": "/" },
-  { "name": "About", "href": "/about" },
-  { "name": "Members", "href": "/members" },
-  { "name": "Constitution", "href": "/constitution" },
-  { "name": "Contact", "href": "/contact" }
-]
+{
+  "Home": "/",
+  "About": "/about",
+  "Members": "/members",
+  "Constitution": "/constitution",
+  "Contact": "/contact"
+}

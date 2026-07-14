@@ -11,8 +11,8 @@ const socials = await getCollection("socials");
     <h2 class="text-2xl text-black dark:text-white">Follow Us</h2>
     <div class="flex gap-6">
       {
-        socials.map(({ data: { href, icon, theme } }) => (
-          <a {href}>
+        socials.map(({ id, data: { href, icon, theme } }) => (
+          <a {href} aria-label={id}>
             <PrimaryIcon
               name={icon}
               kind="subtle"
