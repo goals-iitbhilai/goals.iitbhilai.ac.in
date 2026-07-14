@@ -109,7 +109,8 @@ const values = [
   </PageHero>
 
   <div class="flex flex-col items-center gap-16 p-8">
-    <div class="grid grid-cols-1 gap-8 md:w-216 md:grid-cols-2">
+    <!-- Highlights -->
+    <section class="grid grid-cols-1 gap-8 md:w-216 md:grid-cols-2">
       {
         highlights.map(({ title, icon, description }) => (
           <Card outlined={true} class="p-8">
@@ -121,8 +122,9 @@ const values = [
           </Card>
         ))
       }
-    </div>
+    </section>
 
+    <!-- Activities -->
     <section class="contents">
       <h2
         class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
@@ -144,6 +146,7 @@ const values = [
       </ul>
     </section>
 
+    <!-- Divisions -->
     <section class="contents">
       <h2
         class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
@@ -164,6 +167,7 @@ const values = [
       </ul>
     </section>
 
+    <!-- Values -->
     <section class="contents">
       <h2
         class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
