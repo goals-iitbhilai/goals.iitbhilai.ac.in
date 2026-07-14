@@ -83,29 +83,23 @@ const links = await getCollection("links");
   const header = document.getElementById("header")!;
   const headerBtn = document.getElementById("header-btn")!;
 
-  function handleOutsideClick(ev: MouseEvent) {
-    if (!header.contains(ev.target as Node)) {
-      header.removeAttribute("data-open");
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("click", handleOutsideClick);
-    }
+  function closeHeader() {
+    header.removeAttribute("data-open");
+    window.removeEventListener("click", handleOutsideClick);
+    window.removeEventListener("scroll", closeHeader);
   }
 
-  function handleScroll() {
-    header.removeAttribute("data-open");
-    window.removeEventListener("scroll", handleScroll);
-    window.removeEventListener("click", handleOutsideClick);
+  function handleOutsideClick(ev: MouseEvent) {
+    if (!header.contains(ev.target as Node)) closeHeader();
   }
 
   headerBtn.addEventListener("click", () => {
     if (header.hasAttribute("data-open")) {
-      header.removeAttribute("data-open");
-      window.removeEventListener("click", handleOutsideClick);
-      window.removeEventListener("scroll", handleScroll);
+      closeHeader();
     } else {
       header.setAttribute("data-open", "");
       window.addEventListener("click", handleOutsideClick);
-      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", closeHeader);
     }
   });
 </script>
