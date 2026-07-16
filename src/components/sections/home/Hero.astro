@@ -1,10 +1,20 @@
 ---
 import Button from "@components/Button.astro";
-import ImageBg from "@components/ImageBg.astro";
 import { Icon } from "astro-icon/components";
+import backgroundImg from "@assets/background.jpg";
+import { getImage } from "astro:assets";
+
+const background = await getImage({ src: backgroundImg });
 ---
 
-<ImageBg class="grid place-items-center py-16">
+<main class="relative grid place-items-center py-16">
+  <div
+    class="absolute inset-0 -z-10 bg-cover bg-center"
+    style={{ backgroundImage: `url(${background.src})` }}
+  >
+    <div class="dark:bg-primary-400/75 bg-secondary-700/80 -z-9 size-full">
+    </div>
+  </div>
   <div
     class="flex flex-col items-center gap-4 px-4 text-center text-balance text-neutral-50 dark:text-neutral-950"
   >
@@ -23,4 +33,4 @@ import { Icon } from "astro-icon/components";
       </Button>
     </div>
   </div>
-</ImageBg>
+</main>
