@@ -104,10 +104,12 @@ const content = await getCollection("alumni");
   let startX: number;
 
   function updateCarousel(index: number) {
+    if (index >= track.children.length || index < 0) return;
+
     dots[currentIndex].removeAttribute("data-active");
     dots[currentIndex].setAttribute("aria-current", "false");
 
-    currentIndex = (index + track.children.length) % track.children.length;
+    currentIndex = index;
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
     dots[currentIndex].setAttribute("data-active", "");
