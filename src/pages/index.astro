@@ -1,14 +1,192 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Hero from "@components/sections/home/Hero.astro";
-import WhatWeOffer from "@components/sections/home/WhatWeOffer.astro";
-import RecentActivities from "@components/sections/home/RecentActivities.astro";
 import Alumni from "@components/sections/home/Alumni.astro";
+import Link from "@components/Link.astro";
+import Button from "@components/Button.astro";
+import { Icon } from "astro-icon/components";
+import backgroundImg from "@assets/background.jpg";
+import { getImage } from "astro:assets";
+
+const background = await getImage({ src: backgroundImg });
+
+const activities = [
+  {
+    title: "Annual Poetry Symposium",
+    description:
+      "Featured readings from renowned contemporary poets and student submissions.",
+  },
+  {
+    title: "Inter-Collegiate Debate Championship",
+    description: "Our team secured second place in the regional competition.",
+  },
+  {
+    title: "Guest Lecture Series",
+    description:
+      "Monthly lectures by distinguished authors and literary scholars.",
+  },
+];
+
+const quote = {
+  text: "GOALS has transformed our understanding of literature and given us the confidence to express our ideas with clarity and conviction. The supportive community here encourages intellectual growth and creative expression.",
+  cite: "Utkarsh and Kanishka",
+  post: "Secretaries, GOALS",
+};
+
+const perks = [
+  {
+    icon: "lucide:mic",
+    iconStyles: "bg-blue-100 text-blue-500 dark:bg-blue-700 dark:text-blue-100",
+    heading: "Public Speaking",
+    description:
+      "Develop confidence and eloquence through anchoring in college " +
+      "events or performing stand-up in events like Kavita, Meraz, Ciao, and Cultscape.",
+  },
+  {
+    icon: "lucide:library",
+    iconStyles:
+      "bg-yellow-100 text-yellow-500 dark:bg-yellow-600 dark:text-yellow-100",
+    heading: "Literary Analysis",
+    description:
+      "Dive into literary works through guided discussions and get " +
+      "access to GOALS' exclusive library with a curated collection.",
+  },
+  {
+    icon: "lucide:users",
+    iconStyles:
+      "bg-green-100 text-green-500 dark:bg-green-600 dark:text-green-100",
+    heading: "Community",
+    description:
+      "Connect with like-minded individuals who share your passion for words and ideas.",
+  },
+  {
+    icon: "lucide:award",
+    iconStyles: "bg-red-100 text-red-500 dark:bg-red-800 dark:text-red-100",
+    heading: "Competitions",
+    description:
+      "Participate in inter-collegiate debates, Inter IIT Cultural Meet, " +
+      "Anubhuti, and writing competitions.",
+  },
+];
 ---
 
 <Layout>
-  <Hero />
-  <WhatWeOffer />
-  <RecentActivities />
+  <!-- Hero -->
+
+  <main class="relative grid place-items-center py-16">
+    <div
+      class="absolute inset-0 -z-10 bg-cover bg-center"
+      style={{ backgroundImage: `url(${background.src})` }}
+    >
+      <div class="dark:bg-primary-400/75 bg-secondary-700/80 -z-9 size-full">
+      </div>
+    </div>
+    <div
+      class="flex flex-col items-center gap-4 px-4 text-center text-balance text-neutral-50 dark:text-neutral-950"
+    >
+      <img src="/favicon.svg" alt="Logo" class="size-20" />
+      <h1 class="text-7xl">General Oratory & <br />Literary Society</h1>
+      <h2 class="text-5xl font-light">IIT Bhilai</h2>
+      <p class="mt-6 max-w-prose px-2 text-2xl font-extralight">
+        Where eloquent voices meet literary minds. Join our community of
+        speakers, writers, and critical thinkers shaping tomorrow's discourse.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-8">
+        <Button kind="translucent" href="/members">Meet our Team</Button>
+        <Button kind="translucent" href="/about">
+          Learn More
+          <Icon name="lucide:chevron-right" />
+        </Button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Perks -->
+
+  <section
+    class="flex flex-col items-center gap-8 bg-neutral-100 p-8 text-center sm:p-12 xl:p-16 dark:bg-neutral-900"
+  >
+    <h2 class="text-4xl dark:text-neutral-50">What We Offer</h2>
+    <p
+      class="mb-12 max-w-prose font-light text-neutral-600 dark:text-neutral-300"
+    >
+      Discover the various ways GOALS enriches your academic and personal
+      journey through literature, oratory, and intellectual engagement.
+    </p>
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
+      {
+        perks.map(({ icon, iconStyles, heading, description }) => (
+          <div class="flex flex-col items-center gap-6 rounded-lg bg-neutral-50 p-8 shadow-sm/10 dark:bg-neutral-800">
+            <span>
+              <Icon
+                class:list={["size-10 rounded-full p-2", iconStyles]}
+                name={icon}
+              />
+            </span>
+            <h3 class="text-2xl font-light dark:text-neutral-100">{heading}</h3>
+            <p class="font-light text-neutral-600 dark:text-neutral-400">
+              {description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <div
+    class="grid grid-cols-1 bg-neutral-100/50 lg:grid-cols-2 lg:gap-8 dark:bg-neutral-800"
+  >
+    <!-- Activities -->
+
+    <section class="flex flex-col items-start gap-8 p-16">
+      <h2 class="text-3xl dark:text-neutral-50">Recent Activities</h2>
+      <ul
+        class="marker:text-secondary-600 dark:marker:text-primary-400 list-disc pl-4 font-light"
+      >
+        {
+          activities.map((item) => (
+            <li class="mb-4">
+              <h3 class="text-xl text-neutral-800 dark:text-neutral-200">
+                {item.title}
+              </h3>
+              <p class="max-w-prose text-sm text-neutral-600 dark:text-neutral-400">
+                {item.description}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+      <Link href="/editorials" class="flex items-center gap-1">
+        Read our Editorials
+        <Icon name="lucide:chevron-right" />
+      </Link>
+    </section>
+
+    <!-- Quote -->
+
+    <div class="flex items-center justify-center p-16 pt-8 lg:pt-16">
+      <div class="relative h-fit w-fit">
+        <div
+          class="bg-secondary-700 dark:bg-primary-300 absolute inset-0 z-0 rotate-4 transform rounded-2xl"
+        >
+        </div>
+        <blockquote
+          class="relative rounded-2xl bg-white p-8 font-light shadow-sm dark:bg-neutral-700"
+        >
+          <p class="max-w-prose font-serif text-xl italic">
+            &ldquo;{quote.text}&rdquo;
+          </p>
+          <cite>
+            <br />
+            <span>{quote.cite}</span>
+            <br />
+            <span class="text-sm text-neutral-600 dark:text-neutral-400">
+              {quote.post}
+            </span>
+          </cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
   <Alumni />
 </Layout>
