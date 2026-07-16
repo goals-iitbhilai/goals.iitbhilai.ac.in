@@ -9,7 +9,7 @@ interface Props {
 const { backgroundSrc } = Astro.props;
 ---
 
-<main class="relative flex h-full w-full items-center justify-center py-16">
+<main class="relative grid place-items-center py-16">
   <div
     class="absolute inset-0 -z-10 bg-cover bg-center"
     style={{ backgroundImage: `url(${backgroundSrc})` }}
@@ -18,7 +18,7 @@ const { backgroundSrc } = Astro.props;
     </div>
   </div>
   <div
-    class="flex flex-col items-center gap-4 px-4 text-center text-balance text-neutral-50 md:static md:pt-0 dark:text-neutral-950"
+    class="flex flex-col items-center gap-4 px-4 text-center text-balance text-neutral-50 dark:text-neutral-950"
   >
     <img src="/favicon.svg" alt="Logo" class="size-20" />
     <h1 class="text-7xl">General Oratory & <br />Literary Society</h1>
