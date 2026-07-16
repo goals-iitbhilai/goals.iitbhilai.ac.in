@@ -2,22 +2,16 @@
 import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
+import ImageBg from "@components/ImageBg.astro";
 
-interface Props {
-  backgroundSrc: string;
-}
-
-const { backgroundSrc } = Astro.props;
 const content = await getCollection("alumni");
 ---
 
-<section class="relative -mb-16 flex flex-col items-center gap-8 p-8 md:p-16">
-  <div
-    class="absolute inset-0 -z-10 bg-cover bg-center"
-    style={{ backgroundImage: `url(${backgroundSrc})` }}
-  >
-    <div class="-z-9 size-full bg-neutral-100/80 dark:bg-neutral-800/80"></div>
-  </div>
+<ImageBg
+  as="section"
+  overlay="neutral"
+  class="-mb-16 flex flex-col items-center gap-8 p-8 md:p-16"
+>
   <div class="contents text-center">
     <h2 class="text-5xl font-medium dark:text-neutral-50">
       Voices from our Alumni
@@ -67,7 +61,7 @@ const content = await getCollection("alumni");
       }
     </ul>
   </div>
-</section>
+</ImageBg>
 
 <script>
   const ul = document.getElementById("carousel")!;
