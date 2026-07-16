@@ -19,13 +19,13 @@ const content = [
 ];
 ---
 
-<section
+<div
   class="grid grid-cols-1 bg-neutral-100/50 lg:grid-cols-2 lg:gap-8 dark:bg-neutral-800"
 >
   <section class="flex flex-col items-start gap-8 p-16">
     <h2 class="text-3xl dark:text-neutral-50">Recent Activities</h2>
     <ul
-      class="marker:text-secondary-800 dark:marker:text-primary-400 list-disc pl-4 font-light"
+      class="marker:text-secondary-600 dark:marker:text-primary-400 list-disc pl-4 font-light"
     >
       {
         content.map((item) => (
@@ -48,7 +48,7 @@ const content = [
       <Icon name="lucide:chevron-right" />
     </a>
   </section>
-  <section class="flex items-center justify-center p-16 pt-8 lg:pt-16">
+  <div class="flex items-center justify-center p-16 pt-8 lg:pt-16">
     <div class="relative h-fit w-fit">
       <div
         class="bg-secondary-700 dark:bg-primary-300 absolute inset-0 z-0 rotate-4 transform rounded-2xl"
@@ -73,5 +73,5 @@ const content = [
         </cite>
       </blockquote>
     </div>
-  </section>
-</section>
+  </div>
+</div>
