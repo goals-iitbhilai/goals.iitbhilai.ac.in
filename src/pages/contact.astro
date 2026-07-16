@@ -1,10 +1,51 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import InfoCard from "@components/routes/contact/InfoCard.astro";
 import Form from "@components/routes/contact/Form.astro";
-import Socials from "@components/routes/contact/Socials.astro";
-import Faq from "@components/routes/contact/FAQ.astro";
+import Card from "@components/Card.astro";
 import PageHero from "@components/PageHero.astro";
+import PrimaryIcon from "@components/PrimaryIcon.astro";
+import { getCollection } from "astro:content";
+
+const socials = await getCollection("socials");
+
+const details = [
+  {
+    icon: "lucide:mail",
+    heading: "Email",
+    text: [
+      "goals@iitbhilai.ac.in",
+      "For general inquiries and membership questions",
+    ],
+  },
+  {
+    icon: "lucide:map-pin",
+    heading: "Location",
+    text: ["Academic Area", "IIT Bhilai, Kutelabhata, College Campus"],
+  },
+  {
+    icon: "lucide:clock",
+    heading: "Timings",
+    text: ["5:30 PM onwards"],
+  },
+];
+
+const faqs = [
+  {
+    question: "How can I become a member?",
+    answer:
+      "Simply attend one of our Friday meetings to learn more about GOALS and complete a brief membership form.",
+  },
+  {
+    question: "Are there membership fees?",
+    answer:
+      "GOALS membership is free for all students. We believe in making literary and oratory opportunities accessible to everyone.",
+  },
+  {
+    question: "What if I'm new to public speaking?",
+    answer:
+      "Perfect! GOALS welcomes members of all experience levels. We provide supportive workshops and mentoring for beginners.",
+  },
+];
 ---
 
 <Layout>
@@ -16,9 +57,89 @@ import PageHero from "@components/PageHero.astro";
   <section
     class="mx-auto grid w-full grid-cols-1 gap-8 px-8 sm:w-150 md:w-full md:grid-cols-2 lg:grid-rows-7 xl:w-4/5"
   >
-    <InfoCard />
+    <!-- Infocard -->
+
+    <Card
+      as="section"
+      class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-6 p-8 md:row-span-3"
+    >
+      <img class="size-16" src="/favicon.svg" alt="GOALS" />
+      <div>
+        <h2 class="text-2xl text-black dark:text-white">
+          General Oratory & Literary Society
+        </h2>
+        <p>Building bridges through words</p>
+      </div>
+      {
+        details.map(({ icon, heading, text }) => (
+          <>
+            <PrimaryIcon
+              name={icon}
+              kind="subtle"
+              class="size-10 place-self-center"
+            />
+            <div>
+              <h3 class="text-xl text-black dark:text-white">{heading}</h3>
+              <div class="font-light">
+                {text.map((text) => (
+                  <p>{text}</p>
+                ))}
+              </div>
+            </div>
+          </>
+        ))
+      }
+    </Card>
+
     <Form />
-    <Faq />
-    <Socials />
+
+    <!-- FAQ -->
+
+    <Card as="section" class="p-8 md:row-span-3">
+      <h2 class="mb-6 text-center text-2xl text-black dark:text-white">
+        Frequently Asked Questions
+      </h2>
+      <ul class="flex flex-col gap-4">
+        {
+          faqs.map(({ question, answer }) => (
+            <li>
+              <h3 class="mb-1 text-xl leading-tight font-medium text-black dark:text-white">
+                {question}
+              </h3>
+              <p class="font-light">{answer}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </Card>
+
+    <!-- Socials -->
+
+    <div class="md:row-span-2">
+      <Card
+        as="section"
+        class="mb-auto flex flex-col items-center gap-6 p-8 md:items-start"
+      >
+        <h2 class="text-2xl text-black dark:text-white">Follow Us</h2>
+        <div class="flex gap-6">
+          {
+            socials.map(({ id, data: { href, icon, theme } }) => (
+              <a {href} aria-label={id}>
+                <PrimaryIcon
+                  name={icon}
+                  kind="subtle"
+                  style={`--theme-color: ${theme};`}
+                  class="size-10 hover:bg-(--theme-color) hover:text-white"
+                />
+              </a>
+            ))
+          }
+        </div>
+        <p class="text-center font-light md:text-left">
+          Stay updated with our latest events, announcements, and literary
+          discussions.
+        </p>
+      </Card>
+    </div>
   </section>
 </Layout>
