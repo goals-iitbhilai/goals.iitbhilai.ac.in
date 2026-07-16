@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Form from "@components/routes/contact/Form.astro";
+import Button from "@components/Button.astro";
 import Card from "@components/Card.astro";
 import PageHero from "@components/PageHero.astro";
 import PrimaryIcon from "@components/PrimaryIcon.astro";
@@ -46,6 +46,14 @@ const faqs = [
       "Perfect! GOALS welcomes members of all experience levels. We provide supportive workshops and mentoring for beginners.",
   },
 ];
+
+const subjects = {
+  membership: "Membership Inquiry",
+  event: "Event Information",
+  collaboration: "Collaboration Proposal",
+  feedback: "Feedback",
+  other: "Other",
+};
 ---
 
 <Layout>
@@ -91,7 +99,48 @@ const faqs = [
       }
     </Card>
 
-    <Form />
+    <!-- Form -->
+
+    <Card
+      as="form"
+      id="contact-form"
+      class="flex flex-col gap-4 p-8 md:row-span-5"
+    >
+      <h2 class="text-2xl text-black dark:text-white">Send us a Message</h2>
+      <label>
+        Name
+        <input placeholder="Your Name" type="text" required name="name" />
+      </label>
+      <label>
+        Email
+        <input
+          placeholder="you@example.com"
+          type="email"
+          name="email"
+          required
+        />
+      </label>
+      <label>
+        Subject
+        <select required name="subject" class="cursor-pointer">
+          <option value="">Select a subject</option>
+          {
+            Object.entries(subjects).map(([value, text]) => (
+              <option {value}>{text}</option>
+            ))
+          }
+        </select>
+      </label>
+      <label class="flex-1 pb-8">
+        Message
+        <textarea
+          required
+          name="message"
+          placeholder="Your message"
+          class="h-full"></textarea>
+      </label>
+      <Button type="submit">Send</Button>
+    </Card>
 
     <!-- FAQ -->
 
@@ -143,3 +192,39 @@ const faqs = [
     </div>
   </div>
 </Layout>
+
+<style>
+  @reference "../global.css";
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    @apply mt-2 w-full rounded-lg border border-neutral-400 bg-neutral-50/25 p-3 hover:bg-neutral-100/25 dark:border-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-800;
+  }
+</style>
+
+<script>
+  const endpointURL = "https://backend-five-delta-42.vercel.app/api/contact";
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const response = await fetch(endpointURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      alert("Message sent successfully!");
+      form.reset();
+    } else {
+      alert("Failed to send message. Please try again later.");
+    }
+  });
+</script>
