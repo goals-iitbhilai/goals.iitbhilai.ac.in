@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
+import Link from "./Link.astro";
 
 const links = await getCollection("links");
 ---
@@ -61,17 +62,8 @@ const links = await getCollection("links");
       <div
         class="flex min-h-0 flex-col items-center gap-12 overflow-hidden md:flex-row md:gap-4"
       >
-        <nav class="mt-16 flex flex-col gap-2 md:mt-0 md:flex-row">
-          {
-            links.map(({ data: { name, href } }) => (
-              <a
-                {href}
-                class="hover:bg-secondary-700 active:bg-secondary-800 hover:text-secondary-50 dark:hover:text-primary-950 dark:hover:bg-primary-500 dark:active:bg-primary-400 rounded-sm px-3 py-2 md:py-1"
-              >
-                {name}
-              </a>
-            ))
-          }
+        <nav class="mt-16 flex flex-col gap-8 py-2 md:mt-0 md:flex-row md:py-1">
+          {links.map(({ data: { name, href } }) => <Link {href}>{name}</Link>)}
         </nav>
 
         <button
