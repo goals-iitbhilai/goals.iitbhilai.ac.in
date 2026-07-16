@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import Link from "@components/Link.astro";
+import Button from "@components/Button.astro";
 
 const links = await getCollection("links");
 ---
@@ -26,7 +27,7 @@ const links = await getCollection("links");
       </div>
       <button
         id="header-btn"
-        class="inline-flex size-8 cursor-pointer items-center justify-center rounded-md hover:bg-white/20 md:hidden"
+        class="inline-grid size-8 place-items-center rounded-md hover:bg-white/20 md:hidden"
         aria-label="Toggle collapsible mennu"
       >
         <svg
@@ -66,9 +67,11 @@ const links = await getCollection("links");
           {links.map(({ data: { name, href } }) => <Link {href}>{name}</Link>)}
         </nav>
 
-        <button
+        <Button
           id="theme-switch"
-          class="mb-6 flex cursor-pointer items-center gap-4 rounded-sm px-4 py-3 hover:bg-neutral-200/80 hover:text-neutral-700 md:mb-0 md:p-2 dark:hover:bg-neutral-800 dark:hover:text-neutral-300"
+          kind="ghost"
+          class="mb-6 md:mb-0 md:p-2"
+          aria-label="Toggle theme"
         >
           <div class="md:hidden">
             <p class="hidden dark:block">Dark Theme</p>
@@ -76,7 +79,7 @@ const links = await getCollection("links");
           </div>
           <Icon name="lucide:sun" class="size-5 dark:hidden" />
           <Icon name="lucide:moon" class="hidden size-5 dark:block" />
-        </button>
+        </Button>
       </div>
     </div>
   </div>
