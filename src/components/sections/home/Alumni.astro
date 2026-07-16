@@ -1,99 +1,133 @@
 ---
-import { Picture } from "astro:assets";
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
-import ImageBg from "@components/ImageBg.astro";
+import { Image } from "astro:assets";
 
 const content = await getCollection("alumni");
 ---
 
-<ImageBg
-  as="section"
-  overlay="neutral"
-  class="-mb-16 flex flex-col items-center gap-8 p-8 md:p-16"
->
+<section class="-mb-16 flex flex-col items-center gap-8 p-8 md:p-16">
   <div class="contents text-center">
-    <h2 class="text-5xl font-medium dark:text-neutral-50">
+    <h2 class="text-4xl font-medium dark:text-neutral-50">
       Voices from our Alumni
     </h2>
     <p class="mb-12 max-w-prose text-lg text-neutral-600 dark:text-neutral-300">
       Hear from our seniors who have found their voice through GOALS.
     </p>
   </div>
-  <div class="relative w-full">
-    <button
-      id="carousel-left"
-      class="absolute top-[calc(40%-3rem)] left-0 flex h-24 w-8 cursor-pointer items-center justify-center rounded-md bg-neutral-400 shadow-xl hover:bg-neutral-600 active:bg-neutral-800 dark:bg-neutral-500"
-    >
-      <Icon name="lucide:chevron-left" class="size-6 text-neutral-50" />
-    </button>
-    <button
-      id="carousel-right"
-      class="absolute top-[calc(40%-3rem)] right-0 flex h-24 w-8 cursor-pointer items-center justify-center rounded-md bg-neutral-400 shadow-xl hover:bg-neutral-600 active:bg-neutral-800 dark:bg-neutral-500"
-    >
-      <Icon name="lucide:chevron-right" class="size-6 text-neutral-50" />
-    </button>
-    <ul
-      id="carousel"
-      class="flex w-full cursor-grab snap-x snap-mandatory items-stretch gap-8 overflow-x-auto scroll-smooth active:cursor-grabbing"
-    >
+
+  <!-- Carousel -->
+  <div class="w-full max-w-4xl">
+    <div class="relative">
+      <!-- Track container -->
+      <div id="alumni-carousel" class="overflow-hidden" tabindex="0">
+        <ul id="alumni-track" class="flex">
+          {
+            content.map(({ data: { image, name, batch, message } }, index) => (
+              <li
+                id={`alumni-slide-${index}`}
+                class="w-full shrink-0 px-2 sm:px-8"
+                data-slide
+              >
+                <article class="flex h-full flex-col items-center gap-12 rounded-2xl bg-neutral-100 p-8 shadow-sm md:flex-row dark:bg-neutral-800">
+                  <Image
+                    src={image}
+                    alt={name}
+                    class="size-36 shrink-0 rounded-full border-4 border-neutral-200 object-cover md:size-42 dark:border-neutral-500"
+                  />
+                  <div class="text-center md:text-left">
+                    <p class="font-serif text-xl font-light italic">
+                      &ldquo;{message}&rdquo;
+                    </p>
+                    <div class="mt-6 border-t border-neutral-300 pt-4 dark:border-neutral-600">
+                      <p class="text-lg font-medium text-neutral-900 dark:text-neutral-100">
+                        {name}
+                      </p>
+                      <p class="text-secondary-700 dark:text-secondary-400 text-sm">
+                        {batch}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Arrow buttons -->
+      <button
+        id="alumni-prev"
+        aria-label="Previous alumni message"
+        class="absolute top-1/2 left-0 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-50 p-2 shadow-sm ring-1 ring-neutral-200 hover:bg-neutral-100 dark:bg-neutral-900 dark:ring-neutral-700 dark:hover:bg-neutral-800"
+      >
+        <Icon name="lucide:chevron-left" class="size-5" />
+      </button>
+      <button
+        id="alumni-next"
+        aria-label="Next alumni message"
+        class="absolute top-1/2 right-0 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-50 p-2 shadow-sm ring-1 ring-neutral-200 hover:bg-neutral-100 dark:bg-neutral-900 dark:ring-neutral-700 dark:hover:bg-neutral-800"
+      >
+        <Icon name="lucide:chevron-right" class="size-5" />
+      </button>
+    </div>
+
+    <!-- Anchors -->
+    <div class="mt-6 flex justify-center gap-2">
       {
-        content.map(({ data: { name, message, batch, image } }) => (
-          <li class="flex w-[20rem] flex-none snap-start flex-col items-center gap-8">
-            <Picture
-              src={image}
-              class="box-content size-42 rounded-full border-4 border-neutral-200 object-cover dark:border-neutral-400"
-              alt={name}
-            />
-            <div class="flex flex-1 flex-col items-center justify-between gap-4 rounded-xl bg-neutral-50 p-8 dark:bg-neutral-700">
-              <p class="w-11/12 font-serif text-xl font-light italic">
-                &ldquo;{message}&rdquo;
-              </p>
-              <div class="w-11/12 border-t border-t-neutral-400 pt-4 text-center dark:border-t-neutral-500">
-                <p class="my-1">{name}</p>
-                <p class="text-secondary-600 dark:text-secondary-400 text-sm">
-                  {batch}
-                </p>
-              </div>
-            </div>
-          </li>
+        content.map((_, index) => (
+          <button
+            data-alumni-dot
+            data-index={index}
+            aria-label={`Go to alumni message ${index + 1}`}
+            aria-controls={`alumni-slide-${index}`}
+            class="data-active:bg-secondary-700 data-active:dark:bg-secondary-400 size-2.5 cursor-pointer rounded-full bg-neutral-300 hover:bg-neutral-500 dark:bg-neutral-700"
+          />
         ))
       }
-    </ul>
+    </div>
   </div>
-</ImageBg>
+</section>
 
 <script>
-  const ul = document.getElementById("carousel")!;
-  const leftButton = document.getElementById("carousel-left")!;
-  const rightButton = document.getElementById("carousel-right")!;
+  const carousel = document.getElementById("alumni-carousel")!;
+  const track = document.getElementById("alumni-track")!;
+  const prevBtn = document.getElementById("alumni-prev")!;
+  const nextBtn = document.getElementById("alumni-next")!;
 
-  let isDown = false;
-  let startX: number;
-  let scrollLeft: number;
+  const dots = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("[data-alumni-dot]"),
+  );
 
-  ul.addEventListener("mousedown", (e) => {
-    isDown = true;
-    startX = e.pageX - ul.offsetLeft;
-    scrollLeft = ul.scrollLeft;
+  let currentIndex = 0;
+
+  function updateCarousel(index: number) {
+    dots[currentIndex].removeAttribute("data-active");
+    dots[currentIndex].setAttribute("aria-current", "false");
+
+    currentIndex = (index + track.children.length) % track.children.length;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    dots[currentIndex].setAttribute("data-active", "");
+    dots[currentIndex].setAttribute("aria-current", "true");
+  }
+
+  prevBtn.addEventListener("click", () => updateCarousel(currentIndex - 1));
+  nextBtn.addEventListener("click", () => updateCarousel(currentIndex + 1));
+
+  for (const dot of dots) {
+    dot.addEventListener("click", () => {
+      updateCarousel(Number(dot.getAttribute("data-index")));
+    });
+  }
+
+  carousel.addEventListener("keydown", (ev) => {
+    if (ev.key === "ArrowLeft") {
+      updateCarousel(currentIndex - 1);
+    } else if (ev.key === "ArrowRight") {
+      updateCarousel(currentIndex + 1);
+    }
   });
 
-  ul.addEventListener("mouseleave", () => (isDown = false));
-  ul.addEventListener("mouseup", () => (isDown = false));
-
-  ul.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - ul.offsetLeft;
-    const walk = (x - startX) * 2;
-    ul.scrollLeft = scrollLeft - walk;
-  });
-
-  leftButton.addEventListener("click", () => {
-    ul.scrollBy({ left: -ul.clientWidth, behavior: "smooth" });
-  });
-
-  rightButton.addEventListener("click", () => {
-    ul.scrollBy({ left: ul.clientWidth, behavior: "smooth" });
-  });
+  updateCarousel(0);
 </script>
