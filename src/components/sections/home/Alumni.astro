@@ -8,7 +8,10 @@ const content = await getCollection("alumni");
 
 <section class="-mb-16 flex flex-col items-center gap-8 p-8 md:p-16">
   <div class="contents text-center">
-    <h2 class="text-4xl font-medium dark:text-neutral-50">
+    <h2
+      id="voices-from-our-alumni"
+      class="text-4xl font-medium dark:text-neutral-50"
+    >
       Voices from our Alumni
     </h2>
     <p class="mb-4 max-w-prose text-lg text-neutral-600 dark:text-neutral-300">
@@ -17,7 +20,7 @@ const content = await getCollection("alumni");
   </div>
 
   <!-- Carousel -->
-  <Carousel>
+  <Carousel class="w-full max-w-4xl" aria-labelledby="voices-from-our-alumni">
     {
       content.map(({ data: { image, name, batch, message } }) => (
         <article class="flex h-full flex-col items-center gap-12 rounded-2xl bg-neutral-100 p-8 shadow-sm md:flex-row dark:bg-neutral-800">

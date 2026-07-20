@@ -1,18 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
 import { parse } from "node-html-parser";
 
 const id = crypto.randomUUID();
 const html = await Astro.slots.render("default");
 const children = parse(html).children;
+
+type Props = HTMLAttributes<"div">;
+const props = Astro.props;
 ---
 
-<div
-  data-carousel-root
-  class="w-full max-w-4xl"
-  role="group"
-  aria-roledescription="carousel"
->
+<div data-carousel-root role="group" aria-roledescription="carousel" {...props}>
   <div class="relative">
     <!-- Track container -->
     <div data-carousel-container tabindex="0" class="overflow-hidden">
