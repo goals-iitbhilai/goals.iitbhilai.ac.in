@@ -63,29 +63,40 @@ const items = parse(html).children;
     isSwiping = false;
     startX = 0;
 
-    dots: HTMLButtonElement[];
+    dots: HTMLButtonElement[] = [];
     track: HTMLDivElement;
 
     constructor(root: Element) {
-      root
-        .querySelector("button[data-carousel-prev]")!
-        .addEventListener("click", () => this.update(this.currentIndex - 1));
+      this.track = root.querySelector("[data-carousel-track]")!;
 
-      root
-        .querySelector("button[data-carousel-next]")!
-        .addEventListener("click", () => this.update(this.currentIndex + 1));
+      this.registerButtons(root);
+      this.registerDots(root);
+      this.registerKeybinds(root);
 
-      this.dots = Array.from(
-        root.querySelectorAll("[data-carousel-dot-index]"),
-      );
+      this.update(0);
+    }
+
+    registerButtons(root: Element) {
+      const prev = root.querySelector("button[data-carousel-prev]")!;
+      const next = root.querySelector("button[data-carousel-next]")!;
+
+      prev.addEventListener("click", () => this.update(this.currentIndex - 1));
+      next.addEventListener("click", () => this.update(this.currentIndex + 1));
+    }
+
+    registerDots(root: Element) {
+      const dots = root.querySelectorAll("[data-carousel-dot-index]");
+      this.dots = Array.from(dots) as HTMLButtonElement[];
 
       for (const dot of this.dots) {
         dot.addEventListener("click", () => {
-          this.update(Number(dot.getAttribute("[data-carousel-dot-index]")));
+          const index = Number(dot.getAttribute("[data-carousel-dot-index]"));
+          this.update(index);
         });
       }
+    }
 
-      this.track = root.querySelector("[data-carousel-track]")!;
+    registerKeybinds(root: Element) {
       const container = root.querySelector<HTMLDivElement>(
         "[data-carousel-container]",
       )!;
@@ -123,8 +134,6 @@ const items = parse(html).children;
           this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
         }
       });
-
-      this.update(0);
     }
 
     update(index: number) {
