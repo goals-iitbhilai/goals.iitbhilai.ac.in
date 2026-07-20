@@ -17,7 +17,7 @@ const props = Astro.props;
     <ul
       data-carousel-track
       tabindex="0"
-      class="flex snap-x snap-mandatory overflow-x-auto"
+      class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
     >
       {
         children.map((item, index) => (
@@ -84,18 +84,16 @@ const props = Astro.props;
   });
 
   class Carousel {
-    dots: HTMLButtonElement[];
     track: HTMLUListElement;
     prev: HTMLButtonElement;
     next: HTMLButtonElement;
+    dots: HTMLDivElement;
 
     constructor(root: Element) {
       this.track = root.querySelector("[data-carousel-track]")!;
       this.prev = root.querySelector("button[data-carousel-prev]")!;
       this.next = root.querySelector("button[data-carousel-next]")!;
-
-      const parent = root.querySelector("[data-carousel-dots]");
-      this.dots = Array.from(parent!.children) as HTMLButtonElement[];
+      this.dots = root.querySelector("[data-carousel-dots]")!;
 
       this.registerObserver();
       this.registerEvents();
@@ -107,7 +105,7 @@ const props = Astro.props;
           for (const entry of entries) {
             const index = Number(entry.target.id.split("-")[2]);
 
-            this.dots[index].setAttribute(
+            this.dots.children[index].setAttribute(
               "aria-current",
               entry.isIntersecting.toString(),
             );
@@ -127,45 +125,33 @@ const props = Astro.props;
     }
 
     registerEvents() {
-      this.prev.addEventListener("click", () => this.scrollLeft());
-      this.next.addEventListener("click", () => this.scrollRight());
+      this.prev.addEventListener("click", () => {
+        this.track.scrollBy({ left: -this.track.clientWidth });
+      });
+
+      this.next.addEventListener("click", () => {
+        this.track.scrollBy({ left: this.track.clientWidth });
+      });
 
       this.track.addEventListener("keydown", (ev) => {
         if (ev.key === "ArrowLeft") {
           ev.preventDefault();
-          this.scrollLeft();
+          this.track.scrollBy({ left: -this.track.clientWidth });
         } else if (ev.key === "ArrowRight") {
           ev.preventDefault();
-          this.scrollRight();
+          this.track.scrollBy({ left: this.track.clientWidth });
         }
       });
 
-      for (const [index, dot] of this.dots.entries()) {
-        dot.addEventListener("click", () => this.scrollIndex(index));
+      for (let index = 0; index < this.dots.children.length; index++) {
+        this.dots.children[index].addEventListener("click", () => {
+          this.track.scrollTo({
+            left: Math.floor(
+              this.track.scrollWidth * (index / this.track.children.length),
+            ),
+          });
+        });
       }
-    }
-
-    scrollLeft() {
-      this.track.scrollBy({
-        left: -this.track.clientWidth,
-        behavior: "smooth",
-      });
-    }
-
-    scrollRight() {
-      this.track.scrollBy({
-        left: this.track.clientWidth,
-        behavior: "smooth",
-      });
-    }
-
-    scrollIndex(index: number) {
-      this.track.scrollTo({
-        left: Math.floor(
-          (this.track.scrollWidth * index) / this.track.children.length,
-        ),
-        behavior: "smooth",
-      });
     }
   }
 </script>
