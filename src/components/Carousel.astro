@@ -69,40 +69,44 @@ const props = Astro.props;
     isSwiping = false;
     startX = 0;
 
-    dots: HTMLButtonElement[] = [];
+    dots: HTMLButtonElement[];
     track: HTMLDivElement;
+    prev: HTMLButtonElement;
+    next: HTMLButtonElement;
 
     constructor(root: Element) {
       this.track = root.querySelector("[data-carousel-track]")!;
+      this.prev = root.querySelector("button[data-carousel-prev]")!;
+      this.next = root.querySelector("button[data-carousel-next]")!;
 
-      this.registerButtons(root);
-      this.registerDots(root);
-      this.registerKeybinds(root);
+      this.prev.addEventListener("click", () => {
+        this.update(this.currentIndex - 1);
+      });
 
+      this.next.addEventListener("click", () => {
+        this.update(this.currentIndex + 1);
+      });
+
+      this.dots = this.registerDots(root);
+      this.registerEvents(root);
       this.update(0);
     }
 
-    registerButtons(root: Element) {
-      const prev = root.querySelector("button[data-carousel-prev]")!;
-      const next = root.querySelector("button[data-carousel-next]")!;
+    registerDots(root: Element): HTMLButtonElement[] {
+      const elements = root.querySelectorAll("[data-carousel-dot-index]");
+      const dots = Array.from(elements) as HTMLButtonElement[];
 
-      prev.addEventListener("click", () => this.update(this.currentIndex - 1));
-      next.addEventListener("click", () => this.update(this.currentIndex + 1));
-    }
-
-    registerDots(root: Element) {
-      const dots = root.querySelectorAll("[data-carousel-dot-index]");
-      this.dots = Array.from(dots) as HTMLButtonElement[];
-
-      for (const dot of this.dots) {
+      for (const dot of dots) {
         dot.addEventListener("click", () => {
           const index = Number(dot.getAttribute("[data-carousel-dot-index]"));
           this.update(index);
         });
       }
+
+      return dots;
     }
 
-    registerKeybinds(root: Element) {
+    registerEvents(root: Element) {
       const container = root.querySelector<HTMLDivElement>(
         "[data-carousel-container]",
       )!;
