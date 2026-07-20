@@ -4,19 +4,26 @@ import { parse } from "node-html-parser";
 
 const id = crypto.randomUUID();
 const html = await Astro.slots.render("default");
-const items = parse(html).children;
+const children = parse(html).children;
 ---
 
-<div data-carousel-root class="w-full max-w-4xl">
+<div
+  data-carousel-root
+  class="w-full max-w-4xl"
+  role="group"
+  aria-roledescription="carousel"
+>
   <div class="relative">
     <!-- Track container -->
     <div data-carousel-container tabindex="0" class="overflow-hidden">
       <ul data-carousel-track class="flex">
         {
-          items.map((item, index) => (
+          children.map((item, index) => (
             <li
               id={`carousel-slide-${index}-${id}`}
               class="w-full shrink-0 px-2 sm:px-8"
+              role="group"
+              aria-roledescription="slide"
             >
               <Fragment set:html={item.toString()} />
             </li>
@@ -45,7 +52,7 @@ const items = parse(html).children;
   <!-- Anchors -->
   <div class="mt-6 flex justify-center gap-2">
     {
-      Array.from({ length: items.length }).map((_, index) => (
+      Array.from({ length: children.length }).map((_, index) => (
         <button
           data-carousel-dot-index={index}
           aria-label={`Go to slide ${index + 1}`}
