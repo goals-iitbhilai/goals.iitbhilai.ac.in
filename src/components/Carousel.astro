@@ -162,7 +162,9 @@ const props = Astro.props;
     }
   }
 
-  for (const root of document.querySelectorAll("div[data-carousel-root]")) {
-    new Carousel(root);
-  }
+  document.addEventListener("astro:page-load", () => {
+    for (const root of document.querySelectorAll("div[data-carousel-root]")) {
+      new Carousel(root);
+    }
+  });
 </script>

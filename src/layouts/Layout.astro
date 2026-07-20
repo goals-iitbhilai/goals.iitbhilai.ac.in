@@ -1,6 +1,7 @@
 ---
 import Header from "@components/partials/Header.astro";
 import Footer from "@components/partials/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 import { getEntry } from "astro:content";
 import path from "node:path";
@@ -23,21 +24,27 @@ const { title, description } = entry!.data;
     <meta name="viewport" content="width=device-width" />
 
     <script is:inline>
-      const theme = (() => {
-        const savedPreference = localStorage?.getItem("theme") ?? "";
-        if (["dark", "light"].includes(savedPreference)) return savedPreference;
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      })();
+      function applyTheme() {
+        const theme = (() => {
+          const savedPreference = localStorage?.getItem("theme") ?? "";
+          if (["dark", "light"].includes(savedPreference))
+            return savedPreference;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        })();
 
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
+        if (theme === "light") {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+
+        window.localStorage.setItem("theme", theme);
       }
 
-      window.localStorage.setItem("theme", theme);
+      document.addEventListener("astro:after-swap", applyTheme);
+      applyTheme();
     </script>
 
     <!-- Favicons -->
@@ -60,6 +67,9 @@ const { title, description } = entry!.data;
 
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
+    <!-- View transition -->
+    <ClientRouter />
   </head>
   <body
     class="bg-neutral-50 text-neutral-700 dark:bg-neutral-950 dark:text-neutral-300"

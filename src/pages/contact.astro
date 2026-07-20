@@ -205,26 +205,28 @@ const subjects = {
 </style>
 
 <script>
-  const endpointURL = "https://backend-five-delta-42.vercel.app/api/contact";
-  const form = document.getElementById("contact-form") as HTMLFormElement;
+  document.addEventListener("astro:page-load", () => {
+    const endpointURL = "https://backend-five-delta-42.vercel.app/api/contact";
+    const form = document.getElementById("contact-form") as HTMLFormElement;
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
 
-    const response = await fetch(endpointURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      const response = await fetch(endpointURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert("Message sent successfully!");
+        form.reset();
+      } else {
+        alert("Failed to send message. Please try again later.");
+      }
     });
-
-    if (response.ok) {
-      alert("Message sent successfully!");
-      form.reset();
-    } else {
-      alert("Failed to send message. Please try again later.");
-    }
   });
 </script>

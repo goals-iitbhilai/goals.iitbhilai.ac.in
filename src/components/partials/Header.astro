@@ -90,14 +90,6 @@ const links = await getCollection("links");
   const headerBtn = document.getElementById("header-btn")!;
   const html = document.documentElement;
 
-  document.getElementById("theme-switch")!.addEventListener("click", () => {
-    html.classList.toggle("dark");
-    localStorage.setItem(
-      "theme",
-      html.classList.contains("dark") ? "dark" : "light",
-    );
-  });
-
   function closeHeader() {
     header.removeAttribute("data-open");
     window.removeEventListener("click", headerOnClick);
@@ -108,13 +100,23 @@ const links = await getCollection("links");
     if (!header.contains(ev.target as Node)) closeHeader();
   }
 
-  headerBtn.addEventListener("click", () => {
-    if (header.hasAttribute("data-open")) {
-      closeHeader();
-    } else {
-      header.setAttribute("data-open", "");
-      window.addEventListener("click", headerOnClick);
-      window.addEventListener("scroll", closeHeader);
-    }
+  document.addEventListener("astro:page-load", () => {
+    headerBtn.addEventListener("click", () => {
+      if (header.hasAttribute("data-open")) {
+        closeHeader();
+      } else {
+        header.setAttribute("data-open", "");
+        window.addEventListener("click", headerOnClick);
+        window.addEventListener("scroll", closeHeader);
+      }
+    });
+
+    document.getElementById("theme-switch")!.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      localStorage.setItem(
+        "theme",
+        html.classList.contains("dark") ? "dark" : "light",
+      );
+    });
   });
 </script>
