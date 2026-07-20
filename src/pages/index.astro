@@ -94,9 +94,16 @@ const perks = [
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-8">
         <Button kind="translucent" href="/members">Meet our Team</Button>
-        <Button kind="translucent" href="/about">
+        <Button kind="translucent" href="/about" class="group">
           Learn More
-          <Icon name="lucide:chevron-right" />
+          <div class="relative">
+            <Icon name="lucide:chevron-right" class="absolute" />
+            <Icon
+              name="lucide:chevron-right"
+              class="group-hover:translate-x-1.5"
+              style="transition: all 0.15s ease"
+            />
+          </div>
         </Button>
       </div>
     </div>
