@@ -37,18 +37,21 @@ const links = await getCollection("links");
         >
           <rect
             class="origin-center -translate-y-1.25 group-data-open:translate-x-0 group-data-open:translate-y-0 group-data-open:rotate-45"
+            style="transition: all 0.15s ease"
             y="7"
             width="16"
             height="2"
             rx="1"></rect>
           <rect
             class="origin-center group-data-open:rotate-45"
+            style="transition: all 0.15s ease"
             y="7"
             width="16"
             height="2"
             rx="1"></rect>
           <rect
             class="origin-center translate-y-1.25 group-data-open:translate-y-0 group-data-open:-rotate-45"
+            style="transition: all 0.15s ease"
             y="7"
             width="16"
             height="2"
@@ -58,7 +61,7 @@ const links = await getCollection("links");
     </div>
     <div
       class="grid grid-rows-[0fr] group-data-open:grid-rows-[1fr] md:flex md:items-center md:pr-6"
-      style="transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1)"
+      style="transition: grid-template-rows 0.3s cubic-bezier(0.215, 0.610, 0.355, 1)"
     >
       <div
         class="flex min-h-0 flex-col items-center gap-12 overflow-hidden md:flex-row md:gap-4"

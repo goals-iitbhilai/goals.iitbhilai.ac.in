@@ -84,9 +84,10 @@ const { title, description } = entry!.data;
 </html>
 
 <style is:global>
-  *,
-  *::before,
-  *::after {
-    transition: all 0.15s ease-in-out;
+  body * {
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      background-color 0.15s ease;
   }
 </style>

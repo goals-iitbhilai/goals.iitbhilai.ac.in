@@ -15,7 +15,11 @@ const props = Astro.props;
   <div class="relative">
     <!-- Track container -->
     <div data-carousel-container tabindex="0" class="overflow-hidden">
-      <ul data-carousel-track class="flex">
+      <ul
+        data-carousel-track
+        class="flex"
+        style="transition: transform 0.15s ease;"
+      >
         {
           children.map((item, index) => (
             <li
