@@ -89,21 +89,21 @@ const links = await getCollection("links");
 </header>
 
 <script>
-  const header = document.getElementById("header")!;
-  const headerBtn = document.getElementById("header-btn")!;
-  const html = document.documentElement;
-
-  function closeHeader() {
-    header.removeAttribute("data-open");
-    window.removeEventListener("click", headerOnClick);
-    window.removeEventListener("scroll", closeHeader);
-  }
-
-  function headerOnClick(ev: MouseEvent) {
-    if (!header.contains(ev.target as Node)) closeHeader();
-  }
-
   document.addEventListener("astro:page-load", () => {
+    const header = document.getElementById("header")!;
+    const headerBtn = document.getElementById("header-btn")!;
+    const html = document.documentElement;
+
+    function closeHeader() {
+      header.removeAttribute("data-open");
+      window.removeEventListener("click", headerOnClick);
+      window.removeEventListener("scroll", closeHeader);
+    }
+
+    function headerOnClick(ev: MouseEvent) {
+      if (!header.contains(ev.target as Node)) closeHeader();
+    }
+
     headerBtn.addEventListener("click", () => {
       if (header.hasAttribute("data-open")) {
         closeHeader();
