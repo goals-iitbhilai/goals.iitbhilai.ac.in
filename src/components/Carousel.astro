@@ -35,14 +35,14 @@ const props = Astro.props;
     <button
       data-carousel-prev
       aria-label="Previous slide"
-      class="absolute top-1/2 left-0 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-50 p-2 shadow-sm ring-1 ring-neutral-200 hover:bg-neutral-100 dark:bg-neutral-900 dark:ring-neutral-700 dark:hover:bg-neutral-800"
+      class="absolute top-1/2 left-0 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-50 p-2 shadow-sm ring-1 ring-neutral-200 hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-900 dark:ring-neutral-700 dark:hover:bg-neutral-800"
     >
       <Icon name="lucide:chevron-left" class="size-5" />
     </button>
     <button
       data-carousel-next
       aria-label="Next slide"
-      class="absolute top-1/2 right-0 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-50 p-2 shadow-sm ring-1 ring-neutral-200 hover:bg-neutral-100 dark:bg-neutral-900 dark:ring-neutral-700 dark:hover:bg-neutral-800"
+      class="absolute top-1/2 right-0 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-50 p-2 shadow-sm ring-1 ring-neutral-200 hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-900 dark:ring-neutral-700 dark:hover:bg-neutral-800"
     >
       <Icon name="lucide:chevron-right" class="size-5" />
     </button>
@@ -157,6 +157,9 @@ const props = Astro.props;
 
       this.dots[this.currentIndex].setAttribute("data-active", "");
       this.dots[this.currentIndex].setAttribute("aria-current", "true");
+
+      this.prev.disabled = index == 0;
+      this.next.disabled = index == this.track.children.length - 1;
     }
   }
 
