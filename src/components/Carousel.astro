@@ -2,8 +2,9 @@
 import { Icon } from "astro-icon/components";
 import { parse } from "node-html-parser";
 
-const htmlContents = await Astro.slots.render("default");
-const length = parse(htmlContents).childElementCount;
+const id = crypto.randomUUID();
+const html = await Astro.slots.render("default");
+const items = parse(html).children;
 ---
 
 <div data-carousel-root class="w-full max-w-4xl">
@@ -11,6 +12,16 @@ const length = parse(htmlContents).childElementCount;
     <!-- Track container -->
     <div data-carousel-container tabindex="0" class="overflow-hidden">
       <ul data-carousel-track class="flex">
+        {
+          items.map((item, index) => (
+            <li
+              id={`carousel-slide-${index}-${id}`}
+              class="w-full shrink-0 px-2 sm:px-8"
+            >
+              <Fragment set:html={item.toString()} />
+            </li>
+          ))
+        }
         <slot />
       </ul>
     </div>
@@ -35,11 +46,11 @@ const length = parse(htmlContents).childElementCount;
   <!-- Anchors -->
   <div class="mt-6 flex justify-center gap-2">
     {
-      Array.from({ length }).map((_, index) => (
+      Array.from({ length: items.length }).map((_, index) => (
         <button
           data-carousel-dot-index={index}
           aria-label={`Go to slide ${index + 1}`}
-          aria-controls={`slide-${index}`}
+          aria-controls={`carousel-slide-${index}-${id}`}
           class="data-active:bg-secondary-700 data-active:dark:bg-secondary-400 size-2.5 cursor-pointer rounded-full bg-neutral-300 hover:bg-neutral-500 dark:bg-neutral-700"
         />
       ))

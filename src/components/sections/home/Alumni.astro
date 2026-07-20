@@ -19,33 +19,27 @@ const content = await getCollection("alumni");
   <!-- Carousel -->
   <Carousel>
     {
-      content.map(({ data: { image, name, batch, message } }, index) => (
-        <li
-          id={`alumni-slide-${index}`}
-          class="w-full shrink-0 px-2 sm:px-8"
-          data-slide
-        >
-          <article class="flex h-full flex-col items-center gap-12 rounded-2xl bg-neutral-100 p-8 shadow-sm md:flex-row dark:bg-neutral-800">
-            <Image
-              src={image}
-              alt={name}
-              class="size-36 shrink-0 rounded-full border-4 border-neutral-200 object-cover md:size-42 dark:border-neutral-500"
-            />
-            <div class="text-center md:text-left">
-              <p class="font-serif text-xl font-light italic">
-                &ldquo;{message}&rdquo;
+      content.map(({ data: { image, name, batch, message } }) => (
+        <article class="flex h-full flex-col items-center gap-12 rounded-2xl bg-neutral-100 p-8 shadow-sm md:flex-row dark:bg-neutral-800">
+          <Image
+            src={image}
+            alt={name}
+            class="size-36 shrink-0 rounded-full border-4 border-neutral-200 object-cover md:size-42 dark:border-neutral-500"
+          />
+          <div class="text-center md:text-left">
+            <p class="font-serif text-xl font-light italic">
+              &ldquo;{message}&rdquo;
+            </p>
+            <div class="mt-6 border-t border-neutral-300 pt-4 dark:border-neutral-600">
+              <p class="text-lg font-medium text-neutral-900 dark:text-neutral-100">
+                {name}
               </p>
-              <div class="mt-6 border-t border-neutral-300 pt-4 dark:border-neutral-600">
-                <p class="text-lg font-medium text-neutral-900 dark:text-neutral-100">
-                  {name}
-                </p>
-                <p class="text-secondary-700 dark:text-secondary-400 text-sm">
-                  {batch}
-                </p>
-              </div>
+              <p class="text-secondary-700 dark:text-secondary-400 text-sm">
+                {batch}
+              </p>
             </div>
-          </article>
-        </li>
+          </div>
+        </article>
       ))
     }
   </Carousel>
