@@ -30,14 +30,16 @@
     "eslint": "^10.3.0",
     "eslint-plugin-astro": "^1.7.0",
     "globby": "^16.2.1",
+    "node-html-parser": "^9.0.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
+    "sharp": "^0.35.3",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.3"
   },
   "allowScripts": {
     "esbuild@0.28.1": true,
-    "sharp@0.34.5": true
+    "sharp@0.35.3": true
   }
 }
