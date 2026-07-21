@@ -146,11 +146,11 @@ const perks = [
     </div>
   </section>
 
-  <div class="relative grid grid-cols-1 pt-18 lg:grid-cols-2 lg:gap-8">
+  <div class="relative grid grid-cols-1 pt-32 lg:grid-cols-2 lg:gap-8 lg:pt-16">
     <div class="absolute inset-0 -top-16 -z-1 overflow-hidden">
       <svg
         viewBox="0 0 900 450"
-        class="h-2/5 w-full min-w-5xl"
+        class="h-1/3 w-full min-w-5xl"
         preserveAspectRatio="none"
         fill="currentColor"
         ><path
@@ -214,7 +214,25 @@ const perks = [
   </div>
 
   <!-- Alumni -->
-  <section class="-mb-16 flex flex-col items-center gap-8 p-8 md:p-16">
+  <section
+    class="relative -mb-16 flex flex-col items-center gap-8 p-8 pt-36 md:p-16 md:pt-28"
+  >
+    <div
+      class="absolute inset-0 -top-16 -z-1 overflow-hidden bg-neutral-100 dark:bg-neutral-900"
+    >
+      <svg
+        viewBox="0 0 900 450"
+        class="h-1/3 w-full min-w-5xl"
+        preserveAspectRatio="none"
+        fill="currentColor"
+        ><path
+          d="M0 100L16.7 99.3C33.3 98.7 66.7 97.3 100 92.8C133.3 88.3 166.7 80.7 200 87.3C233.3 94 266.7 115 300 127.8C333.3 140.7 366.7 145.3 400 140.2C433.3 135 466.7 120 500 120C533.3 120 566.7 135 600 141C633.3 147 666.7 144 700 132C733.3 120 766.7 99 800 90C833.3 81 866.7 84 883.3 85.5L900 87L900 0L883.3 0C866.7 0 833.3 0 800 0C766.7 0 733.3 0 700 0C666.7 0 633.3 0 600 0C566.7 0 533.3 0 500 0C466.7 0 433.3 0 400 0C366.7 0 333.3 0 300 0C266.7 0 233.3 0 200 0C166.7 0 133.3 0 100 0C66.7 0 33.3 0 16.7 0L0 0Z"
+          class="text-neutral-50 dark:text-neutral-950"></path><path
+          d="M0 262L16.7 252.3C33.3 242.7 66.7 223.3 100 216.7C133.3 210 166.7 216 200 227.2C233.3 238.3 266.7 254.7 300 261.3C333.3 268 366.7 265 400 257.5C433.3 250 466.7 238 500 245.5C533.3 253 566.7 280 600 290.5C633.3 301 666.7 295 700 274.8C733.3 254.7 766.7 220.3 800 209.8C833.3 199.3 866.7 212.7 883.3 219.3L900 226L900 85L883.3 83.5C866.7 82 833.3 79 800 88C766.7 97 733.3 118 700 130C666.7 142 633.3 145 600 139C566.7 133 533.3 118 500 118C466.7 118 433.3 133 400 138.2C366.7 143.3 333.3 138.7 300 125.8C266.7 113 233.3 92 200 85.3C166.7 78.7 133.3 86.3 100 90.8C66.7 95.3 33.3 96.7 16.7 97.3L0 98Z"
+          class="text-neutral-50/50 dark:text-neutral-950/50"></path>
+      </svg>
+    </div>
+
     <div class="contents text-center">
       <h2
         id="voices-from-our-alumni"
@@ -232,7 +250,7 @@ const perks = [
     <Carousel class="w-full max-w-4xl" aria-labelledby="voices-from-our-alumni">
       {
         alumni.map(({ data: { image, name, batch, message } }) => (
-          <article class="flex h-full flex-col items-center gap-12 rounded-2xl bg-neutral-100 p-8 shadow-sm md:flex-row dark:bg-neutral-800">
+          <article class="flex h-full flex-col items-center gap-12 rounded-2xl bg-neutral-50 p-8 shadow-xs md:flex-row dark:bg-neutral-800">
             <Image
               src={image}
               alt={name}
