@@ -11,7 +11,12 @@ type Props = HTMLAttributes<"div">;
 const props = Astro.props;
 ---
 
-<div data-carousel-root role="group" aria-roledescription="carousel" {...props}>
+<div
+  data-carousel-root
+  role="region"
+  aria-roledescription="carousel"
+  {...props}
+>
   <div class="relative">
     <!-- Track container -->
     <ul
