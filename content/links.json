@@ -2,6 +2,7 @@
   { "id": 0, "name": "Home", "href": "/" },
   { "id": 1, "name": "About", "href": "/about" },
   { "id": 2, "name": "Members", "href": "/members" },
-  { "id": 3, "name": "Constitution", "href": "/constitution" },
-  { "id": 4, "name": "Contact", "href": "/contact" }
+  { "id": 3, "name": "Newsletters", "href": "/newsletters" },
+  { "id": 4, "name": "Constitution", "href": "/constitution" },
+  { "id": 5, "name": "Contact", "href": "/contact" }
 ]
