@@ -26,7 +26,7 @@ export default defineConfig({
       name: "Inter",
       cssVariable: "--font-inter",
       fallbacks: ["sans-serif"],
-      weights: ["100 900"],
+      weights: ["200 700"],
     },
     {
       provider: fontProviders.fontsource(),
@@ -34,7 +34,7 @@ export default defineConfig({
       cssVariable: "--font-crimson",
       fallbacks: ["serif"],
       styles: ["normal", "italic"],
-      weights: ["200 900"],
+      weights: ["300 700"],
     },
   ],
   markdown: {
