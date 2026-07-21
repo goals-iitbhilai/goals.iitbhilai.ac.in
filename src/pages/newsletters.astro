@@ -1,0 +1,54 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Card from "@components/Card.astro";
+import Button from "@components/Button.astro";
+import { Icon } from "astro-icon/components";
+import PageHero from "@components/PageHero.astro";
+import { getCollection } from "astro:content";
+import Link from "@components/Link.astro";
+
+const newsletters = await getCollection("newsletters");
+
+function humanizeId(id: string) {
+  const date = new Date(`${id}-01T00:00:00`);
+
+  return date.toLocaleString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+---
+
+<Layout>
+  <PageHero heading="The Inklinkg Gazette">
+    The Inkling Gazette is GOALS' newsletter series that showcases our members'
+    articles, poems, and much more.
+  </PageHero>
+
+  <section class="grid place-items-center">
+    <ul class="flex w-full max-w-4xl flex-col items-center gap-12 p-8">
+      {
+        newsletters.reverse().map(({ id, data: { drive, href } }) => (
+          <Card as="article" class="w-full">
+            <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+              <h2 class="text-center text-2xl text-black dark:text-white">
+                {humanizeId(id)}
+              </h2>
+              <div class="xs:flex-row xs:gap-8 flex flex-col items-center gap-4">
+                <Link {href} class="-mb-1 flex items-center gap-2 pb-1">
+                  Download
+                  <Icon name="lucide:download" />
+                </Link>
+                <Button href={drive}>
+                  Google Drive
+                  <Icon name="lucide:link" />
+                </Button>
+              </div>
+            </div>
+          </Card>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>

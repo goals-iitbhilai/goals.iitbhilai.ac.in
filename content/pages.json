@@ -15,6 +15,10 @@
     "title": "Constitution of GOALS",
     "description": "View the constitution of General Oratory and Literary Society."
   },
+  "/newsletters": {
+    "title": "The Inkling Gazette",
+    "description": "The Inkling Gazette is GOALS' newsletter series that showcases our members' articles, poems, and much more."
+  },
   "/contact": {
     "title": "Contact GOALS",
     "description": "How to connect with us through various mediums to discuss your queries, concerns, or feedback."
