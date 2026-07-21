@@ -72,6 +72,11 @@ const perks = [
 ---
 
 <Layout>
+  <!-- Head -->
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={background.src} fetchpriority="high" />
+  </Fragment>
+
   <!-- Hero -->
 
   <main class="relative grid place-items-center py-16">
