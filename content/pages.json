@@ -4,23 +4,23 @@
     "description": "The General Oratory and Literary Society (aka GOALS) of Indian Institute of Technology, Bhilai."
   },
   "/about": {
-    "title": "About GOALS",
-    "description": "Learn about the General Oratory and Literary Society: our mission, history, values and divisions."
+    "title": "About Us",
+    "description": "The General Oratory & Literary Society has been fostering intellectual discourse, literary appreciation, and eloquent expression in our academic community."
   },
   "/members": {
-    "title": "Members of GOALS",
-    "description": "Meet the current secretaries and core team of the General Oratory and Literary Society."
+    "title": "Members",
+    "description": "MMeet the passionate individuals who drive our literary community forward. From seasoned orators to emerging writers, each member brings unique perspectives and talents to our society."
   },
   "/constitution": {
-    "title": "Constitution of GOALS",
-    "description": "View the constitution of General Oratory and Literary Society."
+    "title": "Our Constitution",
+    "description": "The foundational document that governs our society, outlining our mission, structure, and principles that guide our literary and oratory endeavors."
   },
   "/newsletters": {
     "title": "The Inkling Gazette",
     "description": "The Inkling Gazette is GOALS' newsletter series that showcases our members' articles, poems, and much more."
   },
   "/contact": {
-    "title": "Contact GOALS",
-    "description": "How to connect with us through various mediums to discuss your queries, concerns, or feedback."
+    "title": "Contact Us",
+    "description": "Ready to join our literary community or have questions about GOALS? We'd love to hear from you. Reach out through any of the channels below."
   }
 }

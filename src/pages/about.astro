@@ -1,8 +1,7 @@
 ---
-import Layout from "@layouts/BaseLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import Card from "@components/Card.astro";
 import PrimaryIcon from "@components/PrimaryIcon.astro";
-import PageHero from "@components/PageHero.astro";
 
 const highlights = [
   {
@@ -101,13 +100,7 @@ const values = [
 ];
 ---
 
-<Layout>
-  <PageHero heading="About GOALS">
-    The General Oratory & Literary Society has been fostering intellectual
-    discourse, literary appreciation, and eloquent expression in our academic
-    community.
-  </PageHero>
-
+<PageLayout>
   <div class="flex flex-col items-center gap-16 p-8">
     <!-- Highlights -->
     <section class="grid grid-cols-1 gap-8 md:w-216 md:grid-cols-2">
@@ -177,7 +170,7 @@ const values = [
       </ul>
     </section>
   </div>
-</Layout>
+</PageLayout>
 
 <style>
   @reference "../global.css";

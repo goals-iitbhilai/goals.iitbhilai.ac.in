@@ -4,17 +4,10 @@ import Footer from "@components/partials/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 import { getEntry } from "astro:content";
-import path from "node:path";
 import "../global.css";
+import { normalize } from "@utils/path";
 
-function normalize(url: string) {
-  url = url.replace(import.meta.env.BASE_URL, "/");
-  url = path.normalize(url);
-  return path.resolve(url);
-}
-
-const normalizedPath = normalize(Astro.url.pathname);
-const entry = await getEntry("pages", normalizedPath);
+const entry = await getEntry("pages", normalize(Astro.url.pathname));
 const { title, description } = entry!.data;
 ---
 
@@ -63,7 +56,7 @@ const { title, description } = entry!.data;
     <meta name="description" content={description} />
     <link
       rel="canonical"
-      href={`https://goals.iitbhilai.ac.in${normalizedPath}`}
+      href={`https://goals.iitbhilai.ac.in${normalize(Astro.url.pathname)}`}
     />
 
     <meta property="og:title" content={title} />

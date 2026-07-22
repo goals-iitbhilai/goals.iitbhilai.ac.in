@@ -1,8 +1,7 @@
 ---
-import Layout from "@layouts/BaseLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import PrimaryIcon from "@components/PrimaryIcon.astro";
 import { Icon } from "astro-icon/components";
-import PageHero from "@components/PageHero.astro";
 import Card from "@components/Card.astro";
 import Button from "@components/Button.astro";
 
@@ -14,12 +13,7 @@ const fileInfo = [
 ];
 ---
 
-<Layout>
-  <PageHero heading="GOALS Constitution">
-    The foundational document that governs our society, outlining our mission,
-    structure, and principles that guide our literary and oratory endeavors.
-  </PageHero>
-
+<PageLayout>
   <div class="mx-auto flex max-w-[75ch] flex-col items-center gap-16 px-8">
     <!-- File link card -->
     <Card
@@ -76,7 +70,7 @@ const fileInfo = [
       <Button href="/contact">Contact Us</Button>
     </Card>
   </div>
-</Layout>
+</PageLayout>
 
 <style is:global>
   ol {

@@ -1,6 +1,5 @@
 ---
-import Layout from "@layouts/BaseLayout.astro";
-import PageHero from "@components/PageHero.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 
@@ -10,13 +9,7 @@ const secretaries = content.filter((entry) => entry.data.post == "Secretary");
 const members = content.filter((entry) => entry.data.post != "Secretary");
 ---
 
-<Layout>
-  <PageHero heading="Members">
-    Meet the passionate individuals who drive our literary community forward.
-    From seasoned orators to emerging writers, each member brings unique
-    perspectives and talents to our society.
-  </PageHero>
-
+<PageLayout>
   <div
     class="mx-auto flex flex-col items-center gap-16 text-center text-balance md:w-5/6"
   >
@@ -76,4 +69,4 @@ const members = content.filter((entry) => entry.data.post != "Secretary");
       </div>
     </section>
   </div>
-</Layout>
+</PageLayout>

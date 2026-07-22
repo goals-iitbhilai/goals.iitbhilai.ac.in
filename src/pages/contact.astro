@@ -1,8 +1,7 @@
 ---
-import Layout from "@layouts/BaseLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import Button from "@components/Button.astro";
 import Card from "@components/Card.astro";
-import PageHero from "@components/PageHero.astro";
 import PrimaryIcon from "@components/PrimaryIcon.astro";
 import { getCollection } from "astro:content";
 
@@ -56,12 +55,7 @@ const subjects = {
 };
 ---
 
-<Layout>
-  <PageHero heading="Contact Us">
-    Ready to join our literary community or have questions about GOALS? We'd
-    love to hear from you. Reach out through any of the channels below.
-  </PageHero>
-
+<PageLayout>
   <div
     class="mx-auto grid w-full grid-cols-1 gap-8 px-8 sm:w-150 md:w-full md:grid-cols-2 lg:grid-rows-7 xl:w-4/5"
   >
@@ -191,7 +185,7 @@ const subjects = {
       </Card>
     </div>
   </div>
-</Layout>
+</PageLayout>
 
 <style>
   @reference "../global.css";

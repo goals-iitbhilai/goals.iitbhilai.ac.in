@@ -1,9 +1,8 @@
 ---
-import Layout from "@layouts/BaseLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import Card from "@components/Card.astro";
 import Button from "@components/Button.astro";
 import { Icon } from "astro-icon/components";
-import PageHero from "@components/PageHero.astro";
 import { getCollection } from "astro:content";
 import Link from "@components/Link.astro";
 
@@ -20,12 +19,7 @@ function humanizeId(id: string) {
 }
 ---
 
-<Layout>
-  <PageHero heading="The Inklinkg Gazette">
-    The Inkling Gazette is GOALS' newsletter series that showcases our members'
-    articles, poems, and much more.
-  </PageHero>
-
+<PageLayout>
   <section class="grid place-items-center">
     <ul class="flex w-full max-w-4xl flex-col items-center gap-12 p-8">
       {
@@ -51,4 +45,4 @@ function humanizeId(id: string) {
       }
     </ul>
   </section>
-</Layout>
+</PageLayout>

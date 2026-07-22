@@ -1,0 +1,17 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import PageHero from "@components/PageHero.astro";
+import { getEntry } from "astro:content";
+import { normalize } from "@utils/path";
+
+const entry = await getEntry("pages", normalize(Astro.url.pathname));
+const { title, description } = entry!.data;
+---
+
+<BaseLayout>
+  <PageHero heading={title}>
+    {description}
+  </PageHero>
+
+  <slot />
+</BaseLayout>
