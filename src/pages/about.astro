@@ -106,7 +106,7 @@ const values = [
     <section class="grid grid-cols-1 gap-8 md:w-216 md:grid-cols-2">
       {
         highlights.map(({ title, icon, description }) => (
-          <Card outlined={true} class="p-8">
+          <Card kind="primary" class="p-8">
             <div class="mb-4 flex items-center gap-4">
               <PrimaryIcon name={icon} />
               <h3>{title}</h3>
@@ -123,7 +123,7 @@ const values = [
       <ul class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {
           activities.map(({ title, icon, description }) => (
-            <Card as="li" class="p-8 lg:w-72">
+            <Card as="li" kind="subtle" class="p-8 lg:w-72">
               <div class="mb-4 flex items-center gap-4">
                 <PrimaryIcon name={icon} />
                 <h3>{title}</h3>
