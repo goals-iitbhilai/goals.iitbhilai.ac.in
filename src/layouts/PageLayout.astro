@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import PageHero from "@components/PageHero.astro";
 import { getEntry } from "astro:content";
 import { normalize } from "@utils/path";
 
@@ -9,9 +8,16 @@ const { title, description } = entry!.data;
 ---
 
 <BaseLayout>
-  <PageHero heading={title}>
-    {description}
-  </PageHero>
+  <section class="px-8 py-16">
+    <div class="mx-auto flex flex-col items-center gap-8 text-balance md:w-216">
+      <h1 class="text-center text-6xl font-bold dark:text-white">
+        {title}
+      </h1>
+      <p class="max-w-prose text-center text-xl font-light">
+        {description}
+      </p>
+    </div>
+  </section>
 
   <slot />
 </BaseLayout>
