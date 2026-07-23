@@ -6,9 +6,12 @@ import { Font } from "astro:assets";
 import { getEntry } from "astro:content";
 import "../global.css";
 import { normalize } from "@utils/path";
+import type { HTMLAttributes } from "astro/types";
 
 const entry = await getEntry("pages", normalize(Astro.url.pathname));
 const { title, description } = entry!.data;
+
+type Props = HTMLAttributes<"main">;
 ---
 
 <!doctype html>
@@ -78,7 +81,7 @@ const { title, description } = entry!.data;
     class="bg-neutral-50 text-neutral-700 dark:bg-neutral-950 dark:text-neutral-300"
   >
     <Header />
-    <main>
+    <main {...Astro.props}>
       <div class="h-16.25"></div>
       <slot />
     </main>
