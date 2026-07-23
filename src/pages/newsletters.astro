@@ -30,13 +30,13 @@ function humanizeId(id: string) {
                 {humanizeId(id)}
               </h2>
               <div class="xs:flex-row xs:gap-8 flex flex-col items-center gap-4">
-                <Link {href} class="-mb-1 flex items-center gap-2 pb-1">
-                  Download
-                  <Icon name="lucide:download" />
-                </Link>
-                <Button href={drive}>
+                <Link href={drive} class="-mb-1 flex items-center gap-2 pb-1">
                   Google Drive
                   <Icon name="lucide:link" />
+                </Link>
+                <Button as="a" {href} target="_blank">
+                  Download
+                  <Icon name="lucide:download" />
                 </Button>
               </div>
             </div>
