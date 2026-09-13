@@ -6,12 +6,12 @@ import { Font } from "astro:assets";
 import { getEntry } from "astro:content";
 import "../global.css";
 import { normalize } from "@utils/path";
-import type { HTMLAttributes } from "astro/types";
 
-const entry = await getEntry("pages", normalize(Astro.url.pathname));
+const pathname = normalize(Astro.url.pathname);
+const canonical = `https://goals.iitbhilai.ac.in${pathname}`;
+
+const entry = await getEntry("pages", pathname);
 const { title, description } = entry!.data;
-
-type Props = HTMLAttributes<"main">;
 ---
 
 <!doctype html>
@@ -20,6 +20,7 @@ type Props = HTMLAttributes<"main">;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
 
+    <!-- Apply theme according to preference without flickering. -->
     <script is:inline>
       function applyTheme() {
         const theme = (() => {
@@ -52,36 +53,69 @@ type Props = HTMLAttributes<"main">;
     <Font cssVariable="--font-inter" />
     <Font cssVariable="--font-crimson" />
 
-    <!-- Metadata -->
-    <meta name="darkreader-lock" />
-
+    <!-- Basic metadata -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link
-      rel="canonical"
-      href={`https://goals.iitbhilai.ac.in${normalize(Astro.url.pathname)}`}
-    />
+    <link rel="canonical" href={canonical} />
 
+    <!-- Declare that the site has its own dark theme -->
+    <meta name="darkreader-lock" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GOALS - IIT Bhilai" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={Astro.url.pathname} />
+    <meta property="og:url" content={canonical} />
 
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
+    <!-- Browser theme color (to match header background) -->
+    <meta
+      name="theme-color"
+      content="#f0f0f8"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0d1117"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <!-- Sitemap -->
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- View transition -->
+    <!-- Structured data -->
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "General Oratory & Literary Society",
+        "alternateName": "GOALS",
+        "url": "https://goals.iitbhilai.ac.in",
+        "logo": "https://goals.iitbhilai.ac.in/favicon.svg",
+        "sameAs": [
+          "https://www.linkedin.com/company/general-oratory-and-literary-society-goals/",
+          "https://www.facebook.com/profile.php?id=61580617536916",
+          "https://www.instagram.com/goals_iitbhilai/"
+        ]
+      }
+    </script>
+
+    <!-- Astro transitions -->
     <ClientRouter />
 
-    <!-- Rest -->
+    <!-- Slot for page-specific stuff -->
     <slot name="head" />
   </head>
   <body
     class="bg-neutral-50 text-neutral-700 dark:bg-neutral-950 dark:text-neutral-300"
   >
     <Header />
-    <main {...Astro.props}>
+    <main>
       <div class="h-16.25"></div>
       <slot />
     </main>
