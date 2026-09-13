@@ -1,0 +1,26 @@
+---
+interface Props {
+  class?: string;
+  transform?: string;
+  pathClass?: string;
+}
+
+const {
+  class: className = "",
+  transform = "translate(450 0)",
+  pathClass = "text-secondary-500 dark:text-primary-500",
+} = Astro.props;
+---
+
+<svg
+  viewBox="0 0 900 600"
+  class:list={["absolute", className]}
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <g {transform}>
+    <path
+      d="M122 -142.9C169.6 -133.4 227.4 -113 238.9 -77.6C250.4 -42.2 215.6 8.2 193.1 58.2C170.6 108.2 160.5 157.6 130.4 192.5C100.3 227.4 50.2 247.7 10.4 233.4C-29.4 219.1 -58.8 170.2 -95.6 137.5C-132.3 104.8 -176.5 88.2 -206.5 53.5C-236.5 18.7 -252.3 -34.2 -239.8 -79.5C-227.2 -124.7 -186.2 -162.3 -141.5 -172.7C-96.8 -183.2 -48.4 -166.6 -5.6 -158.9C37.2 -151.2 74.5 -152.5 122 -142.9"
+      class:list={[pathClass]}></path>
+  </g>
+</svg>
