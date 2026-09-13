@@ -51,7 +51,9 @@ const socials = await getCollection("socials");
           socials.map(({ id, data: { icon, href } }) => (
             <a
               {href}
-              aria-label={id}
+              aria-label={`Visit GOALS on ${id}`}
+              target="_blank"
+              rel="noopener noreferrer"
               class="text-secondary-200 hover:text-secondary-50"
             >
               <Icon name={icon} class="size-8" />
