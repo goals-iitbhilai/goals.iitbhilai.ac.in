@@ -22,6 +22,7 @@ const props = Astro.props;
     <ul
       data-carousel-track
       tabindex="0"
+      aria-label="Use left and right arrow keys to navigate between slides"
       class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
     >
       {
@@ -44,7 +45,7 @@ const props = Astro.props;
       aria-label="Previous slide"
       class="absolute top-1/2 left-0 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-50 p-2 shadow-sm ring-1 ring-neutral-200 hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-900 dark:ring-neutral-700 dark:hover:bg-neutral-800"
     >
-      <Icon name="lucide:chevron-left" class="size-5" />
+      <Icon name="lucide:chevron-left" class="size-5" aria-hidden="true" />
     </button>
 
     <button
@@ -52,7 +53,7 @@ const props = Astro.props;
       aria-label="Next slide"
       class="absolute top-1/2 right-0 -translate-y-1/2 cursor-pointer rounded-full bg-neutral-50 p-2 shadow-sm ring-1 ring-neutral-200 hover:bg-neutral-100 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-900 dark:ring-neutral-700 dark:hover:bg-neutral-800"
     >
-      <Icon name="lucide:chevron-right" class="size-5" />
+      <Icon name="lucide:chevron-right" class="size-5" aria-hidden="true" />
     </button>
   </div>
 
