@@ -84,6 +84,9 @@ importers:
       typescript-eslint:
         specifier: ^8.70.0
         version: 8.70.0(eslint@10.10.0(jiti@2.7.0))(typescript@6.0.3)
+      zod:
+        specifier: ^4.6.2
+        version: 4.6.2
 
 packages:
 

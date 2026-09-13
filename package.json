@@ -39,7 +39,8 @@
     "sharp": "^0.35.4",
     "tailwind-merge": "^3.7.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.70.0"
+    "typescript-eslint": "^8.70.0",
+    "zod": "^4.6.2"
   },
   "allowScripts": {
     "sharp@0.35.3": true,
