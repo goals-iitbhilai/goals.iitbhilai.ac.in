@@ -22,7 +22,7 @@ const members = content.filter((entry) => entry.data.post != "Secretary");
               <Picture
                 src={image}
                 class="box-content size-56 rounded-full border-4 border-neutral-200 object-cover dark:border-neutral-400"
-                alt={name}
+                alt={`${name}, Secretary of GOALS`}
                 formats={["avif", "webp"]}
                 priority
               />
@@ -49,7 +49,7 @@ const members = content.filter((entry) => entry.data.post != "Secretary");
               <Picture
                 src={image}
                 class="box-content size-48 rounded-full border-4 border-neutral-200 object-cover object-top dark:border-neutral-400"
-                alt={name}
+                alt={`${name}, ${post}`}
                 formats={["avif", "webp"]}
               />
               <div class="mt-auto flex w-2/3 flex-col items-center gap-4 py-4 sm:w-full">
