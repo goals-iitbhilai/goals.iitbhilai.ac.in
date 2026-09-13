@@ -22,7 +22,7 @@ if ! command -v sshpass &> /dev/null; then
 fi
 
 # Build the site using Astro.
-npm run build
+pnpm run build
 
 # Use `sshpass` and `rsync` to sync the built assets.
 SSHPASS="$SSH_PASS" sshpass \
