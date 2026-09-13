@@ -7,6 +7,7 @@ import backgroundImg from "@assets/background.jpg";
 import { getImage, Image } from "astro:assets";
 import Carousel from "@components/Carousel.astro";
 import { getCollection } from "astro:content";
+import { cn } from "@utils/cn";
 
 const background = await getImage({ src: backgroundImg });
 const alumni = await getCollection("alumni");
@@ -132,7 +133,7 @@ const perks = [
           <div class="flex flex-col items-center gap-6 rounded-lg bg-neutral-50 p-8 shadow-sm/10 dark:bg-neutral-800">
             <span>
               <Icon
-                class:list={["size-10 rounded-full p-2", iconStyles]}
+                class={cn("size-10 rounded-full p-2", iconStyles)}
                 name={icon}
               />
             </span>

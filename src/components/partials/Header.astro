@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Link from "@components/Link.astro";
 import Button from "@components/Button.astro";
 import { normalize } from "@utils/path";
+import { cn } from "@utils/cn";
 
 const links = await getCollection("links");
 ---
@@ -76,7 +77,7 @@ const links = await getCollection("links");
                 <Link
                   href={href}
                   aria-current={isActive ? "page" : undefined}
-                  class:list={[isActive && "font-medium after:scale-x-100"]}
+                  class={cn(isActive && "font-medium after:scale-x-100")}
                 >
                   {name}
                 </Link>
