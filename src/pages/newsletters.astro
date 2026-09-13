@@ -30,11 +30,22 @@ function humanizeId(id: string) {
                 {humanizeId(id)}
               </h2>
               <div class="xs:flex-row xs:gap-8 flex flex-col items-center gap-4">
-                <Link href={drive} class="-mb-1 flex items-center gap-2 pb-1">
+                <Link
+                  href={drive}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="-mb-1 flex items-center gap-2 pb-1"
+                >
                   Google Drive
                   <Icon name="lucide:link" />
                 </Link>
-                <Button as="a" {href} target="_blank">
+                <Button
+                  as="a"
+                  {href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Download ${humanizeId(id)} newsletter (opens in new tab)`}
+                >
                   Download
                   <Icon name="lucide:download" />
                 </Button>
