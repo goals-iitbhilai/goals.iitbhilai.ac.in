@@ -167,7 +167,12 @@ const subjects = {
         <div class="flex gap-6">
           {
             socials.map(({ id, data: { href, icon, theme } }) => (
-              <a {href} aria-label={id}>
+              <a
+                {href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit GOALS on ${id}`}
+              >
                 <PrimaryIcon
                   name={icon}
                   kind="subtle"
