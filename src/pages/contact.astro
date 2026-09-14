@@ -133,6 +133,13 @@ const subjects = {
           placeholder="Your message"
           class="h-full"></textarea>
       </label>
+      <p
+        id="form-feedback"
+        role="status"
+        aria-live="polite"
+        class="hidden text-center text-sm"
+      >
+      </p>
       <Button type="submit">Send</Button>
     </Card>
 
@@ -204,28 +211,65 @@ const subjects = {
 </style>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const endpointURL = "https://backend-five-delta-42.vercel.app/api/contact";
-    const form = document.getElementById("contact-form") as HTMLFormElement;
+  import { api } from "@utils/api";
+  import { cn } from "@utils/cn";
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  document.addEventListener("astro:page-load", () => {
+    // Element selectors.
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const feedback = document.getElementById("form-feedback")!;
+    const submitBtn = form.querySelector(
+      "button[type='submit']",
+    ) as HTMLButtonElement;
+
+    /// Show a feedback message to the user.
+    function showFeedback(message: string, kind: "success" | "error") {
+      feedback.textContent = message;
+      feedback.className = cn(
+        "text-center text-sm",
+        {
+          success: "text-green-700 dark:text-green-400",
+          error: "text-red-700 dark:text-red-400",
+        }[kind],
+      );
+    }
+
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+
+      // Mark the submission as busy and hide feedback.
+      submitBtn.disabled = true;
+      submitBtn.setAttribute("aria-busy", "true");
+      feedback.className = "hidden";
 
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
-      const response = await fetch(endpointURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      try {
+        const response = await fetch(api("/contact"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
 
-      if (response.ok) {
-        alert("Message sent successfully!");
-        form.reset();
-      } else {
-        alert("Failed to send message. Please try again later.");
+        if (response.ok) {
+          showFeedback("Message sent successfully!", "success");
+          form.reset();
+        } else {
+          showFeedback(
+            "Failed to send message. Please try again later.",
+            "error",
+          );
+        }
+      } catch {
+        showFeedback(
+          "Network error. Please check your connection and try again.",
+          "error",
+        );
       }
+
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute("aria-busy");
     });
   });
 </script>
