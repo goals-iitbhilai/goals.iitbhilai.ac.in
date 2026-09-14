@@ -1,13 +1,31 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import Inventory from "@components/library/Inventory.svelte";
+import Card from "@components/Card.astro";
 ---
 
 <PageLayout
   title="Library"
-  description="Browse the GOALS library collection. Search by title or author, and filter by availability."
+  description="GOALS' growing collection of books spanning multiple genres. View our inventory and find your next favorite read."
 >
-  <div class="mx-auto w-full max-w-4xl px-6 pb-16">
+  <div class="mx-auto mb-12 flex w-fit flex-col items-center gap-16 px-8">
+    <Card
+      class="flex w-full flex-col items-center gap-6 px-16 py-8 text-center"
+    >
+      <h2 class="text-center text-2xl text-black dark:text-white">
+        How do I issue a book?
+      </h2>
+      <p class="max-w-prose">
+        You can contact our Literary Lead Ronak to request a book.
+      </p>
+    </Card>
+  </div>
+  <div class="mx-auto flex w-full max-w-4xl flex-col gap-8 px-6 pb-16">
+    <h2
+      class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
+    >
+      Inventory
+    </h2>
     <Inventory client:load />
   </div>
 </PageLayout>
