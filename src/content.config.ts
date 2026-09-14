@@ -41,14 +41,6 @@ const socials = defineCollection({
   }),
 });
 
-const pages = defineCollection({
-  loader: file("./content/pages.json"),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-  }),
-});
-
 const newsletters = defineCollection({
   loader: file("./content/newsletters.json"),
   schema: z.object({
@@ -57,4 +49,4 @@ const newsletters = defineCollection({
   }),
 });
 
-export const collections = { alumni, links, socials, team, pages, newsletters };
+export const collections = { alumni, links, socials, team, newsletters };

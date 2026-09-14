@@ -1,14 +1,16 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import Blob from "@components/Blob.astro";
-import { getEntry } from "astro:content";
-import { normalize } from "@utils/path";
 
-const entry = await getEntry("pages", normalize(Astro.url.pathname));
-const { title, description } = entry!.data;
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout title={title} description={description}>
   <div class="fixed -z-1 h-full w-full" aria-hidden="true">
     <Blob
       class="left-1/2 w-5xl -translate-x-1/4 opacity-50 blur-3xl dark:opacity-25"
