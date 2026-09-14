@@ -3,8 +3,7 @@ import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 import Link from "@components/Link.astro";
 import Button from "@components/Button.astro";
-import { normalize } from "@utils/path";
-import { cn } from "@utils/cn";
+import { normalize, cn } from "@utils";
 
 const links = await getCollection("links");
 ---

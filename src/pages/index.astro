@@ -7,7 +7,7 @@ import backgroundImg from "@assets/background.jpg";
 import { getImage, Image } from "astro:assets";
 import Carousel from "@components/Carousel.astro";
 import { getCollection } from "astro:content";
-import { cn } from "@utils/cn";
+import { cn } from "@utils";
 
 const background = await getImage({ src: backgroundImg });
 const alumni = await getCollection("alumni");
