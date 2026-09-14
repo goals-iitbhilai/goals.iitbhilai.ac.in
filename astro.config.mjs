@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import { satteri } from "@astrojs/markdown-satteri";
 import sitemap from "@astrojs/sitemap";
+import svelte from "@astrojs/svelte";
 
 const isPages = process.env.GITHUB_ACTIONS === "true";
 const isDev = process.env.NODE_ENV === "development";
@@ -13,8 +14,7 @@ export default defineConfig({
     ? "https://goals-iitbhilai.github.io"
     : "https://goals.iitbhilai.ac.in",
   base: isPages ? "/goals.iitbhilai.ac.in" : "/",
-  integrations: [icon(), sitemap(), isPages && rewritePaths()],
-
+  integrations: [icon(), sitemap(), svelte(), isPages && rewritePaths()],
   vite: {
     plugins: [tailwindcss()],
     server: {
