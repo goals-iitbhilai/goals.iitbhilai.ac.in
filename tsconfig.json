@@ -4,6 +4,7 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "paths": {
+      "@integrations/*": ["./src/integrations/*"],
       "@components/*": ["./src/components/*"],
       "@layouts/*": ["./src/layouts/*"],
       "@assets/*": ["./src/assets/*"],

@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import { satteri } from "@astrojs/markdown-satteri";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
+import { rewritePaths } from "@integrations/rewrite-paths";
 
 const isPages = process.env.GITHUB_ACTIONS === "true";
 const isDev = process.env.NODE_ENV === "development";
@@ -14,13 +15,16 @@ export default defineConfig({
     ? "https://goals-iitbhilai.github.io"
     : "https://goals.iitbhilai.ac.in",
   base: isPages ? "/goals.iitbhilai.ac.in" : "/",
+
   integrations: [icon(), sitemap(), svelte(), isPages && rewritePaths()],
+
   vite: {
     plugins: [tailwindcss()],
     server: {
       allowedHosts: isDev ? true : undefined,
     },
   },
+
   fonts: [
     {
       provider: fontProviders.fontsource(),
@@ -38,6 +42,7 @@ export default defineConfig({
       weights: ["300 700"],
     },
   ],
+
   markdown: {
     processor: satteri({
       features: {
@@ -47,32 +52,3 @@ export default defineConfig({
     }),
   },
 });
-
-/** @returns {import("astro").AstroIntegration} */
-function rewritePaths() {
-  return {
-    name: "rewrite-paths",
-    hooks: {
-      "astro:build:done": async ({ dir }) => {
-        const { globby } = await import("globby");
-        const fs = await import("node:fs/promises");
-
-        const files = await globby("**/*.html", {
-          cwd: dir.pathname,
-          absolute: true,
-        });
-
-        await Promise.all(
-          files.map(async (file) => {
-            let html = await fs.readFile(file, "utf-8");
-            html = html.replace(
-              /(href|src|action)="\/(?!\/|goals\.iitbhilai\.ac\.in)/g,
-              `$1="/goals.iitbhilai.ac.in/`,
-            );
-            await fs.writeFile(file, html);
-          }),
-        );
-      },
-    },
-  };
-}
