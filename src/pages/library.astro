@@ -1,0 +1,13 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Inventory from "@components/library/Inventory.svelte";
+---
+
+<PageLayout
+  title="Library"
+  description="Browse the GOALS library collection. Search by title or author, and filter by availability."
+>
+  <div class="mx-auto w-full max-w-4xl px-6 pb-16">
+    <Inventory client:load />
+  </div>
+</PageLayout>
