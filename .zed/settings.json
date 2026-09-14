@@ -11,4 +11,11 @@
       ]
     }
   },
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "classFunctions": ["clsx", "cn"],
+      }
+    }
+  }
 }
