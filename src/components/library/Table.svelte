@@ -1,6 +1,7 @@
 <script lang="ts">
   import { cn } from "@utils/cn";
   import type { LibraryItem } from "./types";
+  import { ChevronLeft, ChevronRight } from "@lucide/svelte";
 
   interface Props {
     items: LibraryItem[];
@@ -36,9 +37,9 @@
         onclick={() => (page -= 1)}
         disabled={page === 1}
         aria-label="Previous page"
-        class="cursor-pointer rounded-md border border-neutral-300 px-3 py-1 hover:bg-neutral-200/80 disabled:cursor-not-allowed disabled:opacity-40 dark:border-neutral-600 dark:hover:bg-neutral-800"
+        class="cursor-pointer rounded-md border border-neutral-300 p-2 hover:bg-neutral-200/80 disabled:cursor-not-allowed disabled:opacity-40 dark:border-neutral-600 dark:hover:bg-neutral-800"
       >
-        ‹
+        <ChevronLeft size={16} />
       </button>
       <span class="px-3 text-sm">
         Page {page} of {totalPages}
@@ -47,9 +48,9 @@
         onclick={() => (page += 1)}
         disabled={page === totalPages}
         aria-label="Next page"
-        class="cursor-pointer rounded-md border border-neutral-300 px-3 py-1 hover:bg-neutral-200/80 disabled:cursor-not-allowed disabled:opacity-40 dark:border-neutral-600 dark:hover:bg-neutral-800"
+        class="cursor-pointer rounded-md border border-neutral-300 p-2 hover:bg-neutral-200/80 disabled:cursor-not-allowed disabled:opacity-40 dark:border-neutral-600 dark:hover:bg-neutral-800"
       >
-        ›
+        <ChevronRight size={16} />
       </button>
     </div>
   {/if}

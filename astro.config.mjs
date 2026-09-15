@@ -20,9 +20,8 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    server: {
-      allowedHosts: isDev ? true : undefined,
-    },
+    server: { allowedHosts: isDev ? true : undefined },
+    resolve: { noExternal: ["@lucide/svelte"] },
   },
 
   fonts: [
