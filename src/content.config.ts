@@ -1,5 +1,6 @@
 import { defineCollection } from "astro:content";
 import { glob, file } from "astro/loaders";
+import fs from "fs/promises";
 import { z } from "zod";
 
 const alumni = defineCollection({
@@ -25,11 +26,35 @@ const team = defineCollection({
 });
 
 const links = defineCollection({
-  loader: file("./content/links.json"),
-  schema: z.object({
-    href: z.string(),
-    name: z.string(),
-  }),
+  loader: async () => {
+    const data = await fs
+      .readFile("./content/links.json", { encoding: "utf8" })
+      .then(JSON.parse);
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return data.map((item: any, index: number) => ({
+      id: index.toString(),
+      ...item,
+    }));
+  },
+  schema: z.discriminatedUnion("kind", [
+    z.object({
+      kind: z.literal("link"),
+      name: z.string(),
+      href: z.string(),
+    }),
+    z.object({
+      kind: z.literal("group"),
+      name: z.string(),
+      items: z.array(
+        z.object({
+          kind: z.literal("link"),
+          name: z.string(),
+          href: z.string(),
+        }),
+      ),
+    }),
+  ]),
 });
 
 const socials = defineCollection({
