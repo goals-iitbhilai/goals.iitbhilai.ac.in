@@ -1,3 +1,3 @@
 export function api(path: string): string {
-  return `https://backend-five-delta-42.vercel.app/api${path}`;
+  return `https://backend-kappa-khaki-30.vercel.app/api${path}`;
 }
