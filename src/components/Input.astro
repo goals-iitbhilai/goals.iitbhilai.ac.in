@@ -17,7 +17,7 @@ const {
 } = Astro.props;
 ---
 
-<label class={labelClass}>
+<label class={cn("w-full", labelClass)}>
   {label}
   <Tag
     class={cn(

@@ -2,24 +2,62 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import Inventory from "@components/library/Inventory.svelte";
 import Card from "@components/Card.astro";
+import Input from "@components/Input.astro";
+import Button from "@components/Button.astro";
 ---
 
 <PageLayout
   title="Library"
   description="GOALS' growing collection of books spanning multiple genres. View our inventory and find your next favorite read."
 >
-  <div class="mx-auto mb-12 flex w-fit flex-col items-center gap-16 px-8">
+  <!-- Form -->
+
+  <div
+    class="mx-auto mb-12 flex w-full flex-col items-center gap-16 px-8 sm:w-2xl"
+  >
+    <p class="text-center text-xl">
+      Request a book using the form below. You can check out our inventory to
+      see what is available. We will reach out to you as soon as we can.
+    </p>
     <Card
-      class="flex w-full flex-col items-center gap-6 px-16 py-8 text-center"
+      as="form"
+      id="book-request-form"
+      class="flex w-full flex-col items-center gap-4 p-8"
     >
-      <h2 class="text-center text-2xl text-black dark:text-white">
-        How do I issue a book?
+      <h2 class="mb-4 text-center text-2xl text-black dark:text-white">
+        Request a book
       </h2>
-      <p class="max-w-prose">
-        You can contact our Literary Lead Ronak to request a book.
+      <Input name="name" label="Name" placeholder="Your name" required />
+      <Input name="id" label="ID" placeholder="Your College ID" required />
+      <Input
+        name="phone"
+        label="Phone No."
+        placeholder="Your phone number"
+        type="tel"
+        pattern="[0-9\s+]*"
+        required
+      />
+      <Input
+        as="textarea"
+        name="titles"
+        label="Book Title(s)"
+        class="h-32"
+        placeholder="Enter the title(s) of the book(s) you want."
+        required
+      />
+      <p
+        id="form-feedback"
+        role="status"
+        aria-live="polite"
+        class="hidden text-center text-sm"
+      >
       </p>
+      <Button type="submit" class="w-full">Request</Button>
     </Card>
   </div>
+
+  <!-- Inventory -->
+
   <div class="mx-auto flex w-full max-w-4xl flex-col gap-8 px-6 pb-16">
     <h2
       class="text-center text-4xl font-bold text-neutral-800 dark:text-neutral-200"
@@ -29,3 +67,69 @@ import Card from "@components/Card.astro";
     <Inventory client:load />
   </div>
 </PageLayout>
+
+<script>
+  import { api } from "@utils/api";
+  import { cn } from "@utils/cn";
+
+  document.addEventListener("astro:page-load", () => {
+    // Element selectors.
+    const feedback = document.getElementById("form-feedback")!;
+    const form = document.getElementById(
+      "book-request-form",
+    ) as HTMLFormElement;
+    const submitBtn = form.querySelector(
+      "button[type='submit']",
+    ) as HTMLButtonElement;
+
+    /// Show a feedback message to the user.
+    function showFeedback(message: string, kind: "success" | "error") {
+      feedback.textContent = message;
+      feedback.className = cn(
+        "text-center text-sm",
+        {
+          success: "text-green-700 dark:text-green-400",
+          error: "text-red-700 dark:text-red-400",
+        }[kind],
+      );
+    }
+
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+
+      // Mark the submission as busy and hide feedback.
+      submitBtn.disabled = true;
+      submitBtn.setAttribute("aria-busy", "true");
+      feedback.className = "hidden";
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(api("/book-request"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          showFeedback("Request sent successfully!", "success");
+          form.reset();
+        } else {
+          showFeedback(
+            "Failed to send message. Please try again later.",
+            "error",
+          );
+        }
+      } catch {
+        showFeedback(
+          "Network error. Please check your connection and try again.",
+          "error",
+        );
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute("aria-busy");
+    });
+  });
+</script>
