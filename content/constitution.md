@@ -67,16 +67,18 @@ The standard procedure for funding of all clubs in IIT Bhilai as per CoSA guidel
 
 #### Article VIII(A): ^\*\*\*1^
 
-There shall be 3 main divisions in the society:
+There shall be 4 main divisions in the society:
 
 1. DebSoc
 2. LitSoc
 3. WordSoc\*\*3
+4. QuipSoc\*\*4
 
-- DebSoc, LitSoc and WordSoc will be internal bodies and only members of society can be a part of it.
+- DebSoc, LitSoc, WordSoc and QuipSoc will be internal bodies and only members of society can be a part of it.
 - The DebSoc shall deal with all activities related to any form of debate. This division shall include the members specifically interested in debate, and shall focus all its efforts in the improvement of the debating skills of its members.
 - The LitSoc shall deal with all activities related to the creation and presentation of any form of written literature, including poems and essays. This division shall include members specifically interested in written literature, and shall focus all its efforts in the refinement of literary skills of its members.
 - The WordSoc shall deal with all the activities related to the competitive word games. This division shall include the members specifically interested in word games, and shall focus all its efforts in development of its members to be grandmasters.
+- The QuipSoc shall deal with all the activities related to oratory and comedic arts. This division shall include the members specifically interested in public speaking and comedy, and shall focus its efforts in the development of its members to be exceptional orators and comedians.
 
 ---
 
